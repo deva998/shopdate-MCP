@@ -177,10 +177,17 @@ Mac：`./.venv/bin/python -B scripts/check_mcp.py`。随后在Agent中检查两�
 
 ## 开发与反馈
 
-安装器与配置合并回归测试：`py -3-64 -B -m unittest discover -s tests -v`，Mac将启动命令换为python3。反馈问题请通过[Issues](https://github.com/vikk-hi/shopdate-MCP/issues)，提供操作系统、客户端版本、命令名与脱敏错误；不要提交Cookie、Token、账号缓存或原始经营数据。
+有想法、有需求，欢迎加微信找我，并注明来意。想要帮你装好、按你的需求定制，也可以直接问。
+
+-微信：扫下方二维码加好友
+
+-X / Twitter：@Amber0880
+
+<img width="888" height="1131" alt="59008a9306fbf5cf94d41a6d3bbbcf47" src="https://github.com/user-attachments/assets/5421a3c0-9745-4d64-95bf-fe481c9cd3e8" />
+
+
+如果这个工具帮到了你，欢迎给个 ⭐️。
 
 ## 协议与来源
 
 [MIT许可证](LICENSE)。保留原作者Rakel版权；本项目包含本地定制，功能和安装方式以本仓库说明为准。用于查询本人有权限的后台数据，请遵守平台规则。
-
-[第三方说明](docs/THIRD_PARTY_NOTICES.md) · [源码来源](docs/SOURCE_PROVENANCE.json) · [版本变更](docs/CHANGELOG.md)。SHA256SUMS.json用于完整性校验，不是作者签名。
