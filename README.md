@@ -1,4 +1,4 @@
-# shopdate MCP
+# 京东商智 生意参谋 shopdate MCP
 
 京东商智、生意参谋、万相台只读数据 MCP 工具集。通过本机 Chrome 数据桥，在本人已登录、已授权的后台读取数据，为 AI 助手提供经营分析入口。包含业务源码、Windows/macOS 安装脚本及多客户端 MCP 配置。
 
