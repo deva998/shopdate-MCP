@@ -2,7 +2,6 @@
 
 京东商智、生意参谋、万相台只读数据 MCP 工具集。通过本机 Chrome 数据桥，在本人已登录、已授权的后台读取数据，为 AI 助手提供经营分析入口。包含业务源码、Windows/macOS 安装脚本及多客户端 MCP 配置。
 
-> 基于 [Rakel / sycm-cli](https://github.com/rakei076/sycm-cli) 的本地定制组合版本，保留原作者署名与 MIT 许可。
 
 ## 使用须知
 
@@ -93,10 +92,6 @@ Windows 和 macOS 都需要加载同一份插件，京东及账号核验不能�
 | 其他客户端 | `generic/mcp.json`，使用相同启动命令、参数、环境变量 | 必须支持在同一电脑启动stdio子进程 |
 
 `mcp-configs/examples/` 中是 Windows/macOS 占位示例；不能直接运行，优先使用安装器生成的实际路径配置。网页端、手机端或云端 MCP 只有远程URL入口时，不能用数据桥的127.0.0.1端口替代远程MCP。本包不新增HTTP代理。
-
-官方参考：[WorkBuddy连接器](https://open.workbuddy.cn/docs/connector)、[TRAE MCP](https://docs.trae.cn/ide_add-mcp-servers)、[Claude Code MCP](https://code.claude.com/docs/en/mcp)。
-
-移动安装目录后重新导出路径：Windows运行安装脚本并追加 `-ConfigOnly`；Mac追加 `--config-only`。若虚拟环境已经失效，需先重建环境。不要整份覆盖客户端的其他MCP服务。
 
 ## 功能
 
@@ -192,4 +187,4 @@ Mac：`./.venv/bin/python -B scripts/check_mcp.py`。随后在Agent中检查两�
 
 ## 协议与来源
 
-[MIT许可证](LICENSE)。保留原作者Rakel版权；本项目包含本地定制，功能和安装方式以本仓库说明为准。用于查询本人有权限的后台数据，请遵守平台规则。
+[MIT许可证](LICENSE)。本项目包含本地定制，功能和安装方式以本仓库说明为准。用于查询本人有权限的后台数据，请遵守平台规则。
