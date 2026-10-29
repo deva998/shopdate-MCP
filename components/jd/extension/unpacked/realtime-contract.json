@@ -1,0 +1,21 @@
+{
+  "page": "https://jdsz.jd.com/szweb/view/tradeAnalysis/tradeSummary.html",
+  "endpoint": "https://szgateway.jd.com/api/lowcode/tradeSummary/summary/getSummary.ajax",
+  "template": {
+    "realtime": true,
+    "interval": "SECOND",
+    "dateType": "todayRealtime",
+    "compareType": "hb",
+    "channel": "all",
+    "indicators": [
+      "jdr_sch_trade_deal_ord_ord_amt_sz_trade_deal_snapshot",
+      "jdr_sch_trade_deal_ord_sku_qtty_sz_trade_deal_snapshot",
+      "jdr_sch_user_deal_ord_user_cnt_sz_user_deal_snapshot",
+      "jdr_sch_trade_deal_ord_ord_qtty_sz_trade_deal_snapshot",
+      "fo_jdr_sch_shop_deal_rate",
+      "fo_jdr_sch_trade_deal_ord_amt_user_sz_trade_deal_snapshot",
+      "jdr_sch_traffic_enter_shop__browse_page_qtty_shop_last_src",
+      "jdr_sch_traffic_enter_shop__browse_page_cnt_shop_last_src"
+    ]
+  }
+}

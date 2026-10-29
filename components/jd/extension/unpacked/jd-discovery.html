@@ -1,0 +1,7 @@
+<!doctype html><meta charset="utf-8"><title>京东接口探测</title>
+<style>body{font:14px/1.6 system-ui;margin:20px}button{padding:10px}pre{white-space:pre-wrap;background:#f5f6f8;padding:12px}</style>
+<h2>商品 / 流量 / 用户接口样本</h2>
+<p>仅用于首次接入验证。先启动本机接收器，在当前页 F12 点 Network，再进入本面板点击「开始本次采样」。保持店铺和页面不变、不刷新，切换日期或点击页面查询按钮，最后回本面板点击「读取本次查询样本」。</p>
+<p>只接收已登记商品、流量、会员概况、Plus权益和购物车营销页面的京东数据网关低代码查询 JSON 样本。不重发请求，不导出请求头或 Cookie。样本不会被当作已验证接口或完整报表。</p>
+<button id="collect">开始本次采样</button><pre id="log">等待接收器与网页查询。</pre>
+<script src="jd-sample-guard.js"></script><script src="jd-discovery.js"></script>

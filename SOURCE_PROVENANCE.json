@@ -1,0 +1,752 @@
+{
+  "release": "2026.10.29-r5",
+  "upstream": {
+    "url": "https://github.com/rakei076/sycm-cli",
+    "license": "MIT",
+    "copyright": "2026 Rakel"
+  },
+  "layout": {
+    "jd": "components/jd",
+    "alibaba": "components/ali"
+  },
+  "source_files": [
+    {
+      "path": "components/jd/tb/cli.py",
+      "source_sha256": "2cfb41536c01f716653c080b8d96606528b939f3c32e788652797419cf749cdf"
+    },
+    {
+      "path": "components/jd/tb/mcp_install.py",
+      "source_sha256": "67204f3d6eacaf8ed0f631f2947a3d4e678166c9e08497e09bf32096e7c3225f"
+    },
+    {
+      "path": "components/jd/tb/mcp_server.py",
+      "source_sha256": "2da213540aa407ff003cb850793e12babfb020193d987285acacb700d0934df0"
+    },
+    {
+      "path": "components/jd/tb/runtime.py",
+      "source_sha256": "93a18f7a2d10233e00f3efd4517707fd467ff8409367898aa192b4e7515ea536"
+    },
+    {
+      "path": "components/jd/tb/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "components/jd/tb/__main__.py",
+      "source_sha256": "4b1afbca74a10abc3cff7b4e5a11b558bf619e45b89709faf9225a474a2a250f"
+    },
+    {
+      "path": "components/jd/tb/core/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "components/jd/tb/core/accounts.py",
+      "source_sha256": "59f95f12baf92efc8142868057d198463c5d71ce224e5be7a059d7f7526cc019"
+    },
+    {
+      "path": "components/jd/tb/core/auth.py",
+      "source_sha256": "feee1316ed469d642404c667958319a95797b8a9912abfd8ec46d2346a08b686"
+    },
+    {
+      "path": "components/jd/tb/core/bridge.py",
+      "source_sha256": "4c136d45bc566dbaf441fa921ab6d7e6f1a7a3b0c3d5d9afad71abd8b1006bc0"
+    },
+    {
+      "path": "components/jd/tb/core/client.py",
+      "source_sha256": "932b80abe70d9270319f7ec9c5319dadeaa1158fd805ebf026739ba5fad7c2c4"
+    },
+    {
+      "path": "components/jd/tb/core/context.py",
+      "source_sha256": "274fe3523aedceeb30b101ebab60f6f1b9308cc20600ca0ceaecee441ac08689"
+    },
+    {
+      "path": "components/jd/tb/core/errors.py",
+      "source_sha256": "b2fe35f412284fdbbe472fd2dc6402a6d4aadad9e5d03e59bbb23df185c48a13"
+    },
+    {
+      "path": "components/jd/tb/core/extension.py",
+      "source_sha256": "e947ff569c4ce58f3e0c522665fae4835e4fbbe755808495d1d45193688f3c5c"
+    },
+    {
+      "path": "components/jd/tb/core/modules.py",
+      "source_sha256": "c6a829eba6c23329a194f25d3ace2d4819b900db4b6b30dd6b5ab79ea45837b4"
+    },
+    {
+      "path": "components/jd/tb/core/mtop.py",
+      "source_sha256": "961e5ce00134bdbee3b6233c5e9343bce589976a2585785f9dd303b44290f2e5"
+    },
+    {
+      "path": "components/jd/tb/core/platform.py",
+      "source_sha256": "d619fae412fdf5c50f8cd921625d9376687abf03f9dc964a70803d1dd3739da6"
+    },
+    {
+      "path": "components/jd/tb/core/registry.py",
+      "source_sha256": "bfabd5b823650397ff8d582d219bcf4e7bb30eaab360b8f9f7ef923b2c2ee8ef"
+    },
+    {
+      "path": "components/jd/tb/core/stores.py",
+      "source_sha256": "2105b121547c76ca373b286ed22a492e9b271d29ea93cb150c0f7033ebeb6216"
+    },
+    {
+      "path": "components/jd/tb/core/transport.py",
+      "source_sha256": "9d1d86ff3a9a52d8631402797a26e29d4d3d406cb15928b2963cd61ef6724866"
+    },
+    {
+      "path": "components/jd/tb/platforms/__init__.py",
+      "source_sha256": "cbbf1448aa547c3d1950324fd47cb35c8c8ef24c907820a29a83f119de6916f3"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/__init__.py",
+      "source_sha256": "863195b0e0b44f50a59c96bc61b93cca2e59e587441c512702b54050e9d658be"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/after_sales.py",
+      "source_sha256": "c5eae5d485ce16531576b7aa8884da7c9374a16d7094b29385552cceffe1d484"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/after_sales_export.py",
+      "source_sha256": "b38336972a909352edd1ddd6bc2f4697e6268d01c9e264cf56a02fe158555d71"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/analysis_context.py",
+      "source_sha256": "721cd3c84fa2d450b3ac42e708970807eed54b3401cc8d2bd56cc83c70fc03f2"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/analysis_guide.py",
+      "source_sha256": "37e992c2b8df70925cf3f09f1c3290f471cfb0b0b9b31070d4ac2348c079c0de"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/api_client.py",
+      "source_sha256": "99ebaaf9c64e289da86cdd5aa356668e8f00c6a3f9acd48fdf0c0ede00169024"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/api_exports.py",
+      "source_sha256": "43f0fe5a9a967773fb71e34bf508807fa5085d59d611065b781f3d5e407d912d"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/api_products.py",
+      "source_sha256": "7f47d1010668f5f00bd4baa05f5f35fba8ac67862fb805edb13850e907b02144"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/api_traffic.py",
+      "source_sha256": "1c63f1a488d5ee414b7cde6e1a98bad44d4d3acd2077082d1e1b2b23d51c8281"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/business_metrics.py",
+      "source_sha256": "16ba6151409e37e85693c020eed46dec460911770c4072023a50b8769e1d2849"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/business_paging.py",
+      "source_sha256": "4792a3acd4d59e0a77f5f9e02d635c6e1ba51bd2ae9e4ad1f79b21c6b8ffe883"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/business_stats.py",
+      "source_sha256": "83cee111d58be8333910362dd3da77d025ecedd6597b48813ccfb0b9b1ec5437"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/business_structure.py",
+      "source_sha256": "9576267e618f3b7bc9c76605d5ac9ec4eaa834fe28064de4c56837d8dd38224e"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/cli.py",
+      "source_sha256": "196e0a0139581eaf52711c91bea260c88bdc8822f0098954ac615484498cfab0"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/daily.py",
+      "source_sha256": "624e4bd8e8c4b08d9505e014006e742796c8d653205792ce38b2a1f0ac1ec7ca"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/data_scope.py",
+      "source_sha256": "b6e0465f5550975383707b1c03fb9315e35b90801a2e96e9bec989f7d8fc6975"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/industry.py",
+      "source_sha256": "1bc69132f2579c1b99d89987827f6f8a466f20e41475b7eba9e5d955097611d6"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/inventory.py",
+      "source_sha256": "6322ea4e041cc4772785b11a60505f7ced73d8bcd08a8185ef8b7b876108cc74"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/new_product_review.py",
+      "source_sha256": "2dcab8cd9f056745e34156b90d2dab133b4a62d5782044e21160f71536062eca"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/new_products.py",
+      "source_sha256": "1a0431da9233a1b61445a85eead84d4902b7baac368bb27afd03b8158087d38b"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/order_review.py",
+      "source_sha256": "e3f669bdcccbf7e3a0a9bd404e84a92967564c65ecf5e087e2aa32a15734586c"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/orders.py",
+      "source_sha256": "a7912d1432b257a7691a7cc90ee460d0b4475df0eeb331def920136ffae94556"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/overview.py",
+      "source_sha256": "72d4e851d7c752f472522e53337b755887ced5ec15ad752949ae790c80745260"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/panorama.py",
+      "source_sha256": "9c4b129d9b769f45c205582aded39cc6601e0c0d503890850f674e739b29915e"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/platform.py",
+      "source_sha256": "78dad1ffaa7c0d8c585df960bfca95ffe5d54181e4c714c1eca170f8d3873f38"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/power.py",
+      "source_sha256": "6bf22b7075f0a8c5ef3b6a1551833b8e5040c6866068cac810d79185ea455fbe"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/product_contract.py",
+      "source_sha256": "93f04b250141297502dc6f88ef69c3c714749449c6fa68f107ffb577867dfb93"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/product_diagnosis.py",
+      "source_sha256": "fbbd471ebbd76f800a358ba978e439cf06c4092f4d94eea2420c952e82810714"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/product_downloads.py",
+      "source_sha256": "17326df3e6706cf98a48cfeceff539816acf72309fd1965599230b94930b943f"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/product_exports.py",
+      "source_sha256": "4bb09b3aaec842486a46b91ce015e358d2058a4f0ec4a8ce3dfc990ecd38144e"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/product_test.py",
+      "source_sha256": "29b562c9b84711e23ef6a4659cc4daa119c1611442a4b8615394bc12f094462e"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/realtime.py",
+      "source_sha256": "9df7f1326c5eb2378bfb681b5523cf3f1b7b349d440173cc1bbd8c79c9facf46"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/refund_cohort.py",
+      "source_sha256": "60f0559da70bfe926f309f2af1c7821ce0271a9e29f4b28f5e0964d07a30d3bf"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/refund_enrichment.py",
+      "source_sha256": "dda99a7f100cbe479f19447335e33dc771d83a530533c17cdfe2058feca3e2f0"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/refund_review.py",
+      "source_sha256": "440ce83fda721f597bc47a351593200333b5fa0150e86e9f73b3eb5339125107"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/report_jobs.py",
+      "source_sha256": "96062404b784f3714f6ccb2e1df9faf90f33c6d83e5538a0edeae452e8260c71"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/reports.py",
+      "source_sha256": "e29cc7bd9dab97c3d36f3e9d2ed79eccbda039dce635b2aa6bf182c3688139b2"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/request.json",
+      "source_sha256": "c25e57ba38b4c3ee7065434cf3522a754fd073f3cc4131bc79fc8b75c514a813"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/shop_insights.py",
+      "source_sha256": "a3ee3b7068b87ea76a17f26884a950e47b8067ffdd74b0d4c6f201206a262a3c"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/traffic_channels.py",
+      "source_sha256": "c2c99633a318b0097f64aab29bef36937dbb54a8b5db283fef0c304ba0f981d2"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/traffic_contract.py",
+      "source_sha256": "fcac152fa4191e29f3c66c72f3aef04090dc983a38e5b05e80a15c339eee9084"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/traffic_tree.py",
+      "source_sha256": "ec5d736cb5441553ba49621541746d7ca20a17cf5596a8e4fd102f724bf20eb7"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/user_analysis.py",
+      "source_sha256": "b45ea6a742420b41a37f28b3bd39fb3ac4280c345f121f5fff06c94cd1b830d8"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/user_metrics.py",
+      "source_sha256": "c6dabeab46661be4926d250149f203e7ba38e4de4a3dbaa7c86163bc0de81b42"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/user_options.py",
+      "source_sha256": "e2fedd341d44319ac6d654254104c24eca59fc8e6a12511a8d18de10621f8109"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/user_periods.py",
+      "source_sha256": "ff65938a71016bd553413eb3e39df9048d94b2542a31d3c66b35da9d3a236607"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/weekly.py",
+      "source_sha256": "8890bbbdf9688d32861820c578f7ab045adebe3ccefb2c531917a1cbdebaa5e6"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/weekly_products.py",
+      "source_sha256": "05616b0ad0da0a10c1245fe7fb79eff8a31be066b37bef4ee1b90cae79524f4e"
+    },
+    {
+      "path": "components/jd/references/analysis-workflows.md",
+      "source_sha256": "d0d0a89e84e963334a3094f31c917766648494fe7d72ae54b229e94838ca4d80"
+    },
+    {
+      "path": "components/jd/references/item-report-guide.md",
+      "source_sha256": "21a241ae4c42e5117f3e347b48449b9b322d468c06916b6e060b4d5680b2d68c"
+    },
+    {
+      "path": "components/jd/references/jd-analysis-guide.md",
+      "source_sha256": "fdd12791e1c09947d53568cfb090a2359ff9a03820c466a55a118611285a47ce"
+    },
+    {
+      "path": "components/jd/LICENSE",
+      "source_sha256": "5de2c0743dcd089b29742e7eba03a116c851976d55d346ca536a8275bad17ed2"
+    },
+    {
+      "path": "components/ali/tb/cli.py",
+      "source_sha256": "de09061fb20a9ffda0cebf3f4efc4fc5700d6f70c0810d052496ce770e89b52c"
+    },
+    {
+      "path": "components/ali/tb/mcp_install.py",
+      "source_sha256": "67204f3d6eacaf8ed0f631f2947a3d4e678166c9e08497e09bf32096e7c3225f"
+    },
+    {
+      "path": "components/ali/tb/mcp_server.py",
+      "source_sha256": "819b67a9e46c64ca2c40da60c59cae28d12d953c3a955928f964a80e50c471cf"
+    },
+    {
+      "path": "components/ali/tb/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "components/ali/tb/__main__.py",
+      "source_sha256": "4b1afbca74a10abc3cff7b4e5a11b558bf619e45b89709faf9225a474a2a250f"
+    },
+    {
+      "path": "components/ali/tb/core/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "components/ali/tb/core/accounts.py",
+      "source_sha256": "59f95f12baf92efc8142868057d198463c5d71ce224e5be7a059d7f7526cc019"
+    },
+    {
+      "path": "components/ali/tb/core/auth.py",
+      "source_sha256": "feee1316ed469d642404c667958319a95797b8a9912abfd8ec46d2346a08b686"
+    },
+    {
+      "path": "components/ali/tb/core/bridge.py",
+      "source_sha256": "80a1641586430d824c36d5518f97cd5930ffff456f7f577c1fbb383fea425398"
+    },
+    {
+      "path": "components/ali/tb/core/client.py",
+      "source_sha256": "932b80abe70d9270319f7ec9c5319dadeaa1158fd805ebf026739ba5fad7c2c4"
+    },
+    {
+      "path": "components/ali/tb/core/context.py",
+      "source_sha256": "274fe3523aedceeb30b101ebab60f6f1b9308cc20600ca0ceaecee441ac08689"
+    },
+    {
+      "path": "components/ali/tb/core/errors.py",
+      "source_sha256": "b2fe35f412284fdbbe472fd2dc6402a6d4aadad9e5d03e59bbb23df185c48a13"
+    },
+    {
+      "path": "components/ali/tb/core/extension.py",
+      "source_sha256": "e947ff569c4ce58f3e0c522665fae4835e4fbbe755808495d1d45193688f3c5c"
+    },
+    {
+      "path": "components/ali/tb/core/modules.py",
+      "source_sha256": "202ceace9c41b6de8ad4b9e9aea53b42a235709554833d4b8e9cff0265d968e6"
+    },
+    {
+      "path": "components/ali/tb/core/mtop.py",
+      "source_sha256": "961e5ce00134bdbee3b6233c5e9343bce589976a2585785f9dd303b44290f2e5"
+    },
+    {
+      "path": "components/ali/tb/core/platform.py",
+      "source_sha256": "d619fae412fdf5c50f8cd921625d9376687abf03f9dc964a70803d1dd3739da6"
+    },
+    {
+      "path": "components/ali/tb/core/registry.py",
+      "source_sha256": "bfabd5b823650397ff8d582d219bcf4e7bb30eaab360b8f9f7ef923b2c2ee8ef"
+    },
+    {
+      "path": "components/ali/tb/core/transport.py",
+      "source_sha256": "9d1d86ff3a9a52d8631402797a26e29d4d3d406cb15928b2963cd61ef6724866"
+    },
+    {
+      "path": "components/ali/tb/platforms/__init__.py",
+      "source_sha256": "e87da582a1ed6df789451a9ca098187b220a7344f9533bfded8a9074502ced94"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/cli.py",
+      "source_sha256": "2d0ffac47ac2072426e481a22da1ab670e322cde5a70e544fc9048820aef923d"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/fields.json",
+      "source_sha256": "18f410829f6bd5f44336dfa7a585f80d8c0ca925088fe702f2a6b6319bbdb67c"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/item.py",
+      "source_sha256": "b6aa43559bcf4fed561d5011223b8d8b7a4714a0e32956088a97044030d9fb81"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/platform.py",
+      "source_sha256": "60769366d037c867aece5950d9672a262946fff1da31bc3909f37b8e384014f2"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/report/__init__.py",
+      "source_sha256": "a5f5cd52637e21643500d4dbb81863944ef9595a74e120c79a4dab2b156ca494"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/report/build.py",
+      "source_sha256": "f75dfe3c12d576f514e2669054ca717033fdf9ff2dfac5967d2f2f937a95c3d3"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/report/collect.py",
+      "source_sha256": "4f756d0803ad37d3d76b79696a54fe34288a7d2496b72c058f604ca9b0bd863f"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/report/deep.py",
+      "source_sha256": "63dbdfd579574721f72725610e3725d5988e8b789f83b3c3df2921fdb4987cae"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/report/render.py",
+      "source_sha256": "7ad5874944e1c4a88c8d3eab6181c661c7720aba92e05e5a9f100650d1980595"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/report/template.html",
+      "source_sha256": "22490b10b26bb8479da4b613cd29f58da2fe3ec3f4c76b5457f59c0c951bda41"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/report/track.py",
+      "source_sha256": "d3337aebb422b1591f20cd1c250349b9a90f84aea83e71498aa33f4fe1d605f0"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/report/xlsx.py",
+      "source_sha256": "9b8fa8fa41288bbc06558a7906507bb945326f07b463723d667f89e972351690"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/session.py",
+      "source_sha256": "6c0a632e08ce4388479b674545e10cd66ae82cdafc624107c8bcd0db04d7b944"
+    },
+    {
+      "path": "components/ali/tb/platforms/alimama/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "components/ali/tb/platforms/alimama/cli.py",
+      "source_sha256": "f38d114d368303372ebc6d7ceeff7aced581801ba59bf1f69d1283ec434e51d4"
+    },
+    {
+      "path": "components/ali/tb/platforms/alimama/fields.json",
+      "source_sha256": "0d178d5602a755dc40e21b67a1253a7661977de5613173e15ae93eba9f92cb98"
+    },
+    {
+      "path": "components/ali/tb/platforms/alimama/platform.py",
+      "source_sha256": "2c82ca61291b75e537b35d146db37de90002643cf52b008f0b8ef576f02bf1c2"
+    },
+    {
+      "path": "components/ali/tb/platforms/alimama/session.py",
+      "source_sha256": "2a7afed37f4ab87e7528912f0d05df2e2d7f259b28ee25db1e701cd828dd844b"
+    },
+    {
+      "path": "components/ali/references/analysis-workflows.md",
+      "source_sha256": "d0d0a89e84e963334a3094f31c917766648494fe7d72ae54b229e94838ca4d80"
+    },
+    {
+      "path": "components/ali/references/item-report-guide.md",
+      "source_sha256": "21a241ae4c42e5117f3e347b48449b9b322d468c06916b6e060b4d5680b2d68c"
+    },
+    {
+      "path": "components/ali/LICENSE",
+      "source_sha256": "5de2c0743dcd089b29742e7eba03a116c851976d55d346ca536a8275bad17ed2"
+    },
+    {
+      "path": "components/jd/extension/unpacked/accounts.js",
+      "source_sha256": "bd0406d2db5d46f84dc086b3c51f00b11e13f3bb1c2766f6e180ec699e4a6a0f"
+    },
+    {
+      "path": "components/jd/extension/unpacked/background.js",
+      "source_sha256": "48ba50966f558d9170c249ddba73b604dc8715440ba48f9cac905df56dea84f4"
+    },
+    {
+      "path": "components/jd/extension/unpacked/business-metric-contracts.json",
+      "source_sha256": "4e48349bf94fafb7f4927d67b5ee1a3eb996ede0385beb26750fa7a0fcc7555f"
+    },
+    {
+      "path": "components/jd/extension/unpacked/content.js",
+      "source_sha256": "4fecf906bea6b0dc6a5912126dfe47efbeee501103384b765b3ebe99aca98a55"
+    },
+    {
+      "path": "components/jd/extension/unpacked/icons/128.png",
+      "source_sha256": "8438498e18a524c40c1539cb7a6759d92201591b534ad0d6a274fbcf99827a4d"
+    },
+    {
+      "path": "components/jd/extension/unpacked/icons/16.png",
+      "source_sha256": "c261e14101f3e45f1127e2ae40ee7156ff84315095f5996d17d4d820afa1a69e"
+    },
+    {
+      "path": "components/jd/extension/unpacked/icons/48.png",
+      "source_sha256": "8bd39d5d8297d0613a19a7eecd6a993333e3f0d7da14d12cc97332424545c0e3"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-accounts.js",
+      "source_sha256": "ab624b2a84d7f46842d67e1bad63b053ea89dbaca51a3228353229ad4b196c6f"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-aftersales.js",
+      "source_sha256": "d82e6e038a848a0a0e55d1eb323c547e689ce7ba685b6591b9bed414a454d45d"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-api-probe.js",
+      "source_sha256": "ac968482da4af6ac5250a8722404063c8d72c4f17711b62e529a8785fc8d450e"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-auto.js",
+      "source_sha256": "2009fd5d149e6386d710ab1e2d871e335898f28d3fb28c17e5a005b00ce49596"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-business-stats.js",
+      "source_sha256": "6ec165640999dcc9b4926227df5b50f16268bdc113fb9f5e5e02e168356ba017"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-devtools.html",
+      "source_sha256": "745617a6e07b5ddbc5f9f14e66462cf4ea06d99de90c9b2018cad1cdf4dbe9fc"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-devtools.js",
+      "source_sha256": "ce084d5edcbd61c01cc2410a282e1e4991d6df1c0660826ce385d7fb26e4d14b"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-dimension.js",
+      "source_sha256": "11dbcc7bd7b5b7d5bfb78edc1b1012163d4d92de1877aed2db9ce7df18d7ff4f"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-discovery.html",
+      "source_sha256": "ff934d9705007b81ac7399a2895b87d17c27a4f476b9e1c19ca40dabcc02278f"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-discovery.js",
+      "source_sha256": "b30630e3d3a2d5e4115d9415971ed5b95830d68fcab3718b111c77c12b9060fe"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-export.js",
+      "source_sha256": "2d48e07dd243a9085fa5431547fc7c54c192e611d67449ebe7483e25364a3969"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-guard.js",
+      "source_sha256": "b40aa0ae949977af2b6de1b7b8a782b979bb2a91f2190513f9d4e7140187fd22"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-inventory.js",
+      "source_sha256": "914970bfa15c7ca9c398ef49596329e235d21891480076bdc00dd3f2fcde0092"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-native.js",
+      "source_sha256": "3d450249d66e09c514abb7775dbb0f6b5a0fd258cc31e070cd1ff26ed5d20d9f"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-orders.js",
+      "source_sha256": "4a555b39f6dfbc639229229546703ee4deb74e4a778d3c1567e758769af6a447"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-panel.html",
+      "source_sha256": "8037f36b8297eb7af0f0dbddbe8663d521f9b257563e601b6bd27363ffd8059d"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-panel.js",
+      "source_sha256": "63e047fdcdca14287eccf60aaf5b3e30b235b3a4564b00141c39286b3f0f4cd0"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-query.js",
+      "source_sha256": "ec1f2482037b03fcea368e8fa12c0f494df655749b0d298220e849674cca91f0"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-sample-guard.js",
+      "source_sha256": "0165cb1f77642a6971e87337f0ffe0082da6ae1e139cc8a1ebca592454696e03"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-shop-insights.js",
+      "source_sha256": "5132a749af8351641da470dcf7c061cd5b80f2be75e5e6060c4af89d01d72493"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-stores-worker.js",
+      "source_sha256": "817750270b6e5aef078ff0fe03d46233a80def6f4cbe28f10e8e5ad7e02ec2ab"
+    },
+    {
+      "path": "components/jd/extension/unpacked/jd-worker.js",
+      "source_sha256": "b86a69b9e60f8466c3b8940dae7a8d70cb65d75a64d8ad335e73904820df91cb"
+    },
+    {
+      "path": "components/jd/extension/unpacked/login-status.js",
+      "source_sha256": "72dd691fa28f0f8ca24c4c28146760541e8995e4e4089f0b91155bdc1c111081"
+    },
+    {
+      "path": "components/jd/extension/unpacked/manifest.json",
+      "source_sha256": "935a6f07ee95679910ed93166d94d5b5936af6205adbab40c8f1ac5cffc5d29f"
+    },
+    {
+      "path": "components/jd/extension/unpacked/new-product-contracts.json",
+      "source_sha256": "b3bac3fda089bc3af8cb83ea86df76684dbb1f3ee87f2ffeabe4242c36ca43f5"
+    },
+    {
+      "path": "components/jd/extension/unpacked/order-template.json",
+      "source_sha256": "20b692ad631eefe271db1f81b636295fdd60c3a6bbd1e5f4e55595b3aafab728"
+    },
+    {
+      "path": "components/jd/extension/unpacked/popup.html",
+      "source_sha256": "23d0af4feaf73c1d8915723152daaac3240816fe96e535730cc9bf38eb4a35d2"
+    },
+    {
+      "path": "components/jd/extension/unpacked/popup.js",
+      "source_sha256": "7a251c537d906b2fcdec341188d4d0302a76e63a6ac219771954f216b4a6b8b4"
+    },
+    {
+      "path": "components/jd/extension/unpacked/realtime-contract.json",
+      "source_sha256": "731d1213612e12695969fbfca045de5acada7f9aad1da02dfbe37edd81512742"
+    },
+    {
+      "path": "components/jd/extension/unpacked/report-contracts.json",
+      "source_sha256": "fdaabb28f212e4168d9b7cb1a62a7ccda548dc292795096d416995b7c07ad953"
+    },
+    {
+      "path": "components/jd/extension/unpacked/request.json",
+      "source_sha256": "c25e57ba38b4c3ee7065434cf3522a754fd073f3cc4131bc79fc8b75c514a813"
+    },
+    {
+      "path": "components/jd/extension/unpacked/store-identity.js",
+      "source_sha256": "b348702f29e8bc17fc1e2ab3038f50902fcac23481fd53b602304ce921798b55"
+    },
+    {
+      "path": "components/jd/extension/unpacked/stores.js",
+      "source_sha256": "1967ce892cbd9f0a2a0d74091066621142dd36babfc69068e4cd8c0f35e9e11d"
+    },
+    {
+      "path": "components/jd/extension/unpacked/traffic-channel-contract.json",
+      "source_sha256": "bad64bf8537327a6869bf223d1742e942216d49c6c546d271d712bcc07dad0f1"
+    },
+    {
+      "path": "components/jd/extension/unpacked/user-metric-contracts.json",
+      "source_sha256": "8ed31ea6d3aeda6ee17a7e668213acb1b8fff25c590a5629303edbad2d1084e4"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/__init__.py",
+      "source_sha256": "ed02b509a596b007a9bb648d28bb0bda8b46c64f250a46d6987ffb498a86e0b9"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/ad_review.py",
+      "source_sha256": "dce2c11b95c77943a62d9bac5c7bf74cad4bbb05e6b039106bd5cdbbd683a677"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/ad_runner.py",
+      "source_sha256": "c83a14c1428a6173ae19d852b5a0bae65086ccfc84dfe3a34264d5eae1d74e89"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/ad_source.py",
+      "source_sha256": "33d2f4011426cd4208ecc6a6269946724f4b423536d8c760f09b79e56d20ddeb"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/ad_source_live.py",
+      "source_sha256": "de6069f8f3a1c3b64abfffe79be0fcd6505bb3801546de4a0f399e97e7f9e07d"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/catalog.py",
+      "source_sha256": "7babbf1f468bcdcbcf9f8eaad0f167d3a2c601f196c166263edca80fd77a8759"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/cli.py",
+      "source_sha256": "5343c6fa98ab113094545f5dc4a64aa2afe73647d95ee8721cfcb1fe4eaab607"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/evidence.py",
+      "source_sha256": "9cce2e79a850abe86e18d67f321b57639c56884d6510b5525ed254a4b83af03a"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/legacy_ads.py",
+      "source_sha256": "ee3507537585f22be9db82bd794b5c430ba70b6bf9a5b77c97cb209985774bc1"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/mcp.py",
+      "source_sha256": "c981760426365542569dd6cd316f8b0b378a0f1468a94cf203cace44093707db"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/metrics.py",
+      "source_sha256": "cf753c98858bd5d9728b1f08e8af043e897b38d2d31154689febeed86be46852"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/reuse.py",
+      "source_sha256": "338266622daec5709defe35b7160795ecd2b9cc801a60603e5060f0a967b395c"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/runner.py",
+      "source_sha256": "a4ceb4ae6337921184d53ab7e92845f8a1d735ddbe30f4f364d3a2e1318421c7"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/signals.py",
+      "source_sha256": "d1c346f14b1459d0f2fa921ce179cde9027c4d21965c687f4f79e277bf332c29"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/source.py",
+      "source_sha256": "f7016f3576e431da5a19257cd20f3e13af1f24b022348ef1742890339070a2be"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/tmall-industry-contracts.json",
+      "source_sha256": "f00981f498b4e729b102d6c2d6fd46d52ff9d9500270833973f6959a7a19426b"
+    },
+    {
+      "path": "components/jd/shopdate_workflows/tmall_industry_contracts.py",
+      "source_sha256": "1fe81f8827b670eedc6be98315b17ec8ff978a0c54293d5b6342353369895321"
+    },
+    {
+      "path": "components/jd/shopdate_cli.py",
+      "source_sha256": "5bd32b8137481c3e4296255741d5703fffefb96bd259f7c85edab62db4d4b133"
+    },
+    {
+      "path": "components/jd/bridge-config.json",
+      "source_sha256": "0f50ea2f07490e46fd392b6991b214b1a69b009404989fdf784c1d29206c72bc"
+    },
+    {
+      "path": "LICENSE",
+      "source_sha256": "5de2c0743dcd089b29742e7eba03a116c851976d55d346ca536a8275bad17ed2"
+    },
+    {
+      "path": "requirements.txt",
+      "source_sha256": "e5f2694f34826eeb005e7ca370f8d9f1026bdec7143566d4229735a9df3a34b9"
+    }
+  ],
+  "release_only_changes": [
+    "Alibaba default development extension ID aligned to bundled bridge",
+    "Bundle-relative Alibaba source resolution: shopdate_cli.py",
+    "Bundle-relative Alibaba source resolution: shopdate_workflows/source.py",
+    "Bundle-relative Alibaba source resolution: shopdate_workflows/ad_source_live.py",
+    "MCP-only instructions embedded: jd",
+    "MCP-only instructions embedded: ali",
+    "Removed store-specific capacity evidence location from JSON and embedded JS contracts",
+    "Trimmed platform registries to included jd/sycm/alimama only",
+    "Empty automatic module download manifest; no unbundled modules advertised",
+    "Legacy MCP installer replaced with root-installer guidance; no client settings written",
+    "Online/offline pip subprocess mode isolated from inherited PIP_NO_INDEX; regression tests added",
+    "Optional HTTPS pip index option in installer.py/install.ps1, documentation and regression tests",
+    "TRAE no-space command bootstrap; no third-party client source changes",
+    "Opt-in project JSON merge helper and regression tests; Agent installation tutorial",
+    "r4: normalize release metadata and GitHub-facing documentation only; program files unchanged from r3",
+    "r5: public repository documentation and workflow diagram; local delivery-only reports omitted",
+    "r5: exclude root Git metadata consistently from audit/inventory/archive; nested repositories still rejected"
+  ],
+  "excluded": [
+    "runtime state",
+    "accounts",
+    "raw business responses",
+    "reports",
+    "backups",
+    "browser profiles",
+    "private promotional write module",
+    "local client settings"
+  ],
+  "note": "Source hashes describe inputs; final release hashes are in SHA256SUMS.json. No upstream revision is inferred for the customized Alibaba checkout."
+}

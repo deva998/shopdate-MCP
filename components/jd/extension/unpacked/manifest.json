@@ -1,0 +1,70 @@
+{
+  "manifest_version": 3,
+  "name": "shopdate-cli 数据桥",
+  "short_name": "shopdate-cli",
+  "version": "0.9.40",
+  "description": "共用数据桥：生意参谋保持原只读功能；京东商智通过原生网页响应取数，支持平台与店铺身份核验。",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "scripting",
+    "alarms",
+    "storage",
+    "cookies",
+    "declarativeNetRequestWithHostAccess"
+  ],
+  "host_permissions": [
+    "https://*.taobao.com/*",
+    "https://*.tmall.com/*",
+    "https://*.tmall.hk/*",
+    "https://*.alimama.com/*",
+    "https://*.1688.com/*",
+    "https://passport.alibaba.com/*",
+    "http://127.0.0.1/*",
+    "https://jdsz.jd.com/*",
+    "https://*.jd.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://jdsz.jd.com/szweb/view/view-source/view-flow.html"
+      ],
+      "js": [
+        "jd-dimension.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://dmp.taobao.com/*",
+        "https://myseller.taobao.com/*",
+        "https://sycm.taobao.com/*",
+        "https://one.alimama.com/*",
+        "https://air.1688.com/*",
+        "https://work.1688.com/*",
+        "https://sycm.1688.com/*",
+        "https://item.taobao.com/*",
+        "https://www.taobao.com/*",
+        "https://jdsz.jd.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "shopdate-cli 数据桥",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAojUI+kuMpz9QDt/+O0E7Sy9+nFCQBPR98yGdJP63KULp4mPrXARVA8leCBzUxrTJmUpablpwcenHwfjs9p/P5b2ngbvy+ytfAXaoZuVlLZnCqNvqk9MGKE4x35DY/w1z6uJxq8hrnb5VrHDTwOMkqlKbcaPxzjaO2nr7HvaI5DQwUblBZMKPnEcyv4oHmoKWwEvUAAUdO61WaOmenNNm5AliT/GDfcSqHINNoz+5YSGNCDcZuEcgsz7AN3WG6c/k6D09L+Rz7zmrlY1E9Z2Vbb8h5JlAMaQxVdwy5qT0HC3GSVSmy4SlVfRRhJhshhy3GZrJ1qKyMUzeQdoFkpDYZQIDAQAB",
+  "devtools_page": "jd-devtools.html"
+}

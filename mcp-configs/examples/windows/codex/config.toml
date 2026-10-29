@@ -1,0 +1,38 @@
+[mcp_servers.shopdate-jd]
+command = "C:/SHOPDATE/.venv/Scripts/python.exe"
+args = ["C:/SHOPDATE/shopdate.py", "jd", "mcp"]
+startup_timeout_sec = 120
+tool_timeout_sec = 600
+[mcp_servers.shopdate-jd.env]
+PYTHONUTF8 = "1"
+PYTHONIOENCODING = "utf-8"
+PYTHONDONTWRITEBYTECODE = "1"
+TB_STATE_ROOT = "C:/SHOPDATE/.local/state"
+SYCM_MODE = "extension"
+ALIMAMA_MODE = "extension"
+JD_ONLY_EXTENSION_IDS = "nipicallldlddjelmaghkbbjaannlpib"
+JD_STORES_ONLY_EXTENSION_IDS = "nipicallldlddjelmaghkbbjaannlpib"
+SYCM_ONLY_EXTENSION_IDS = "nipicallldlddjelmaghkbbjaannlpib"
+ALIMAMA_ONLY_EXTENSION_IDS = "nipicallldlddjelmaghkbbjaannlpib"
+TB_ACCOUNT_ONLY_EXTENSION_IDS = "nipicallldlddjelmaghkbbjaannlpib"
+TB_STORES_ONLY_EXTENSION_IDS = "nipicallldlddjelmaghkbbjaannlpib"
+
+[mcp_servers.shopdate-symc]
+command = "C:/SHOPDATE/.venv/Scripts/python.exe"
+args = ["C:/SHOPDATE/shopdate.py", "symc", "mcp"]
+startup_timeout_sec = 120
+tool_timeout_sec = 600
+[mcp_servers.shopdate-symc.env]
+PYTHONUTF8 = "1"
+PYTHONIOENCODING = "utf-8"
+PYTHONDONTWRITEBYTECODE = "1"
+TB_STATE_ROOT = "C:/SHOPDATE/.local/state"
+SYCM_MODE = "extension"
+ALIMAMA_MODE = "extension"
+JD_ONLY_EXTENSION_IDS = "nipicallldlddjelmaghkbbjaannlpib"
+JD_STORES_ONLY_EXTENSION_IDS = "nipicallldlddjelmaghkbbjaannlpib"
+SYCM_ONLY_EXTENSION_IDS = "nipicallldlddjelmaghkbbjaannlpib"
+ALIMAMA_ONLY_EXTENSION_IDS = "nipicallldlddjelmaghkbbjaannlpib"
+TB_ACCOUNT_ONLY_EXTENSION_IDS = "nipicallldlddjelmaghkbbjaannlpib"
+TB_STORES_ONLY_EXTENSION_IDS = "nipicallldlddjelmaghkbbjaannlpib"
+

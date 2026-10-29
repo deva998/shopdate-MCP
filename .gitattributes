@@ -1,0 +1,3 @@
+# Keep published bytes stable for SHA256 verification on every OS.
+* -text
+*.sh text eol=lf

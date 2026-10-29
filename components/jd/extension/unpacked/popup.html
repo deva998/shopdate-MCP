@@ -1,0 +1,18 @@
+<!doctype html><meta charset="utf-8">
+<style>body{margin:0;padding:16px;width:380px;font:14px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#202124;background:#fff}
+h1{font-size:14px;margin:0 0 6px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:#aaa}
+.on{background:#0f9960}
+.acc{border-top:1px solid #eee;margin-top:8px;padding-top:6px}.acc h2{font-size:13px;margin:0 0 2px}
+.row{display:flex;align-items:center;gap:6px;margin:3px 0}.row .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row small{color:#777}.row small.bad{color:#c23030;flex:none;max-width:9em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.cur{color:#0f9960;font-weight:600}.st{flex:none;width:9px;height:9px;border-radius:50%;background:#ccc}.st.on{background:#0f9960}.bad{color:#c23030}button{font:12px inherit;padding:1px 8px;cursor:pointer}
+input[type=text]{flex:1;min-width:0;font:12px inherit;padding:2px 4px}#msg{color:#c23030;font-size:12px;min-height:1em}</style>
+<h1>shopdate-cli 数据桥 <small id="version"></small></h1>
+<div id="s"><span class="dot"></span>正在检查…</div>
+<section class="acc"><h2>京东商智账号</h2>
+<div id="jd-stores">正在读取当前店铺…</div>
+<details><summary>使用说明</summary><p>保持目标店铺后台已登录。在 AI 对话中说明平台、店铺、日期和分析需求，即可取数分析。</p><p>“删除”仅移除本机保存的账号，不会退出当前登录；“添加账号”会先保存当前账号，再打开新账号登录页。</p></details></section>
+<div id="accounts"></div>
+<button id="accounts-check">重新检查登录状态</button>
+<div id="msg"></div>
+<small>在 AI 对话中指定平台和店铺；不会把两个平台的数据混用。</small>
+<script src="login-status.js"></script><script src="popup.js"></script>

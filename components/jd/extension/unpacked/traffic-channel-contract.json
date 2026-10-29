@@ -1,0 +1,17 @@
+{
+  "page": "https://jdsz.jd.com/szweb/view/flow/flow-summary.html",
+  "endpoint": "https://szgateway.jd.com/api/lowcode/flowSummary/getCoreSummary.ajax",
+  "channels": {"all":"全部","app":"APP","pc":"PC","wx":"微信","sq":"手Q","m":"M"},
+  "template": {"realtime":false,"interval":"DAY","dateType":"day","startDate":"2026-10-19","endDate":"2026-10-19","compareStartDate":"2026-10-18","compareEndDate":"2026-10-18","compareType":"hb","channel":"all","peerSwitch":true},
+  "metrics": [
+    ["店铺访客数","jdr_sch_traffic_enter_shop__browse_page_cnt_shop_last_src","人"],
+    ["店铺浏览量","jdr_sch_traffic_enter_shop__browse_page_qtty_shop_last_src","次"],
+    ["商品访客数","jdr_sch_traffic_brow_sku__page_cnt_traffic_plat_item_di_sz_bsg","人"],
+    ["商品浏览量","jdr_sch_traffic_brow_sku__page_qtty_traffic_plat_item_di_sz_bsg","次"],
+    ["成交客户数","jdr_sch_user_deal_ord_user_cnt_sz_user_deal_snapshot","人"],
+    ["成交金额","jdr_sch_trade_deal_ord_ord_amt_sz_trade_deal_snapshot","元"],
+    ["成交转化率","fo_jdr_sch_industry_deal_rate","fraction"],
+    ["加购客户数","jdr_sch_sku_add_cart_sku_user_qtty_product_user_cart_add_minus_sz_bsg_shoppingcart@increase","人"]
+  ],
+  "public_source": "https://storage.360buyimg.com/sz-resource/szweb/20261013213951/static/js/flow/flow-summary-89668908.js"
+}

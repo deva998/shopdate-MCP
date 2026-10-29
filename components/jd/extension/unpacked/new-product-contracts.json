@@ -1,0 +1,170 @@
+{
+  "sku": {
+    "filterList": [
+      {
+        "propertyName": "dt",
+        "values": [
+          "2026-10-18"
+        ],
+        "op": ">=",
+        "type": "string"
+      },
+      {
+        "propertyName": "dt",
+        "values": [
+          "2026-10-18"
+        ],
+        "op": "<=",
+        "type": "string"
+      },
+      {
+        "propertyName": "time_interval",
+        "values": [
+          "BY_DAY"
+        ],
+        "op": "=",
+        "type": "string"
+      }
+    ],
+    "dimList": [
+      "dt",
+      "time_interval",
+      "sku_id",
+      "jdr_sch_sku_a_newproduct_flag",
+      "jdr_sch_sku_b_newproduct_flag",
+      "jdr_sch_sku_c_newproduct_flag"
+    ],
+    "metricList": [
+      "jdr_sch_traffic_brow_sku__page_qtty_szweb_traffic_plat_newproduct_flag",
+      "jdr_sch_traffic_brow_sku__page_cnt_szweb_traffic_plat_newproduct_flag",
+      "jdr_sch_traffic_intr_add_cart_sku_piece_szweb_traffic_plat_newproduct_flag",
+      "jdr_sch_traffic_intr_add_cart_user_dis_qtty_szweb_traffic_plat_newproduct_flag",
+      "jdr_sch_traffic_intr_follow_user_cnt_szweb_traffic_plat_newproduct_flag",
+      "jdr_sch_trade_deal_ord_ord_dis_qtty_szweb_trade_newproduct_flag",
+      "jdr_sch_trade_deal_ord_sku_piece_szweb_trade_newproduct_flag",
+      "jdr_sch_trade_deal_ord_user_cnt_szweb_trade_newproduct_flag",
+      "jdr_sch_trade_deal_ord_sku_amt_szweb_trade_newproduct_flag",
+      "fo_jdr_sch_trade_deal_ord_sku_amt_per_user_cnt_szweb_trade_newproduct_flag",
+      "jdr_sch_search_exposure_sku_qtty_sz_search_newproduct_flag",
+      "jdr_sch_search_click_sku_ctr_sz_search_newproduct_flag",
+      "jdr_sch_social_comment_sku_sku_rate_good_score_rate_sku_newproduct_flag"
+    ],
+    "groupList": [
+      "sku_id",
+      "jdr_sch_sku_a_newproduct_flag",
+      "jdr_sch_sku_b_newproduct_flag",
+      "jdr_sch_sku_c_newproduct_flag"
+    ],
+    "attributeList": [
+      "sku_id",
+      "jdr_sch_sku_a_newproduct_flag",
+      "jdr_sch_sku_b_newproduct_flag",
+      "jdr_sch_sku_c_newproduct_flag"
+    ],
+    "commonParam": {
+      "platformId": 0,
+      "userErp": "",
+      "pageManagerErp": "",
+      "period": 0,
+      "startTime": 0,
+      "endTime": 0,
+      "indexFreq": "OFFLINE",
+      "annotation": "基础",
+      "page": 1,
+      "pageSize": 100,
+      "sortField": "sku_id",
+      "sortAsc": true,
+      "resAppKey": "lowcode3906",
+      "traceId": "",
+      "batchId": "",
+      "description": "指标数据集-指标服务-新品明细表格",
+      "date": "2026-10-18",
+      "startDate": "2026-10-18",
+      "endDate": "2026-10-18",
+      "dateType": "day"
+    }
+  },
+  "spu": {
+    "filterList": [
+      {
+        "propertyName": "dt",
+        "values": [
+          "2026-10-18"
+        ],
+        "op": ">=",
+        "type": "string"
+      },
+      {
+        "propertyName": "dt",
+        "values": [
+          "2026-10-18"
+        ],
+        "op": "<=",
+        "type": "string"
+      },
+      {
+        "propertyName": "time_interval",
+        "values": [
+          "BY_DAY"
+        ],
+        "op": "=",
+        "type": "string"
+      }
+    ],
+    "dimList": [
+      "dt",
+      "time_interval",
+      "spu_id",
+      "jdr_sch_sku_a_newproduct_flag",
+      "jdr_sch_sku_b_newproduct_flag",
+      "jdr_sch_sku_c_newproduct_flag"
+    ],
+    "metricList": [
+      "jdr_sch_traffic_brow_sku__page_qtty_szweb_traffic_plat_newproduct_flag",
+      "jdr_sch_traffic_brow_sku__page_cnt_szweb_traffic_plat_newproduct_flag",
+      "jdr_sch_traffic_intr_add_cart_sku_piece_szweb_traffic_plat_newproduct_flag",
+      "jdr_sch_traffic_intr_add_cart_user_dis_qtty_szweb_traffic_plat_newproduct_flag",
+      "jdr_sch_traffic_intr_follow_user_cnt_szweb_traffic_plat_newproduct_flag",
+      "jdr_sch_trade_deal_ord_ord_dis_qtty_szweb_trade_newproduct_flag",
+      "jdr_sch_trade_deal_ord_sku_piece_szweb_trade_newproduct_flag",
+      "jdr_sch_trade_deal_ord_user_cnt_szweb_trade_newproduct_flag",
+      "jdr_sch_trade_deal_ord_sku_amt_szweb_trade_newproduct_flag",
+      "fo_jdr_sch_trade_deal_ord_sku_amt_per_user_cnt_szweb_trade_newproduct_flag",
+      "jdr_sch_social_comment_sku_spu_rate_good_score_rate_sku_newproduct_flag"
+    ],
+    "groupList": [
+      "spu_id",
+      "jdr_sch_sku_a_newproduct_flag",
+      "jdr_sch_sku_b_newproduct_flag",
+      "jdr_sch_sku_c_newproduct_flag"
+    ],
+    "attributeList": [
+      "spu_id",
+      "jdr_sch_sku_a_newproduct_flag",
+      "jdr_sch_sku_b_newproduct_flag",
+      "jdr_sch_sku_c_newproduct_flag"
+    ],
+    "commonParam": {
+      "platformId": 0,
+      "userErp": "",
+      "pageManagerErp": "",
+      "period": 0,
+      "startTime": 0,
+      "endTime": 0,
+      "indexFreq": "OFFLINE",
+      "annotation": "基础",
+      "page": 1,
+      "pageSize": 100,
+      "sortField": "spu_id",
+      "sortAsc": true,
+      "resAppKey": "lowcode3906",
+      "traceId": "",
+      "batchId": "",
+      "description": "指标数据集-指标服务-新品明细表格",
+      "date": "2026-10-18",
+      "startDate": "2026-10-18",
+      "endDate": "2026-10-18",
+      "dateType": "day"
+    }
+  }
+}

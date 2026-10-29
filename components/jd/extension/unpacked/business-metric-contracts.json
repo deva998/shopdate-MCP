@@ -1,0 +1,2064 @@
+{
+  "brand-card-member-overall": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/brandCard.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/brand-card-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval"
+      ],
+      "metricList": [
+        "jdr_dkh_trade_pay_brand_card_ord_amt_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_red_pack__act_amt_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_sku_oper_sku_brand_card_amt_dkh_brand_card@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_get_red_pack_red_pack_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard"
+      ],
+      "groupList": [],
+      "attributeList": [],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "jiangyue52",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "指标数据集-品牌会员购物卡-概览-整体",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 2000,
+        "resAppKey": "lowcode231010",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_aggregate",
+    "min_extension": "0.9.30",
+    "metric_labels": {
+      "jdr_dkh_trade_pay_brand_card_ord_amt_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "累计充值本金",
+      "jdr_dkh_trade_pay_red_pack__act_amt_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "累计赠金",
+      "jdr_dkh_sku_oper_sku_brand_card_amt_dkh_brand_card@brand_card_member_type_brandmembercard": "本金余额",
+      "jdr_dkh_mkt_get_red_pack_red_pack_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "赠金余额",
+      "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值本金",
+      "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "赠金",
+      "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值人数",
+      "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值单量",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard": "成交总金额",
+      "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard": "成交消费本金",
+      "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard": "成交消费赠金",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard": "成交人数",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard": "成交订单量"
+    },
+    "row_limit": 2000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/231010-1822862.0.0.js",
+      "sha256": "6447b7d83bbd4c5521006aa713cc9ccdec130ae2f8b12312a835d86c7ddf502f",
+      "action": "指标数据集-品牌会员购物卡-概览-整体",
+      "source_span": [
+        6910669,
+        6915345
+      ]
+    }
+  },
+  "brand-card-member-shop": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/brandCard.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/brand-card-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval"
+      ],
+      "metricList": [
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_first_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "fo_jdr_dkh_brand_card_deal_ord_old_user_cnt@brand_card_member_type_brandmembercard"
+      ],
+      "groupList": [],
+      "attributeList": [],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "jiangyue52",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "指标数据集-品牌会员购物卡-概览-本店",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 2000,
+        "resAppKey": "lowcode231010",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_aggregate",
+    "min_extension": "0.9.30",
+    "metric_labels": {
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "成交总金额",
+      "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "成交消费本金",
+      "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "成交消费赠金",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "成交人数",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "成交订单量",
+      "jdr_dkh_mkt_deal_ord_first_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "新客数",
+      "fo_jdr_dkh_brand_card_deal_ord_old_user_cnt@brand_card_member_type_brandmembercard": "老客数"
+    },
+    "row_limit": 2000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/231010-1822862.0.0.js",
+      "sha256": "6447b7d83bbd4c5521006aa713cc9ccdec130ae2f8b12312a835d86c7ddf502f",
+      "action": "指标数据集-品牌会员购物卡-概览-本店",
+      "source_span": [
+        6915351,
+        6917989
+      ]
+    }
+  },
+  "brand-card-shop": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/brandCard.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/brand-card-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval"
+      ],
+      "metricList": [
+        "jdr_dkh_trade_pay_brand_card_ord_amt_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_red_pack__act_amt_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_sku_oper_sku_brand_card_amt_dkh_brand_card@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_get_red_pack_red_pack_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_brand_card_mkt@brand_card_member_type_brandcard"
+      ],
+      "groupList": [],
+      "attributeList": [],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "jiangyue52",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "指标数据集-品牌购物卡-概览-本店",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 2000,
+        "resAppKey": "lowcode231010",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_aggregate",
+    "min_extension": "0.9.30",
+    "metric_labels": {
+      "jdr_dkh_trade_pay_brand_card_ord_amt_dkh_brand_card_ord@brand_card_member_type_brandcard": "累计充值本金",
+      "jdr_dkh_trade_pay_red_pack__act_amt_dkh_brand_card_ord@brand_card_member_type_brandcard": "累计赠金",
+      "jdr_dkh_sku_oper_sku_brand_card_amt_dkh_brand_card@brand_card_member_type_brandcard": "本金余额",
+      "jdr_dkh_mkt_get_red_pack_red_pack_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard": "赠金余额",
+      "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值本金",
+      "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandcard": "赠金",
+      "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值人数",
+      "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值单量",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard": "成交总金额",
+      "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard": "成交消费本金",
+      "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard": "成交消费赠金",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandcard": "成交人数",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_brand_card_mkt@brand_card_member_type_brandcard": "成交订单量"
+    },
+    "row_limit": 2000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/231010-1822862.0.0.js",
+      "sha256": "6447b7d83bbd4c5521006aa713cc9ccdec130ae2f8b12312a835d86c7ddf502f",
+      "action": "指标数据集-品牌购物卡-概览-本店",
+      "source_span": [
+        6917995,
+        6922413
+      ]
+    }
+  },
+  "rating-gift-summary": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/ratingGiftReward.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/rating-gift-reward-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval"
+      ],
+      "metricList": [
+        "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift",
+        "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift_qualified",
+        "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift_reward"
+      ],
+      "groupList": [],
+      "attributeList": [],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "yinhanwen1",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "数据概览-指标卡",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 2000,
+        "resAppKey": "lowcode4448",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_aggregate",
+    "min_extension": "0.9.30",
+    "metric_labels": {
+      "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift": "评价有礼活动评论数",
+      "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift_qualified": "评价有礼达标评论数",
+      "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift_reward": "评价有礼发奖评论数"
+    },
+    "row_limit": 2000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/4448-ratingGiftReward-12.0.0.js",
+      "sha256": "81867e8ff7170e3ba9e2ed2cdd1a26f2e0f2b536cb5900cc9d989d8ae8e1c338",
+      "action": "数据概览-指标卡",
+      "source_span": [
+        3400518,
+        3401645
+      ]
+    }
+  },
+  "rating-gift-trend": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/ratingGiftReward.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/rating-gift-reward-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval"
+      ],
+      "metricList": [
+        "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift",
+        "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift_qualified",
+        "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift_reward"
+      ],
+      "groupList": [
+        "dt"
+      ],
+      "attributeList": [
+        "dt"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "yinhanwen1",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "数据概览-趋势图",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 2000,
+        "resAppKey": "lowcode4448",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_aggregate",
+    "min_extension": "0.9.31",
+    "metric_labels": {
+      "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift": "评价有礼活动评论数",
+      "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift_qualified": "评价有礼达标评论数",
+      "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift_reward": "评价有礼发奖评论数"
+    },
+    "row_limit": 2000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/4448-ratingGiftReward-12.0.0.js",
+      "sha256": "81867e8ff7170e3ba9e2ed2cdd1a26f2e0f2b536cb5900cc9d989d8ae8e1c338",
+      "action": "数据概览-趋势图",
+      "source_span": [
+        3401651,
+        3404344
+      ]
+    },
+    "window_days": 31
+  },
+  "bunding-sale-summary": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/bundingSaleAnalysis.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/bunding-sale-analysis-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "platform_cate_1",
+          "values": [
+            "app"
+          ],
+          "op": "=",
+          "type": "String"
+        },
+        {
+          "propertyName": "jdr_sch_goldenprocess_tiesale__event_biz_type_1",
+          "values": [
+            "btw_buy"
+          ],
+          "op": "=",
+          "type": "String"
+        },
+        {
+          "propertyName": "is_outer_purchase",
+          "values": [
+            "in",
+            "pop"
+          ],
+          "op": "in",
+          "type": "String"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval",
+        "platform_cate_1",
+        "jdr_sch_goldenprocess_tiesale__event_biz_type_1",
+        "is_outer_purchase"
+      ],
+      "metricList": [
+        "ge_deal_standard_deal_father_ord_qtty_goldenprocess_tying_is_sz_flag",
+        "jdr_sch_trade_deal_ord_sku_qtty_sz_trade_deal_snapshot_goldenprocess_tying",
+        "ge_deal_standard_deal_ord_amt_goldenprocess_tying_is_sz_flag",
+        "jdr_sch_user_deal_ord_user_cnt_sz_user_deal_snapshot_goldenprocess_tying",
+        "fo_jdr_sch_sz_gold_tying_jds"
+      ],
+      "groupList": [],
+      "attributeList": [],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "yulixia3",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "指标卡-数据概览",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 2000,
+        "resAppKey": "lowcode189696",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_aggregate",
+    "min_extension": "0.9.31",
+    "metric_labels": {
+      "ge_deal_standard_deal_father_ord_qtty_goldenprocess_tying_is_sz_flag": "成交父单",
+      "jdr_sch_trade_deal_ord_sku_qtty_sz_trade_deal_snapshot_goldenprocess_tying": "成交商品数量",
+      "ge_deal_standard_deal_ord_amt_goldenprocess_tying_is_sz_flag": "成交金额",
+      "jdr_sch_user_deal_ord_user_cnt_sz_user_deal_snapshot_goldenprocess_tying": "成交购买用户数",
+      "fo_jdr_sch_sz_gold_tying_jds": "成交件单价"
+    },
+    "row_limit": 2000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/189696-908931.0.0.js",
+      "sha256": "bd09aa280ed4aeeef50a243bccdb8bf790ed11dbc2c00f282a1b960d7c63a597",
+      "action": "指标卡-数据概览",
+      "source_span": [
+        6840579,
+        6842145
+      ]
+    }
+  },
+  "bunding-sale-trend": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/bundingSaleAnalysis.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/bunding-sale-analysis-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "platform_cate_1",
+          "values": [
+            "app"
+          ],
+          "op": "=",
+          "type": "String"
+        },
+        {
+          "propertyName": "jdr_sch_goldenprocess_tiesale__event_biz_type_1",
+          "values": [
+            "btw_buy"
+          ],
+          "op": "=",
+          "type": "String"
+        },
+        {
+          "propertyName": "is_outer_purchase",
+          "values": [
+            "in",
+            "pop"
+          ],
+          "op": "in",
+          "type": "String"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval",
+        "platform_cate_1",
+        "jdr_sch_goldenprocess_tiesale__event_biz_type_1",
+        "is_outer_purchase"
+      ],
+      "metricList": [
+        "ge_deal_standard_deal_father_ord_qtty_goldenprocess_tying_is_sz_flag",
+        "jdr_sch_trade_deal_ord_sku_qtty_sz_trade_deal_snapshot_goldenprocess_tying",
+        "ge_deal_standard_deal_ord_amt_goldenprocess_tying_is_sz_flag",
+        "jdr_sch_user_deal_ord_user_cnt_sz_user_deal_snapshot_goldenprocess_tying",
+        "fo_jdr_sch_sz_gold_tying_jds"
+      ],
+      "groupList": [
+        "dt"
+      ],
+      "attributeList": [
+        "dt"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "yulixia3",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "趋势图指标服务数据",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 2000,
+        "resAppKey": "lowcode189696",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_aggregate",
+    "min_extension": "0.9.31",
+    "metric_labels": {
+      "ge_deal_standard_deal_father_ord_qtty_goldenprocess_tying_is_sz_flag": "成交父单",
+      "jdr_sch_trade_deal_ord_sku_qtty_sz_trade_deal_snapshot_goldenprocess_tying": "成交商品数量",
+      "ge_deal_standard_deal_ord_amt_goldenprocess_tying_is_sz_flag": "成交金额",
+      "jdr_sch_user_deal_ord_user_cnt_sz_user_deal_snapshot_goldenprocess_tying": "成交购买用户数",
+      "fo_jdr_sch_sz_gold_tying_jds": "成交件单价"
+    },
+    "row_limit": 2000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/189696-908931.0.0.js",
+      "sha256": "bd09aa280ed4aeeef50a243bccdb8bf790ed11dbc2c00f282a1b960d7c63a597",
+      "action": "趋势图指标服务数据",
+      "source_span": [
+        6842151,
+        6845728
+      ]
+    },
+    "window_days": 7
+  },
+  "content-realtime-summary": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/liveBroadcast.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/live-streaming-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY 00:00:00"
+          ],
+          "op": ">=",
+          "type": "String"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$SNAPSHOT"
+          ],
+          "op": "<=",
+          "type": "String"
+        },
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_SECOND"
+          ],
+          "op": "=",
+          "type": "string"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval"
+      ],
+      "metricList": [
+        "jdr_sch_content_brow_content__page_dis_qtty_content_page_content_ge_flag_content_sku_page_lead_flag_live",
+        "jdr_sch_content_brow_content__page_qtty_content_page_content_ge_flag_content_sku_page_lead_flag_live",
+        "jdr_sch_content_add_cart_sku_sku_dis_qtty_content_add_cart_sku_content_ge_flag_live",
+        "jdr_sch_content_add_cart_sku_sku_qtty_content_add_cart_sku_content_ge_flag_live",
+        "jdr_sch_content_deal_ord_ord_amt_content_lead_day_content_lead_day_sz_flag_deal_live",
+        "jdr_sch_content_deal_ord_parent__ord_dis_qtty_content_lead_day_live_content_lead_day_sz_flag_deal",
+        "jdr_sch_content_deal_ord_user_dis_qtty_content_lead_day_live_content_lead_day_sz_flag_deal"
+      ],
+      "groupList": [],
+      "attributeList": [],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "ext.tianjian6",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "REALTIME",
+        "description": "数据概览指标卡-指标服务1",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 2000,
+        "resAppKey": "lowcode204613",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false
+      }
+    },
+    "scope": "current_realtime",
+    "min_extension": "0.9.34",
+    "metric_labels": {
+      "jdr_sch_content_brow_content__page_dis_qtty_content_page_content_ge_flag_content_sku_page_lead_flag_live": "引导进商详访客数",
+      "jdr_sch_content_brow_content__page_qtty_content_page_content_ge_flag_content_sku_page_lead_flag_live": "引导进商详浏览量",
+      "jdr_sch_content_add_cart_sku_sku_dis_qtty_content_add_cart_sku_content_ge_flag_live": "引导加购人数",
+      "jdr_sch_content_add_cart_sku_sku_qtty_content_add_cart_sku_content_ge_flag_live": "引导加购次数",
+      "jdr_sch_content_deal_ord_ord_amt_content_lead_day_content_lead_day_sz_flag_deal_live": "引导成交金额",
+      "jdr_sch_content_deal_ord_parent__ord_dis_qtty_content_lead_day_live_content_lead_day_sz_flag_deal": "引导成交父单量",
+      "jdr_sch_content_deal_ord_user_dis_qtty_content_lead_day_live_content_lead_day_sz_flag_deal": "引导成交人数"
+    },
+    "row_limit": 2000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/204613-997074.0.0.js",
+      "sha256": "525a3f5c905ccf4acc3db75b49d3f8f2355757a2a36f776ccc0b090f823c6d3d",
+      "action": "数据概览指标卡-指标服务1",
+      "source_span": [
+        6468611,
+        6471373
+      ],
+      "serialization": "realtime component uVe/kVe and OneService je/filterList hke, indexFreq tn REALTIME; hourly requestHandler BY_HOUR; cumulative chart reuses hourly query"
+    },
+    "snapshot": true
+  },
+  "content-realtime-hourly": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/liveBroadcast.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/live-streaming-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY 00:00:00"
+          ],
+          "op": ">=",
+          "type": "String"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$SNAPSHOT"
+          ],
+          "op": "<=",
+          "type": "String"
+        },
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_HOUR"
+          ],
+          "op": "=",
+          "type": "string"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval"
+      ],
+      "metricList": [
+        "jdr_sch_content_brow_content__page_dis_qtty_content_page_content_ge_flag_content_sku_page_lead_flag_live",
+        "jdr_sch_content_brow_content__page_qtty_content_page_content_ge_flag_content_sku_page_lead_flag_live",
+        "jdr_sch_content_add_cart_sku_sku_dis_qtty_content_add_cart_sku_content_ge_flag_live",
+        "jdr_sch_content_add_cart_sku_sku_qtty_content_add_cart_sku_content_ge_flag_live",
+        "jdr_sch_content_deal_ord_ord_amt_content_lead_day_content_lead_day_sz_flag_deal_live",
+        "jdr_sch_content_deal_ord_parent__ord_dis_qtty_content_lead_day_live_content_lead_day_sz_flag_deal",
+        "jdr_sch_content_deal_ord_user_dis_qtty_content_lead_day_live_content_lead_day_sz_flag_deal"
+      ],
+      "groupList": [
+        "dt"
+      ],
+      "attributeList": [
+        "dt"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "ext.tianjian6",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "REALTIME",
+        "description": "数据趋势-分时-趋势图-指标服务2",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 2000,
+        "resAppKey": "lowcode204613",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false
+      }
+    },
+    "scope": "current_realtime",
+    "min_extension": "0.9.34",
+    "metric_labels": {
+      "jdr_sch_content_brow_content__page_dis_qtty_content_page_content_ge_flag_content_sku_page_lead_flag_live": "引导进商详访客数",
+      "jdr_sch_content_brow_content__page_qtty_content_page_content_ge_flag_content_sku_page_lead_flag_live": "引导进商详浏览量",
+      "jdr_sch_content_add_cart_sku_sku_dis_qtty_content_add_cart_sku_content_ge_flag_live": "引导加购人数",
+      "jdr_sch_content_add_cart_sku_sku_qtty_content_add_cart_sku_content_ge_flag_live": "引导加购次数",
+      "jdr_sch_content_deal_ord_ord_amt_content_lead_day_content_lead_day_sz_flag_deal_live": "引导成交金额",
+      "jdr_sch_content_deal_ord_parent__ord_dis_qtty_content_lead_day_live_content_lead_day_sz_flag_deal": "引导成交父单量",
+      "jdr_sch_content_deal_ord_user_dis_qtty_content_lead_day_live_content_lead_day_sz_flag_deal": "引导成交人数"
+    },
+    "row_limit": 2000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/204613-997074.0.0.js",
+      "sha256": "525a3f5c905ccf4acc3db75b49d3f8f2355757a2a36f776ccc0b090f823c6d3d",
+      "action": "数据趋势-分时-趋势图-指标服务2",
+      "source_span": [
+        6471379,
+        6474373
+      ],
+      "serialization": "realtime component uVe/kVe and OneService je/filterList hke, indexFreq tn REALTIME; hourly requestHandler BY_HOUR; cumulative chart reuses hourly query"
+    },
+    "snapshot": true
+  },
+  "content-realtime-sku": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/liveBroadcast.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/live-streaming-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY 00:00:00"
+          ],
+          "op": ">=",
+          "type": "String"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$SNAPSHOT"
+          ],
+          "op": "<=",
+          "type": "String"
+        },
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_SECOND"
+          ],
+          "op": "=",
+          "type": "string"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval",
+        "sku_id"
+      ],
+      "metricList": [
+        "jdr_sch_content_brow_content__page_dis_qtty_content_page_content_ge_flag_content_sku_page_lead_flag_live",
+        "jdr_sch_content_brow_content__page_qtty_content_page_content_ge_flag_content_sku_page_lead_flag_live",
+        "jdr_sch_content_add_cart_sku_sku_dis_qtty_content_add_cart_sku_content_ge_flag_live",
+        "jdr_sch_content_add_cart_sku_sku_qtty_content_add_cart_sku_content_ge_flag_live",
+        "jdr_sch_content_deal_ord_ord_amt_content_lead_day_content_lead_day_sz_flag_deal_live",
+        "jdr_sch_content_deal_ord_parent__ord_dis_qtty_content_lead_day_live_content_lead_day_sz_flag_deal",
+        "jdr_sch_content_deal_ord_user_dis_qtty_content_lead_day_live_content_lead_day_sz_flag_deal"
+      ],
+      "groupList": [
+        "sku_id"
+      ],
+      "attributeList": [
+        "sku_id"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "ext.tianjian6",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "REALTIME",
+        "description": "表格-指标服务1",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 1000,
+        "resAppKey": "lowcode204613",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false
+      }
+    },
+    "scope": "current_realtime",
+    "min_extension": "0.9.35",
+    "metric_labels": {
+      "jdr_sch_content_brow_content__page_dis_qtty_content_page_content_ge_flag_content_sku_page_lead_flag_live": "引导进商详访客数",
+      "jdr_sch_content_brow_content__page_qtty_content_page_content_ge_flag_content_sku_page_lead_flag_live": "引导进商详浏览量",
+      "jdr_sch_content_add_cart_sku_sku_dis_qtty_content_add_cart_sku_content_ge_flag_live": "引导加购人数",
+      "jdr_sch_content_add_cart_sku_sku_qtty_content_add_cart_sku_content_ge_flag_live": "引导加购次数",
+      "jdr_sch_content_deal_ord_ord_amt_content_lead_day_content_lead_day_sz_flag_deal_live": "引导成交金额",
+      "jdr_sch_content_deal_ord_parent__ord_dis_qtty_content_lead_day_live_content_lead_day_sz_flag_deal": "引导成交父单量",
+      "jdr_sch_content_deal_ord_user_dis_qtty_content_lead_day_live_content_lead_day_sz_flag_deal": "引导成交人数"
+    },
+    "row_limit": 1000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/204613-997074.0.0.js",
+      "sha256": "525a3f5c905ccf4acc3db75b49d3f8f2355757a2a36f776ccc0b090f823c6d3d",
+      "action": "表格-指标服务1",
+      "source_span": [
+        6474379,
+        6477214
+      ],
+      "serialization": "realtime component uVe/kVe and OneService je/filterList hke, indexFreq tn REALTIME; hourly requestHandler BY_HOUR; cumulative chart reuses hourly query",
+      "official_capacity_evidence": "official capacity contract: official 1006 LIVETRADE pageSize2000 exceeds limit1000"
+    },
+    "snapshot": true
+  },
+  "brand-card-member-overall-shop-new": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/brandCard.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/brand-card-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval",
+        "jdr_dkh_brand_card_shop_new_user_flag"
+      ],
+      "metricList": [
+        "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "fo_jdr_dkh_main_shop_brand_card_deal_avg_ord_amt@brand_card_member_type_brandmembercard"
+      ],
+      "groupList": [
+        "jdr_dkh_brand_card_shop_new_user_flag"
+      ],
+      "attributeList": [
+        "jdr_dkh_brand_card_shop_new_user_flag"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "jiangyue52",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "指标数据集-品牌会员购物卡-整体-店铺新用户",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 1000,
+        "resAppKey": "lowcode231010",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_grouped_statistics",
+    "min_extension": "0.9.37",
+    "metric_labels": {
+      "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值本金",
+      "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值赠金",
+      "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值人数",
+      "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值单量",
+      "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard": "消费本金",
+      "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard": "消费赠金",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard": "消费人数",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard": "消费单量",
+      "fo_jdr_dkh_main_shop_brand_card_deal_avg_ord_amt@brand_card_member_type_brandmembercard": "客单价"
+    },
+    "row_limit": 1000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/231010-1822862.0.0.js",
+      "sha256": "6447b7d83bbd4c5521006aa713cc9ccdec130ae2f8b12312a835d86c7ddf502f",
+      "action": "指标数据集-品牌会员购物卡-整体-店铺新用户",
+      "source_span": [
+        6956060,
+        6959669
+      ],
+      "grouped_scope": "native non-personal group dimensions; complex frontend formulas excluded from metricList; native attributes retained"
+    }
+  },
+  "brand-card-member-overall-card-new": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/brandCard.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/brand-card-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval",
+        "jdr_dkh_brand_card_brandmember_new_user_flag"
+      ],
+      "metricList": [
+        "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "fo_jdr_dkh_main_shop_brand_card_deal_avg_ord_amt@brand_card_member_type_brandmembercard"
+      ],
+      "groupList": [
+        "jdr_dkh_brand_card_brandmember_new_user_flag"
+      ],
+      "attributeList": [
+        "jdr_dkh_brand_card_brandmember_new_user_flag"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "jiangyue52",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "指标数据集-品牌会员购物卡-整体-购物卡新用户",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 1000,
+        "resAppKey": "lowcode231010",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_grouped_statistics",
+    "min_extension": "0.9.37",
+    "metric_labels": {
+      "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值本金",
+      "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值赠金",
+      "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值人数",
+      "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值单量",
+      "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard": "消费本金",
+      "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard": "消费赠金",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard": "消费人数",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_main_shop_brand_card_mkt@brand_card_member_type_brandmembercard": "消费单量",
+      "fo_jdr_dkh_main_shop_brand_card_deal_avg_ord_amt@brand_card_member_type_brandmembercard": "客单价"
+    },
+    "row_limit": 1000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/231010-1822862.0.0.js",
+      "sha256": "6447b7d83bbd4c5521006aa713cc9ccdec130ae2f8b12312a835d86c7ddf502f",
+      "action": "指标数据集-品牌会员购物卡-整体-购物卡新用户",
+      "source_span": [
+        6959675,
+        6963308
+      ],
+      "grouped_scope": "native non-personal group dimensions; complex frontend formulas excluded from metricList; native attributes retained"
+    }
+  },
+  "brand-card-member-overall-tier-top10": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/brandCard.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/brand-card-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval",
+        "jdr_dkh_brand_card_ord_recharge_tier"
+      ],
+      "metricList": [
+        "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandmembercard"
+      ],
+      "groupList": [
+        "jdr_dkh_brand_card_ord_recharge_tier"
+      ],
+      "attributeList": [
+        "jdr_dkh_brand_card_ord_recharge_tier"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "jiangyue52",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "指标数据集-品牌会员购物卡-整体-充值档位TOP10",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 10,
+        "resAppKey": "lowcode231010",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom",
+        "sortField": "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard",
+        "sortAsc": false
+      }
+    },
+    "scope": "fixed_official_grouped_statistics",
+    "min_extension": "0.9.37",
+    "metric_labels": {
+      "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值本金",
+      "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值赠金",
+      "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值人数",
+      "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandmembercard": "充值单量"
+    },
+    "row_limit": 10,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/231010-1822862.0.0.js",
+      "sha256": "6447b7d83bbd4c5521006aa713cc9ccdec130ae2f8b12312a835d86c7ddf502f",
+      "action": "指标数据集-品牌会员购物卡-整体-充值档位TOP10",
+      "source_span": [
+        6963314,
+        6965333
+      ],
+      "grouped_scope": "native non-personal group dimensions; complex frontend formulas excluded from metricList; native attributes retained"
+    }
+  },
+  "brand-card-member-shop-shop-new": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/brandCard.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/brand-card-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval",
+        "jdr_dkh_brand_card_shop_new_user_flag"
+      ],
+      "metricList": [
+        "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "fo_jdr_dkh_brand_card_deal_avg_ord_amt@brand_card_member_type_brandmembercard"
+      ],
+      "groupList": [
+        "jdr_dkh_brand_card_shop_new_user_flag"
+      ],
+      "attributeList": [
+        "jdr_dkh_brand_card_shop_new_user_flag"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "jiangyue52",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "指标数据集-品牌会员购物卡-本店-店铺新用户",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 1000,
+        "resAppKey": "lowcode231010",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_grouped_statistics",
+    "min_extension": "0.9.37",
+    "metric_labels": {
+      "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "消费本金",
+      "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "消费赠金",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "消费人数",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "消费单量",
+      "fo_jdr_dkh_brand_card_deal_avg_ord_amt@brand_card_member_type_brandmembercard": "客单价"
+    },
+    "row_limit": 1000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/231010-1822862.0.0.js",
+      "sha256": "6447b7d83bbd4c5521006aa713cc9ccdec130ae2f8b12312a835d86c7ddf502f",
+      "action": "指标数据集-品牌会员购物卡-本店-店铺新用户",
+      "source_span": [
+        6965339,
+        6967590
+      ],
+      "grouped_scope": "native non-personal group dimensions; complex frontend formulas excluded from metricList; native attributes retained"
+    }
+  },
+  "brand-card-member-shop-card-new": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/brandCard.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/brand-card-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval",
+        "jdr_dkh_brand_card_brandmember_new_user_flag"
+      ],
+      "metricList": [
+        "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_brand_card_mkt@brand_card_member_type_brandmembercard",
+        "fo_jdr_dkh_brand_card_deal_avg_ord_amt@brand_card_member_type_brandmembercard"
+      ],
+      "groupList": [
+        "jdr_dkh_brand_card_brandmember_new_user_flag"
+      ],
+      "attributeList": [
+        "jdr_dkh_brand_card_brandmember_new_user_flag"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "jiangyue52",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "指标数据集-品牌会员购物卡-本店-购物卡新用户",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 1000,
+        "resAppKey": "lowcode231010",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_grouped_statistics",
+    "min_extension": "0.9.37",
+    "metric_labels": {
+      "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "消费本金",
+      "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "消费赠金",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "消费人数",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_brand_card_mkt@brand_card_member_type_brandmembercard": "消费单量",
+      "fo_jdr_dkh_brand_card_deal_avg_ord_amt@brand_card_member_type_brandmembercard": "客单价"
+    },
+    "row_limit": 1000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/231010-1822862.0.0.js",
+      "sha256": "6447b7d83bbd4c5521006aa713cc9ccdec130ae2f8b12312a835d86c7ddf502f",
+      "action": "指标数据集-品牌会员购物卡-本店-购物卡新用户",
+      "source_span": [
+        6967596,
+        6969851
+      ],
+      "grouped_scope": "native non-personal group dimensions; complex frontend formulas excluded from metricList; native attributes retained"
+    }
+  },
+  "brand-card-shop-shop-new": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/brandCard.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/brand-card-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval",
+        "jdr_dkh_brand_card_shop_new_user_flag"
+      ],
+      "metricList": [
+        "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_brand_card_mkt@brand_card_member_type_brandcard",
+        "fo_jdr_dkh_brand_card_deal_avg_ord_amt@brand_card_member_type_brandcard"
+      ],
+      "groupList": [
+        "jdr_dkh_brand_card_shop_new_user_flag"
+      ],
+      "attributeList": [
+        "jdr_dkh_brand_card_shop_new_user_flag"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "jiangyue52",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "指标数据集-品牌购物卡-本店-店铺新用户",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 1000,
+        "resAppKey": "lowcode231010",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_grouped_statistics",
+    "min_extension": "0.9.37",
+    "metric_labels": {
+      "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值本金",
+      "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值赠金",
+      "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值人数",
+      "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值单量",
+      "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard": "消费本金",
+      "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard": "消费赠金",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandcard": "消费人数",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_brand_card_mkt@brand_card_member_type_brandcard": "消费单量",
+      "fo_jdr_dkh_brand_card_deal_avg_ord_amt@brand_card_member_type_brandcard": "客单价"
+    },
+    "row_limit": 1000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/231010-1822862.0.0.js",
+      "sha256": "6447b7d83bbd4c5521006aa713cc9ccdec130ae2f8b12312a835d86c7ddf502f",
+      "action": "指标数据集-品牌购物卡-本店-店铺新用户",
+      "source_span": [
+        6969857,
+        6973256
+      ],
+      "grouped_scope": "native non-personal group dimensions; complex frontend formulas excluded from metricList; native attributes retained"
+    }
+  },
+  "brand-card-shop-card-new": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/brandCard.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/brand-card-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval",
+        "jdr_dkh_brand_card_brandmember_new_user_flag"
+      ],
+      "metricList": [
+        "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandcard",
+        "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_brand_card_mkt@brand_card_member_type_brandcard",
+        "fo_jdr_dkh_brand_card_deal_avg_ord_amt@brand_card_member_type_brandcard"
+      ],
+      "groupList": [
+        "jdr_dkh_brand_card_brandmember_new_user_flag"
+      ],
+      "attributeList": [
+        "jdr_dkh_brand_card_brandmember_new_user_flag"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "jiangyue52",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "指标数据集-品牌购物卡-本店-购物卡新用户",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 1000,
+        "resAppKey": "lowcode231010",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_grouped_statistics",
+    "min_extension": "0.9.37",
+    "metric_labels": {
+      "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值本金",
+      "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值赠金",
+      "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值人数",
+      "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值单量",
+      "jdr_dkh_mkt_user_brand_card_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard": "消费本金",
+      "jdr_dkh_mkt_use_red_pack_user_brand_card_ord_amt_dkh_brand_card_mkt@brand_card_member_type_brandcard": "消费赠金",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_cnt_dkh_brand_card_mkt@brand_card_member_type_brandcard": "消费人数",
+      "jdr_dkh_mkt_deal_ord_user_brand_card_ord_qtty_dkh_brand_card_mkt@brand_card_member_type_brandcard": "消费单量",
+      "fo_jdr_dkh_brand_card_deal_avg_ord_amt@brand_card_member_type_brandcard": "客单价"
+    },
+    "row_limit": 1000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/231010-1822862.0.0.js",
+      "sha256": "6447b7d83bbd4c5521006aa713cc9ccdec130ae2f8b12312a835d86c7ddf502f",
+      "action": "指标数据集-品牌购物卡-本店-购物卡新用户",
+      "source_span": [
+        6973262,
+        6976685
+      ],
+      "grouped_scope": "native non-personal group dimensions; complex frontend formulas excluded from metricList; native attributes retained"
+    }
+  },
+  "brand-card-shop-tier-top10": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/brandCard.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/brand-card-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval",
+        "jdr_dkh_brand_card_ord_recharge_tier"
+      ],
+      "metricList": [
+        "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandcard"
+      ],
+      "groupList": [
+        "jdr_dkh_brand_card_ord_recharge_tier"
+      ],
+      "attributeList": [
+        "jdr_dkh_brand_card_ord_recharge_tier"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "jiangyue52",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "指标数据集-品牌购物卡-本店-充值档位TOP10",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 10,
+        "resAppKey": "lowcode231010",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom",
+        "sortField": "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandcard",
+        "sortAsc": false
+      }
+    },
+    "scope": "fixed_official_grouped_statistics",
+    "min_extension": "0.9.37",
+    "metric_labels": {
+      "jdr_dkh_trade_pay_brand_card_ord_price_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值本金",
+      "jdr_dkh_trade_pay_red_pack__act_price_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值赠金",
+      "jdr_dkh_trade_pay_user_cnt_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值人数",
+      "jdr_dkh_trade_pay_brand_card_ord_qtty_dkh_brand_card_ord@brand_card_member_type_brandcard": "充值单量"
+    },
+    "row_limit": 10,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/231010-1822862.0.0.js",
+      "sha256": "6447b7d83bbd4c5521006aa713cc9ccdec130ae2f8b12312a835d86c7ddf502f",
+      "action": "指标数据集-品牌购物卡-本店-充值档位TOP10",
+      "source_span": [
+        6976691,
+        6978654
+      ],
+      "grouped_scope": "native non-personal group dimensions; complex frontend formulas excluded from metricList; native attributes retained"
+    }
+  },
+  "rating-gift-activities": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/ratingGiftReward.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/rating-gift-reward-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval",
+        "jdr_eco_rating_gift__act_name",
+        "jdr_eco_rating_gift__act_id",
+        "pcap_begin_time",
+        "pacp_end_time"
+      ],
+      "metricList": [
+        "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift",
+        "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift_qualified",
+        "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift_reward"
+      ],
+      "groupList": [
+        "jdr_eco_rating_gift__act_name",
+        "jdr_eco_rating_gift__act_id",
+        "pcap_begin_time",
+        "pacp_end_time"
+      ],
+      "attributeList": [
+        "jdr_eco_rating_gift__act_name",
+        "jdr_eco_rating_gift__act_id",
+        "pcap_begin_time",
+        "pacp_end_time"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "yinhanwen1",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "数据概览-明细表格",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 1000,
+        "resAppKey": "lowcode4448",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_grouped_statistics",
+    "min_extension": "0.9.37",
+    "metric_labels": {
+      "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift": "评价有礼活动评论数",
+      "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift_qualified": "评价有礼达标评论数",
+      "jdr_eco_mkt_comment_content_page_rating_gift__act_qtty_rating_gift_reward": "评价有礼发奖评论数"
+    },
+    "row_limit": 1000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/4448-ratingGiftReward-12.0.0.js",
+      "sha256": "81867e8ff7170e3ba9e2ed2cdd1a26f2e0f2b536cb5900cc9d989d8ae8e1c338",
+      "action": "数据概览-明细表格",
+      "source_span": [
+        3404350,
+        3405676
+      ],
+      "grouped_scope": "native non-personal group dimensions; complex frontend formulas excluded from metricList; native attributes retained"
+    }
+  },
+  "bunding-sale-products": {
+    "origin": "https://szgateway.jd.com",
+    "path": "/szpaas/lowcode/szajax/query/bundingSaleAnalysis.ajax",
+    "page": "https://jdsz.jd.com/szweb/view/market/bunding-sale-analysis-temp.html",
+    "method": "POST",
+    "schema": "oneservice",
+    "template": {
+      "filterList": [
+        {
+          "propertyName": "time_interval",
+          "values": [
+            "BY_DAY"
+          ],
+          "op": "=",
+          "type": "string"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$START"
+          ],
+          "op": ">=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "dt",
+          "values": [
+            "$DAY"
+          ],
+          "op": "<=",
+          "type": "String",
+          "reserve": "compare_dt"
+        },
+        {
+          "propertyName": "platform_cate_1",
+          "values": [
+            "app"
+          ],
+          "op": "=",
+          "type": "String"
+        },
+        {
+          "propertyName": "jdr_sch_goldenprocess_tiesale__event_biz_type_1",
+          "values": [
+            "btw_buy"
+          ],
+          "op": "=",
+          "type": "String"
+        },
+        {
+          "propertyName": "is_outer_purchase",
+          "values": [
+            "in",
+            "pop"
+          ],
+          "op": "in",
+          "type": "String"
+        }
+      ],
+      "dimList": [
+        "dt",
+        "time_interval",
+        "platform_cate_1",
+        "jdr_sch_goldenprocess_tiesale__event_biz_type_1",
+        "is_outer_purchase",
+        "sku_id",
+        "cate_1"
+      ],
+      "metricList": [
+        "ge_deal_standard_deal_father_ord_qtty_goldenprocess_tying_is_sz_flag",
+        "jdr_sch_trade_deal_ord_sku_qtty_sz_trade_deal_snapshot_goldenprocess_tying",
+        "ge_deal_standard_deal_ord_amt_goldenprocess_tying_is_sz_flag",
+        "jdr_sch_user_deal_ord_user_cnt_sz_user_deal_snapshot_goldenprocess_tying",
+        "fo_jdr_sch_sz_gold_tying_jds",
+        "jdr_sch_traffic_exposure_event_dis_qtty_traffic_plat_expo_di_tying_only_price",
+        "jdr_sch_traffic_exposure_event_dis_qtty_traffic_plat_expo_di_tying_exchange_buy"
+      ],
+      "groupList": [
+        "sku_id",
+        "cate_1"
+      ],
+      "attributeList": [
+        "sku_id",
+        "cate_1",
+        "click_level",
+        "expo_level"
+      ],
+      "commonParam": {
+        "platformId": 0,
+        "userErp": "",
+        "pageManagerErp": "yulixia3",
+        "period": 0,
+        "startTime": 0,
+        "endTime": 0,
+        "indexFreq": "OFFLINE",
+        "description": "商品明细Table",
+        "allJdMall": false,
+        "annotation": "基础",
+        "page": -1,
+        "pageSize": 1000,
+        "resAppKey": "lowcode189696",
+        "traceId": "$TRACE",
+        "batchId": "$BATCH",
+        "compareRequest": false,
+        "date": "10$DAY",
+        "startDate": "$DAY",
+        "endDate": "$DAY",
+        "dateType": "custom"
+      }
+    },
+    "scope": "fixed_official_grouped_statistics",
+    "min_extension": "0.9.37",
+    "metric_labels": {
+      "ge_deal_standard_deal_father_ord_qtty_goldenprocess_tying_is_sz_flag": "成交父单",
+      "jdr_sch_trade_deal_ord_sku_qtty_sz_trade_deal_snapshot_goldenprocess_tying": "成交商品数量",
+      "ge_deal_standard_deal_ord_amt_goldenprocess_tying_is_sz_flag": "成交金额",
+      "jdr_sch_user_deal_ord_user_cnt_sz_user_deal_snapshot_goldenprocess_tying": "成交购买用户数",
+      "fo_jdr_sch_sz_gold_tying_jds": "成交件单价",
+      "jdr_sch_traffic_exposure_event_dis_qtty_traffic_plat_expo_di_tying_only_price": "专享价商品曝光UV",
+      "jdr_sch_traffic_exposure_event_dis_qtty_traffic_plat_expo_di_tying_exchange_buy": "换购内页曝光UV"
+    },
+    "row_limit": 1000,
+    "source": {
+      "url": "https://storage.360buyimg.com/sz-page-service/build/189696-908931.0.0.js",
+      "sha256": "bd09aa280ed4aeeef50a243bccdb8bf790ed11dbc2c00f282a1b960d7c63a597",
+      "action": "商品明细Table",
+      "source_span": [
+        6845734,
+        6853644
+      ],
+      "grouped_scope": "native non-personal group dimensions; complex frontend formulas excluded from metricList; native attributes retained"
+    },
+    "unverified_frontend_fields": [
+      "click_level",
+      "expo_level"
+    ]
+  }
+}

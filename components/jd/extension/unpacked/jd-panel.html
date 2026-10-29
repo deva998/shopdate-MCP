@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><title>商智取数</title>
+<style>body{font:14px/1.6 system-ui;margin:20px;color:#202124;background:#fff}button{padding:10px 15px;margin:6px 8px 6px 0}pre{padding:12px;background:#f5f6f8;white-space:pre-wrap;overflow-wrap:anywhere}#status{font-weight:bold}small{color:#555}</style>
+<h2>shopdate-cli 数据桥 · 京东商智取数</h2><p id="info"></p>
+<p id="query">日期、渠道及维度由 Python 任务指定；前一日环比。请确认当前页面店铺。</p>
+<p>首次打开 F12 后，请先点一次 Network，再回到本面板。自动任务按报表页面分配；商品和流量任务通过原生控件选择日期与维度，再核验新响应。历史日期目前要求目标日期在已显示的日历月份中。保持本面板及 F12 打开。</p>
+<p>本面板只接收页面原生请求的响应；不直接请求京东接口、不导出登录凭据。</p>
+<button id="check">检查 Python 连接</button><button id="start">读取 Network 已有响应</button>
+<p><label><input type="checkbox" id="auto">自动接收 AI 任务（仅本面板开启期间）</label></p>
+<p id="status">面板正在初始化……</p><pre id="log"></pre>
+<small>保持本面板与 F12 打开。若没有“京东商智取数”标签，请检查 F12 顶部的 » 菜单。</small>
+<script src="store-identity.js"></script><script src="jd-guard.js"></script><script src="jd-auto.js"></script><script src="jd-query.js"></script><script src="jd-panel.js"></script></html>

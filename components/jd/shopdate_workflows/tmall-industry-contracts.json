@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "purpose": "offline discovery only; no network transport or live verification",
+  "candidates": {
+    "products": {
+      "path": "/mc/mq/mkt/item/offline/rank.json",
+      "method": "GET",
+      "method_verified": false,
+      "verification": "local_source_candidate",
+      "live_verified": false,
+      "network_capable": false,
+      "observed_parameter_names": [
+        "dateType",
+        "dateRange",
+        "cateId",
+        "priceSeg",
+        "rankType",
+        "sellerType",
+        "page"
+      ],
+      "parameters_exhaustive": false,
+      "enum_values_verified": false,
+      "business_semantics": "candidate_market_product_ranking",
+      "source": {
+        "path": "extensions/qingmu-5.6.5/js/sycmv2.js",
+        "sha256": "02fa881b0b1202dd2fa7984fe5ccc5cfb95d190e00ee05b7a86d831531ada3ec",
+        "type": "installed_third_party_source",
+        "version": "5.6.5",
+        "reviewed_on": "2026-10-26"
+      }
+    },
+    "shops": {
+      "path": "/mc/mq/mkt/shop/offline/rank.json",
+      "method": "GET",
+      "method_verified": false,
+      "verification": "local_source_candidate",
+      "live_verified": false,
+      "network_capable": false,
+      "observed_parameter_names": [
+        "dateType",
+        "dateRange",
+        "cateId",
+        "priceSeg",
+        "rankType",
+        "sellerType",
+        "page"
+      ],
+      "parameters_exhaustive": false,
+      "enum_values_verified": false,
+      "business_semantics": "candidate_market_shop_ranking",
+      "source": {
+        "path": "extensions/qingmu-5.6.5/js/sycmv2.js",
+        "sha256": "02fa881b0b1202dd2fa7984fe5ccc5cfb95d190e00ee05b7a86d831531ada3ec",
+        "type": "installed_third_party_source",
+        "version": "5.6.5",
+        "reviewed_on": "2026-10-26"
+      }
+    },
+    "supply_overview_candidate": {
+      "path": "/mc/mq/supply/mkt/overview.json",
+      "method": "GET",
+      "method_verified": false,
+      "verification": "local_source_candidate",
+      "live_verified": false,
+      "network_capable": false,
+      "observed_parameter_names": [
+        "dateType",
+        "dateRange",
+        "cateId",
+        "device",
+        "sellerType"
+      ],
+      "parameters_exhaustive": false,
+      "enum_values_verified": false,
+      "business_semantics": "market_supply_not_verified_as_industry_total",
+      "source": {
+        "path": "extensions/qingmu-5.6.5/js/sycm.js",
+        "sha256": "fb1ddd7bbdc43d31310e7994fba6fb4b579b82c1cb046be6b53ba6920beaed9b",
+        "type": "installed_third_party_source",
+        "version": "5.6.5",
+        "reviewed_on": "2026-10-26"
+      }
+    }
+  },
+  "limitations": [
+    "本地第三方监听代码不是官方当前接口有效性的证明。",
+    "dateType/rankType/sellerType等枚举未核验，不提供默认猜值。",
+    "榜单字段清单来自监听器解构，不证明完整必填参数。",
+    "没有调用插件的第三方转换服务，不解码指数，不发送业务数据。"
+  ]
+}
