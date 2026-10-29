@@ -17,7 +17,7 @@
 没有Git时，可从本仓库页面选择 **Code → Download ZIP**，解压到固定位置；也可运行：
 
 ```sh
-git clone https://github.com/vikk-hi/shopdate-MCP.git
+git clone https://github.com/deva998/shopdate-MCP.git
 cd shopdate-MCP
 ```
 
@@ -27,7 +27,7 @@ cd shopdate-MCP
 
 支持本地终端与文件写入的 Agent 可直接接收：
 
-> 请从 https://github.com/vikk-hi/shopdate-MCP.git 克隆 shopdate MCP，按 AGENT_INSTALL.md 安装并接入当前客户端和项目，保留其他 MCP 配置并备份，验证两个服务的连接和 commands 帮助调用，明确列出需我完成的登录、信任和插件步骤，不取业务数据。
+> 请从 https://github.com/deva998/shopdate-MCP.git 克隆 shopdate MCP，按 AGENT_INSTALL.md 安装并接入当前客户端和项目，保留其他 MCP 配置并备份，验证两个服务的连接和 commands 帮助调用，明确列出需我完成的登录、信任和插件步骤，不取业务数据。
 
 [完整教程](AGENT_INSTALL.md)。只有聊天能力、没有本地执行权限的客户端无法自动安装；用户仍需完成登录和授权。
 
