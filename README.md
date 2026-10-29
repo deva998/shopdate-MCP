@@ -183,7 +183,9 @@ Mac：`./.venv/bin/python -B scripts/check_mcp.py`。随后在Agent中检查两�
 
 -X / Twitter：@Amber0880
 
-<img width="888" height="1131" alt="59008a9306fbf5cf94d41a6d3bbbcf47" src="https://github.com/user-attachments/assets/5421a3c0-9745-4d64-95bf-fe481c9cd3e8" />
+
+<img width="340" height="433" alt="微信二维码 (1)" src="https://github.com/user-attachments/assets/699abd5a-530c-4238-8b9c-1fcff7291025" />
+
 
 
 如果这个工具帮到了你，欢迎给个 ⭐️。
