@@ -9,7 +9,7 @@
 - 仅读取本人有权限的店铺数据，不提供下单、改价、广告关停等业务写操作。
 - 取数只调用对应的 shopdate MCP，不使用 Computer Use；接口缺失就列为缺口，不改用其他通道补取。
 - 需要64位 Python 3.11+、Chrome 116+；浏览器后台登录和验证码由用户处理。
-- 本版为公开测试版：Windows安装及协议已验证；Mac实机、部分客户端对话调用尚未验证，见[兼容性与验证范围](VALIDATION.md)。
+- 本版为公开测试版：Windows安装及协议已验证；Mac实机、部分客户端对话调用尚未验证，见[兼容性与验证范围](docs/VALIDATION.md)。
 
 ## 安装
 
@@ -108,7 +108,7 @@ Windows 和 macOS 都需要加载同一份插件，京东及账号核验不能�
 | 日常分析 | 通过guide和workflow_catalog查看日检、复盘、诊断等方法及实现状态 |
 | 数据核验 | 核对店铺身份、统计日期、字段口径、分页与质量标记；缺失不补零、不用其他指标替代 |
 
-[详细功能与缺口](FEATURES.md)。提供入口不等于每个账号、日期和模块均已取到完整数据。天猫行业/市场排名目前未接入，不能用本店类目销售替代。
+[查看完整功能清单：京东 / 阿里](功能清单.md)。提供入口不等于每个账号、日期和模块均已取到完整数据。天猫行业/市场排名目前未接入，不能用本店类目销售替代。
 
 ## 业务流程
 
@@ -171,6 +171,10 @@ Mac：`./.venv/bin/python -B scripts/check_mcp.py`。随后在Agent中检查两�
 | 多个Agent共用安装目录 | 可分别登记同一安装路径；数据桥排队，不承诺并行业务取数 |
 | 文件哈希检查失败 | 使用新的干净源码目录核对；不要为通过检查删除现有业务数据或Git仓库 |
 
+## 仓库文件
+
+普通使用者看本页、[功能清单](功能清单.md)和[Agent安装教程](AGENT_INSTALL.md)即可。安装脚本、源码、依赖和LICENSE需保留；更新记录、兼容性与来源说明已收进docs。[各文件用途](docs/仓库文件说明.md)
+
 ## 开发与反馈
 
 安装器与配置合并回归测试：`py -3-64 -B -m unittest discover -s tests -v`，Mac将启动命令换为python3。反馈问题请通过[Issues](https://github.com/vikk-hi/shopdate-MCP/issues)，提供操作系统、客户端版本、命令名与脱敏错误；不要提交Cookie、Token、账号缓存或原始经营数据。
@@ -179,4 +183,4 @@ Mac：`./.venv/bin/python -B scripts/check_mcp.py`。随后在Agent中检查两�
 
 [MIT许可证](LICENSE)。保留原作者Rakel版权；本项目包含本地定制，功能和安装方式以本仓库说明为准。用于查询本人有权限的后台数据，请遵守平台规则。
 
-[第三方说明](THIRD_PARTY_NOTICES.md) · [源码来源](SOURCE_PROVENANCE.json) · [版本变更](CHANGELOG.md)。SHA256SUMS.json用于完整性校验，不是作者签名。
+[第三方说明](docs/THIRD_PARTY_NOTICES.md) · [源码来源](docs/SOURCE_PROVENANCE.json) · [版本变更](docs/CHANGELOG.md)。SHA256SUMS.json用于完整性校验，不是作者签名。

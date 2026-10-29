@@ -1,5 +1,5 @@
 {
-  "release": "2026.10.29-r5",
+  "release": "2026.10.29-r6",
   "upstream": {
     "url": "https://github.com/rakei076/sycm-cli",
     "license": "MIT",
@@ -736,7 +736,8 @@
     "Opt-in project JSON merge helper and regression tests; Agent installation tutorial",
     "r4: normalize release metadata and GitHub-facing documentation only; program files unchanged from r3",
     "r5: public repository documentation and workflow diagram; local delivery-only reports omitted",
-    "r5: exclude root Git metadata consistently from audit/inventory/archive; nested repositories still rejected"
+    "r5: exclude root Git metadata consistently from audit/inventory/archive; nested repositories still rejected",
+    "r6: consolidate business capabilities in Chinese catalog; maintenance documents moved to docs; no program source changes"
   ],
   "excluded": [
     "runtime state",
