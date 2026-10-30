@@ -12,86 +12,74 @@
 
 ## 安装
 
-### 1. 下载工具
+需要 **64 位 Python 3.11+、Chrome 116+**，以及支持本地 MCP 的 AI 客户端。安装方式二选一即可。
 
-没有Git时，可从本仓库页面选择 **Code → Download ZIP**，解压到固定位置；也可运行：
+### 方式一：在 Agent 中用一句话安装
+
+将下面这段话发送给具有本地终端权限的 Agent：
+
+> 请从 https://github.com/deva998/shopdate-MCP.git 克隆项目，按 AGENT_INSTALL.md 安装并接入当前客户端，保留其他 MCP 配置；检查两个服务能否启动和调用，提示我完成插件加载、后台登录及客户端授权，最后说明是否安装成功，有问题时给出具体错误。
+
+按照 Agent 提示完成 Chrome 插件加载、后台登录和 MCP 信任授权即可。如果 Agent 无法执行本地安装，改用下面的手动方式。[Agent 安装说明](AGENT_INSTALL.md)
+
+### 方式二：手动安装
+
+#### 1. 下载项目
+
+在[仓库页面](https://github.com/deva998/shopdate-MCP)选择 **Code → Download ZIP** 并解压，或执行：
 
 ```sh
 git clone https://github.com/deva998/shopdate-MCP.git
 cd shopdate-MCP
 ```
 
-进入包含 `installer.py`、`components` 和 `install.ps1` 的目录再执行安装。不要移动已安装的虚拟环境到另一台电脑。
+后续命令都在项目目录中执行。
 
-### 2. 在 Agent 中用一句话安装
+#### 2. 运行安装脚本
 
-支持本地终端与文件写入的 Agent 可直接接收：
-
-> 请从 https://github.com/deva998/shopdate-MCP.git 克隆 shopdate MCP，按 AGENT_INSTALL.md 安装并接入当前客户端和项目，保留其他 MCP 配置并备份，验证两个服务的连接和 commands 帮助调用，明确列出需我完成的登录、信任和插件步骤，不取业务数据。
-
-[完整教程](AGENT_INSTALL.md)。只有聊天能力、没有本地执行权限的客户端无法自动安装；用户仍需完成登录和授权。
-
-### 3. 手动安装
-
-**Windows PowerShell**
+**Windows PowerShell：**
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
 ```
 
-需指定Python时追加 `-Python 'Python可执行文件的绝对路径'`；执行策略仅对本次脚本进程生效。
-
-**macOS**
+**macOS：**
 
 ```sh
 sh ./install.sh
 ```
 
-默认使用 `python3`；也可 `SHOPDATE_PYTHON=/absolute/path/to/python3 sh ./install.sh`。不需要sudo。Mac脚本与配置已提供，Intel/Apple Silicon尚未完成实机验收。
+安装完成后会输出：
 
-安装器创建独立 `.venv`、安装依赖、检查两侧服务，再输出 `MCP_CONFIG_EXPORT` 配置目录和 `CHROME_EXTENSION` 插件目录。安装器本身不修改Agent现有设置；重复运行生成新的配置批次。
+- `MCP_CONFIG_EXPORT`：AI 客户端配置目录。
+- `CHROME_EXTENSION`：Chrome 插件目录。
 
-下载依赖超时时，可显式选择HTTPS镜像，仅影响本次安装：
+若依赖下载超时，可在 Windows 命令末尾追加 `-IndexUrl https://pypi.tuna.tsinghua.edu.cn/simple`；macOS 追加 `--index-url https://pypi.tuna.tsinghua.edu.cn/simple`。
 
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1 -IndexUrl https://pypi.tuna.tsinghua.edu.cn/simple
-```
+#### 3. 加载插件并登录后台
 
-```sh
-sh ./install.sh --index-url https://pypi.tuna.tsinghua.edu.cn/simple
-```
+1. 在 Chrome 打开 `chrome://extensions`，开启开发者模式。
+2. 点击“加载已解压的扩展程序”，选择 `CHROME_EXTENSION` 输出的目录。
+3. 保持插件启用，在同一 Chrome 登录需要使用的京东商智、生意参谋或万相台后台。
 
-不关闭TLS验证。离线安装需自行准备系统、架构及Python版本匹配的wheelhouse：Windows追加 `-Offline -Wheelhouse '绝对路径'`；Mac追加 `--offline --wheelhouse /absolute/path/to/wheelhouse`。
+Windows 和 Mac 均按上述方式加载本包数据桥。不要移动或删除已加载的插件目录。
 
-### 4. 加载 Chrome 数据桥
+#### 4. 接入 AI 客户端
 
-Windows 和 macOS 都需要加载同一份插件，京东及账号核验不能跳过：
+在 `MCP_CONFIG_EXPORT` 目录中，选择对应客户端的配置，合并到客户端 MCP 设置中：
 
-1. 在本人 Chrome 打开 `chrome://extensions`，开启开发者模式。
-2. 点击“加载已解压的扩展程序”，选择安装器输出的 `components/jd/extension/unpacked`。
-3. 确认名称 `shopdate-cli 数据桥`、版本 `0.9.40`、ID `nipicallldlddjelmaghkbbjaannlpib`，保持启用。
-4. 在同一 Chrome 登录要读取的后台；保持 Chrome 运行。更新插件文件后在扩展页点击“重新加载”。
+| 客户端 | 配置位置 |
+|---|---|
+| Codex | `codex/config.toml` |
+| Claude Code | `claude-code/.mcp.json` |
+| Claude Desktop | `claude-desktop/mcp.json` |
+| Cursor | `cursor/mcp.json` |
+| TRAE | `trae/mcp.json` |
+| WorkBuddy | `workbuddy/` 下两个服务分别导入 |
 
-不要点击“打包扩展程序”。加载目录不能删除或随意移动。现有包没有浏览器商店一键安装链接；用户仍需手动加载与登录。不要导出、上传或分享账号登录态。manifest 公钥决定固定插件 ID，不能随意替换。
+保留其他已有服务，完成后刷新 MCP 或重启客户端，并按提示授权。接着完成下方“检查是否安装成功”。
 
-数据桥仅监听本机回环服务，并按平台注册接口读取；Chrome 插件保存在本机的账号信息不随此包交付。取数结果会交给选用的 Agent 客户端，后续模型处理受该客户端的数据政策约束；本地数据桥不等于模型处理完全离线。
-
-### 5. 接入 AI 助手
-
-在安装器输出目录按需取用配置。只合并 shopdate 两个服务，不整份覆盖其他服务。两个服务分别叫 shopdate-jd、shopdate-symc；内部平台参数仍为 jd、sycm、alimama。
-
-| 客户端 | 生成文件与方法 | 状态 |
-|---|---|---|
-| Codex | `codex/config.toml`，合并到客户端实际使用的 config.toml | 标准握手验证；超时已配置，不用旧的工具白名单 |
-| Claude Code | `claude-code/.mcp.json`；放到需要的项目根目录并合并已有配置，按提示确认本地服务 | 临时原生CLI两服务Connected；Agent调用因未登录未完成 |
-| Claude Desktop | `claude-desktop/mcp.json`；通过设置打开实际配置文件，合并 mcpServers | 待客户端实机验收 |
-| Cursor | `cursor/mcp.json`；合并到 Cursor MCP 配置 | 待客户端实机验收 |
-| TRAE | `trae/mcp.json`；自定义 MCP 中导入，支持 command/args/env | 原生CLI导入通过；前端调用未验证 |
-| WorkBuddy | `workbuddy/shopdate-jd/mcp.json` 与 `workbuddy/shopdate-symc/mcp.json`，分别添加两个本地stdio连接器 | 内置CLI两服务Connected；Agent调用因未登录未完成 |
-| 豆包工作 | `doubao/mcp.json`，仅在所用版本确有本地STDIO入口时按字段配置 | 条件模板，未承诺已适配；只有HTTP地址入口时不能直接接入 |
-| 其他客户端 | `generic/mcp.json`，使用相同启动命令、参数、环境变量 | 必须支持在同一电脑启动stdio子进程 |
-
-`mcp-configs/examples/` 中是 Windows/macOS 占位示例；不能直接运行，优先使用安装器生成的实际路径配置。网页端、手机端或云端 MCP 只有远程URL入口时，不能用数据桥的127.0.0.1端口替代远程MCP。本包不新增HTTP代理。
+Mac 安装脚本已提供，实机验证仍待完成；客户端兼容性范围见[项目说明](docs/VALIDATION.md)。
 
 ## 功能
 
@@ -131,40 +119,39 @@ flowchart TD
 
 图中展示已登记接口的处理路径；不是完整平台功能覆盖承诺，跨平台对比须先核对可比口径。环境检查、账号授权、接口实现、实际取数和数据完整性分别验收。接口缺失时不切换Computer Use或其他取数通道；风控发生后停止重试，用户完成验证后才可重新查询。
 
-## 检查安装
+## 检查是否安装成功
 
-在尚未安装的源码目录检查文件清单（支持Git克隆目录，会跳过根目录Git元数据）：
+无论使用哪种安装方式，完成后都可以对 Agent 说：
 
-```powershell
-py -3-64 -B scripts/verify_release.py
-```
+> 请检查 shopdate-jd 和 shopdate-symc 是否可调用，先调用 commands，再通过对应 MCP 的 doctor 检查数据桥和后台登录；分别报告成功或具体错误，不查询经营报表。
 
-Mac将 `py -3-64` 换成 `python3`。安装后用虚拟环境Python检查MCP协议，不读取业务数据：
+两个服务能返回帮助，需要使用的平台数据桥及登录检查正常，即完成基本安装，可以开始使用。
+
+如果客户端还未接通，可先在项目目录检查本地服务：
+
+**Windows：**
 
 ```powershell
 .\.venv\Scripts\python.exe -B scripts/check_mcp.py
 ```
 
-Mac：`./.venv/bin/python -B scripts/check_mcp.py`。随后在Agent中检查两个服务是否可用，并实际调用commands帮助；Connected不代表Agent对话调用已成功。开始业务查询前，通过MCP核对账号、日期和返回质量。
+**macOS：**
+
+```sh
+./.venv/bin/python -B scripts/check_mcp.py
+```
+
+输出 `"status": "passed"` 表示本地 MCP 服务正常，接下来重点检查客户端配置；这不代表所有业务接口都已取数成功。
 
 ## 常见问题
 
-| 现象 | 处理方法 |
+| 问题 | 处理方法 |
 |---|---|
-| Python不存在或为32位 | 安装64位Python 3.11+；Windows可通过 -Python 指定实际解释器 |
-| 依赖下载超时 | 查看上面的HTTPS镜像安装方法；不关闭证书验证 |
-| TRAE无法启动带空格的command | 使用安装器生成的TRAE配置，保留args数组；详见AGENT_INSTALL.md |
-| Connected但Agent没有调用工具 | 核对客户端登录、项目MCP信任和工具权限；Connected不代表模型调用已完成 |
-| 客户端只接受HTTP URL | 本包提供本地stdio，不能把数据桥端口填成远程MCP地址 |
-| 同名MCP配置冲突或文件是JSONC | 合并器会停止；在客户端设置中核对并处理，不覆盖其他服务 |
-| 业务查询触发验证码/风控 | 停止重试，由用户在本人浏览器人工完成验证 |
-
-| 其他问题 | 处理方法 |
-|---|---|
-| 没有连接数据桥 | 保持Chrome运行、扩展启用，确认加载目录未移动或删除 |
-| 返回0条但预期有数据 | 核对账号权限、统计日期、参数和返回质量；0条不自动解释为零销量 |
-| 多个Agent共用安装目录 | 可分别登记同一安装路径；数据桥排队，不承诺并行业务取数 |
-| 文件哈希检查失败 | 使用新的干净源码目录核对；不要为通过检查删除现有业务数据或Git仓库 |
+| 找不到 Python | 安装64位 Python 3.11+，重新打开终端 |
+| 依赖下载失败 | 使用上面的 HTTPS 镜像参数重试 |
+| 客户端看不到工具 | 核对配置路径，刷新服务或重启客户端 |
+| 数据桥无法连接 | 保持 Chrome 运行，确认插件启用、目录未移动 |
+| 提示未登录或安全验证 | 在本人 Chrome 中手动完成登录或验证 |
 
 ## 仓库文件
 
