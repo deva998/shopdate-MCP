@@ -1,0 +1,19 @@
+flowchart TD
+    A("用户提出分析需求") --> B("AI 判断平台、店铺、日期和任务")
+    B --> C("shopdate-jd<br/>京东业务 MCP")
+    B --> D("shopdate-symc<br/>阿里业务 MCP")
+    subgraph BRIDGE["shopdate-cli 数据桥 · 同一个 Chrome 插件"]
+        E("京东通信通道")
+        F("阿里通信通道")
+    end
+    C --> E
+    D --> F
+    E --> G("京东商智<br/>已登记的查询接口")
+    F --> H("生意参谋 / 天猫店铺<br/>万相台广告模块")
+    G --> I("京东数据校验与计算")
+    H --> J("阿里数据校验与计算")
+    I --> K("AI 生成分析结论<br/>按已核验口径输出报告")
+    J --> K
+    classDef nodeStyle fill:#f4f4f4,stroke:#dddddd,color:#333333;
+    class A,B,C,D,E,F,G,H,I,J,K nodeStyle;
+    style BRIDGE fill:#ffffff,stroke:#eeeeee,color:#333333

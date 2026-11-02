@@ -95,27 +95,9 @@ Mac 安装脚本已提供，实机验证仍待完成；客户端兼容性范围�
 
 ## 业务流程
 
-```mermaid
-flowchart TD
-    A("用户提出分析需求") --> B("AI 判断平台、店铺、日期和任务")
-    B --> C("shopdate-jd<br/>京东业务 MCP")
-    B --> D("shopdate-symc<br/>阿里业务 MCP")
-    subgraph BRIDGE["shopdate-cli 数据桥 · 同一个 Chrome 插件"]
-        E("京东通信通道")
-        F("阿里通信通道")
-    end
-    C --> E
-    D --> F
-    E --> G("京东商智<br/>已登记的查询接口")
-    F --> H("生意参谋 / 天猫店铺<br/>万相台广告模块")
-    G --> I("京东数据校验与计算")
-    H --> J("阿里数据校验与计算")
-    I --> K("AI 生成分析结论<br/>按已核验口径输出报告")
-    J --> K
-    classDef nodeStyle fill:#f4f4f4,stroke:#dddddd,color:#333333;
-    class A,B,C,D,E,F,G,H,I,J,K nodeStyle;
-    style BRIDGE fill:#ffffff,stroke:#eeeeee,color:#333333
-```
+![京东商智与阿里业务数据分析流程图](docs/images/business-workflow.png)
+
+[查看 Mermaid 源码](docs/diagrams/business-workflow.mmd)（维护流程时请同步更新 PNG）。
 
 图中展示已登记接口的处理路径；不是完整平台功能覆盖承诺，跨平台对比须先核对可比口径。环境检查、账号授权、接口实现、实际取数和数据完整性分别验收。接口缺失时不切换Computer Use或其他取数通道；风控发生后停止重试，用户完成验证后才可重新查询。
 
