@@ -103,6 +103,7 @@ async function jdShopInsightsRead(input){
   }else if(category){
    if(typeof p.categoryType!=='number'||![0,1].includes(p.categoryType))throw new Error('类目类型无效');
    expected={dateType:'day',date:day,startDate:day,endDate:day,categoryType:p.categoryType};
+   if(p.dateType==='week'){if(key!=='category-summary')throw new Error('类目周查询仅支持汇总');Object.assign(expected,periodFields('week',day));}
    if(key==='category-trend'){
     if(typeof p.secondIndId!=='string'||!/^\d+$/.test(p.secondIndId)||typeof p.thirdIndId!=='string'||!/^\d*$/.test(p.thirdIndId))throw new Error('类目趋势ID无效');
     Object.assign(expected,{secondIndId:p.secondIndId,thirdIndId:p.thirdIndId});

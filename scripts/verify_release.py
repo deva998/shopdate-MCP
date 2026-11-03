@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 import re
 import sys
+from urllib.parse import urlsplit
 
 FORBIDDEN={'.runtime','.venv','.local','__pycache__','.git','.pytest_cache',
            'node_modules','browser-profile','downloads','outputs','data','state','logs'}
@@ -23,6 +24,23 @@ def files(root):
                    and p.relative_to(root).parts[0]!='.git'),key=lambda p:p.as_posix())
 
 
+def web_url_path(text, match):
+    """A URL path is not a local POSIX path; queries and drive paths still count."""
+    if not match.group().startswith('/'):
+        return False
+    for url in re.finditer(r"https?://[^\s\"'<>`]+", text):
+        try:
+            parts = urlsplit(url.group())
+        except ValueError:
+            continue
+        if not parts.hostname or parts.username is not None or parts.password is not None:
+            continue
+        start = url.start() + len(parts.scheme) + 3 + len(parts.netloc)
+        if start <= match.start() and match.end() <= start + len(parts.path):
+            return True
+    return False
+
+
 def audit(root):
     root=Path(root)
     findings=[]
@@ -36,7 +54,8 @@ def audit(root):
             except UnicodeDecodeError:
                 findings.append({'path':rel.as_posix(),'rule':'invalid_utf8'});continue
             for name, regex in PATTERNS.items():
-                if regex.search(text):
+                if any(name != 'personal_path' or not web_url_path(text, match)
+                       for match in regex.finditer(text)):
                     findings.append({'path':rel.as_posix(),'rule':name})
     return findings
 

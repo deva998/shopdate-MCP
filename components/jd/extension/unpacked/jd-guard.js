@@ -39,7 +39,13 @@ function reportRequest(job, template, contract=DEFAULT_REPORT) {
   const time=typeof day==='string' && /^\d{4}-\d{2}-\d{2}$/.test(day) ? Date.parse(day+'T00:00:00Z') : NaN;
   if(!Number.isFinite(time) || new Date(time).toISOString().slice(0,10)!==day) throw new Error('任务日期无效。');
   const previous=new Date(time-86400000).toISOString().slice(0,10);
-  const expected={...template,startDate:day,endDate:day,compareStartDate:previous,compareEndDate:previous};
+  let expected={...template,startDate:day,endDate:day,compareStartDate:previous,compareEndDate:previous};
+  if(actual.dateType==='week' && contract.endpoint==='https://szgateway.jd.com/api/lowcode/tradeSummary/summary/getSummary.ajax'){
+    const end=new Date(time+6*86400000).toISOString().slice(0,10),today=new Date(Date.now()+8*3600000).toISOString().slice(0,10);
+    if(new Date(time).getUTCDay()!==1 || end>=today || !['hb','tb'].includes(actual.compareType))throw new Error('概况周范围无效');
+    const prior=time-(actual.compareType==='tb'?364:7)*86400000;
+    expected={...template,startDate:day,endDate:end,dateType:'week',interval:'DAY',compareType:actual.compareType,compareStartDate:new Date(prior).toISOString().slice(0,10),compareEndDate:new Date(prior+6*86400000).toISOString().slice(0,10)};
+  }
   if(!allowedJob(job,expected,contract)) throw new Error('仅允许已验证报表、单日、前一日对比及固定渠道和指标。');
   return expected;
 }

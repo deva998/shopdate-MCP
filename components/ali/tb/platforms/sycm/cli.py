@@ -1618,6 +1618,9 @@ def build_parser() -> argparse.ArgumentParser:
     mn.add_argument("--out", help="写入文件")
     mn.set_defaults(func=cmd_menu)
 
+    from . import interface_discovery
+    interface_discovery.register(sp)
+
     from . import item as sycm_item
     sycm_item.register(sp, yesterday)
     from . import report as sycm_report

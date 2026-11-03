@@ -7,7 +7,7 @@ def catalog(platform):
       'products':['product-full','product-diagnosis','product-test'] if platform=='jd' else ['item-360','item-detail','item-list'],
       'inventory':['inventory-sku','product-diagnosis'] if platform=='jd' else ['item-sku-list --live'],
       'refunds':['refund-review','refund-cohort','order-list'] if platform=='jd' else ['refund-all-list','refund-item-list','refund-origin-analysis'],
-      'sources':['traffic-tree','traffic-channels'] if platform=='jd' else ['item-flow-source'],
+      'sources':['traffic-tree','traffic-channels'] if platform=='jd' else ['traffic-overview','traffic-trend','shop-source-overview','shop-source-tree','item-flow-source'],
       'customer_service':[] if platform=='jd' else ['sale-cs-list','reception-list','inquiry-loss-list']}
     rows=[{'id':task,'scope':'in_scope','implementation':'shared_workflow',
         'verification':'see_acceptance_receipts','commands':['workflow '+task],

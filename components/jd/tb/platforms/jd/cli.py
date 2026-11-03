@@ -79,6 +79,8 @@ def save_overview(result,request):
     report.update(platform='jd',store=identity,shop=identity['name'],timings=result['timings'],requested_after=result['requested_after'],
       transport=result.get('transport'),identity_verified_at=result.get('identity_verified_at'),query_actions=result.get('query_actions',[]),bridge_client_version=result.get('bridge_client_version'))
     folder=ROOT/'data'/'jd'/identity['store_key'].replace(':','_')/day
+    if request.get('dateType')=='week':folder=folder/('overview-week-'+request['compareType'])
+    report.update(request=request,api_proof=result.get('api_proof'))
     folder.mkdir(parents=True,exist_ok=True)
     raw=result['text'].encode('utf-8')
     report['response_sha256']=hashlib.sha256(raw).hexdigest()
@@ -87,7 +89,7 @@ def save_overview(result,request):
     (folder/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2,allow_nan=False),encoding='utf-8')
     (folder/'report.md').write_text(overview.markdown(report),encoding='utf-8')
     compact={'status':report['data_status'],**overview.data_quality(report['metrics']),'identity':identity,'report_path':report['report_path'],'date':day,
-      'compare_date':request['compareStartDate'],'timings':result['timings'],'metrics':report['metrics'],'missing_metrics':report['missing_metrics']}
+      'period':report['period'],'end_date':report['end_date'],'compare_end_date':report['compare_end_date'],'compare_type':report['compare_type'],'compare_date':request['compareStartDate'],'timings':result['timings'],'metrics':report['metrics'],'missing_metrics':report['missing_metrics']}
     return report,compact
 
 
@@ -137,7 +139,10 @@ def main(argv):
     ap.add_argument('--job-id',help='只查询已有后台任务，不重新取数')
     ap.add_argument('--foreground',action='store_true',help='仅终端诊断：同步等待长任务；MCP默认返回后台任务编号')
     ap.add_argument('--transport',choices=['native','api'],default='api',help='概况、流量、完整商品及经营分析默认登记接口；native为旧页面诊断流程')
+    ap.add_argument('--period',choices=['day','week'],default='day',help='shop-overview：day保留原调用；week以周一为date')
+    ap.add_argument('--compare',choices=['hb','tb'],default='hb',help='shop-overview周比较：前周或52周前同期')
     args=ap.parse_args(argv)
+    if (args.period!='day' or args.compare!='hb') and (args.command!='shop-overview' or args.transport!='api'):raise ValueError('周周期和比较参数仅用于登记接口shop-overview。')
     if args.service_export_evidence and args.command!='refund-cohort':raise ValueError('--service-export-evidence仅支持refund-cohort')
     if args.all_pages and (args.command not in ('order-list','after-sales-list') or args.page!=1):raise ValueError('--all-pages仅支持order-list或after-sales-list并从第1页开始')
     if args.page!=1 and args.command not in ('order-list','after-sales-list'):raise ValueError('--page仅支持order-list或after-sales-list')
@@ -242,7 +247,7 @@ def main(argv):
         return 0
     report_key='products-'+args.dimension if args.command=='product-items' else 'traffic-level'+args.source_level if args.command=='traffic-sources' else 'overview'
     template=reports.contracts()[report_key]['template']
-    request=overview.make_request(template,day)
+    request=overview.make_request(template,day,period=args.period,compare=args.compare)
     expected=None
     if args.store.startswith('jd:mall:'):
         if not args.store[len('jd:mall:'):].isdigit():raise ValueError('无效的店铺标识。')
@@ -255,7 +260,7 @@ def main(argv):
         print(f"目标报表：{reports.contracts()[report_key]['page']}；统一后台将恢复 {day} 的查询条件并校验原生新响应，无需F12。",file=sys.stderr,flush=True)
     if report_key=='overview' and args.transport=='api':
         from .api_client import capture_api
-        result=capture_api('overview',day,expected['store_key'])
+        result=capture_api('overview',day,expected['store_key'],scope={'period':args.period,'compare':args.compare} if args.period=='week' else None)
     else:result=capture(request,'identify' if args.command=='doctor' else 'overview',expected,report_key)
     identity=result['identity']
     if args.command=='doctor':

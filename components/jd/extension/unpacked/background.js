@@ -5,6 +5,7 @@
 // 安全：只放行 SITES 里登记的接口；GET 按地址前缀 + 写操作词拦截，POST 只放行逐个列出的只读查询接口（精确路径）；
 //       只读各平台登记的 cookie；结果只交给本机的命令行，不发往任何别处。
 
+importScripts('sycm-public-assets.js');
 const PORTS = [47831, 47832, 47833, 47834, 47835, 47836, 47837, 47838, 47839, 47840];
 
 // ---- 放行规则开始（tests/test_extension_release.py 会原样取出这一段运行，改动时保持自包含）----
@@ -339,6 +340,7 @@ function browserInfo() {
 }
 
 async function handle(job) {
+  if(job.public_asset)return sycmFetchPublicAsset(job);
   if(job.store_request){
     try {return {id:job.id,stores:await listCurrentStores(job.store_request.platform || "")};}
     catch(e){return {id:job.id,error:String(e)};}

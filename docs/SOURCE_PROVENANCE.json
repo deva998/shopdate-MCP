@@ -1,5 +1,5 @@
 {
-  "release": "2026.10.29-r6",
+  "release": "2026.11.03",
   "upstream": {
     "url": "https://github.com/rakei076/sycm-cli",
     "license": "MIT",
@@ -116,7 +116,7 @@
     },
     {
       "path": "components/jd/tb/platforms/jd/api_client.py",
-      "source_sha256": "99ebaaf9c64e289da86cdd5aa356668e8f00c6a3f9acd48fdf0c0ede00169024"
+      "source_sha256": "cc997947b19f055824106c882334d4b47e87d4f461bc243f736fcbfd39363aa0"
     },
     {
       "path": "components/jd/tb/platforms/jd/api_exports.py",
@@ -148,7 +148,7 @@
     },
     {
       "path": "components/jd/tb/platforms/jd/cli.py",
-      "source_sha256": "196e0a0139581eaf52711c91bea260c88bdc8822f0098954ac615484498cfab0"
+      "source_sha256": "54bd695a23fa0fe4799d18c4cde989ed6fb0d3527a0de3543177c05a4bf53e48"
     },
     {
       "path": "components/jd/tb/platforms/jd/daily.py",
@@ -156,11 +156,11 @@
     },
     {
       "path": "components/jd/tb/platforms/jd/data_scope.py",
-      "source_sha256": "b6e0465f5550975383707b1c03fb9315e35b90801a2e96e9bec989f7d8fc6975"
+      "source_sha256": "7db5b9232373da9f8adec879644eff6941b02ad16564fcd4b892030c549825c3"
     },
     {
       "path": "components/jd/tb/platforms/jd/industry.py",
-      "source_sha256": "1bc69132f2579c1b99d89987827f6f8a466f20e41475b7eba9e5d955097611d6"
+      "source_sha256": "b806e0c71a10db02c6ddcd152e9a9cfd57649fc5dc8a7dd9938154560b4ba9cd"
     },
     {
       "path": "components/jd/tb/platforms/jd/inventory.py",
@@ -184,7 +184,7 @@
     },
     {
       "path": "components/jd/tb/platforms/jd/overview.py",
-      "source_sha256": "72d4e851d7c752f472522e53337b755887ced5ec15ad752949ae790c80745260"
+      "source_sha256": "530d20ad8617b6b2839aa9acbdd826a65875c124f2ba6364978a28855c2882dc"
     },
     {
       "path": "components/jd/tb/platforms/jd/panorama.py",
@@ -248,7 +248,7 @@
     },
     {
       "path": "components/jd/tb/platforms/jd/shop_insights.py",
-      "source_sha256": "a3ee3b7068b87ea76a17f26884a950e47b8067ffdd74b0d4c6f201206a262a3c"
+      "source_sha256": "98c1490b52fc8efa7e3431d15f3257dc50a9b7472b63555aab0f8cd622d17941"
     },
     {
       "path": "components/jd/tb/platforms/jd/traffic_channels.py",
@@ -296,7 +296,7 @@
     },
     {
       "path": "components/jd/references/jd-analysis-guide.md",
-      "source_sha256": "fdd12791e1c09947d53568cfb090a2359ff9a03820c466a55a118611285a47ce"
+      "source_sha256": "748bf57449531b320b05df28cd91f614f6b205a4803a1ed26cc5fa56e84c34f0"
     },
     {
       "path": "components/jd/LICENSE",
@@ -384,7 +384,7 @@
     },
     {
       "path": "components/ali/tb/platforms/sycm/cli.py",
-      "source_sha256": "2d0ffac47ac2072426e481a22da1ab670e322cde5a70e544fc9048820aef923d"
+      "source_sha256": "28c34b2b0eead7fdcba13cca83b53faa2b02e88abf4dea22ce9a0c23fda0cbba"
     },
     {
       "path": "components/ali/tb/platforms/sycm/fields.json",
@@ -472,7 +472,7 @@
     },
     {
       "path": "components/jd/extension/unpacked/background.js",
-      "source_sha256": "48ba50966f558d9170c249ddba73b604dc8715440ba48f9cac905df56dea84f4"
+      "source_sha256": "e5d4e4d892229f1b23d59992294aef5dd64c45c7a254a818167b2b37e02512bb"
     },
     {
       "path": "components/jd/extension/unpacked/business-metric-contracts.json",
@@ -540,7 +540,7 @@
     },
     {
       "path": "components/jd/extension/unpacked/jd-guard.js",
-      "source_sha256": "b40aa0ae949977af2b6de1b7b8a782b979bb2a91f2190513f9d4e7140187fd22"
+      "source_sha256": "eb5e8e752bf7d8a52d67fdc899c7c0dc2740546adeb93fdd0ffe6236949e3052"
     },
     {
       "path": "components/jd/extension/unpacked/jd-inventory.js",
@@ -572,7 +572,7 @@
     },
     {
       "path": "components/jd/extension/unpacked/jd-shop-insights.js",
-      "source_sha256": "5132a749af8351641da470dcf7c061cd5b80f2be75e5e6060c4af89d01d72493"
+      "source_sha256": "8598340b4e39d7a4ae172a0764d254a07c811d2729a7a2b2773156455337b57f"
     },
     {
       "path": "components/jd/extension/unpacked/jd-stores-worker.js",
@@ -588,7 +588,7 @@
     },
     {
       "path": "components/jd/extension/unpacked/manifest.json",
-      "source_sha256": "935a6f07ee95679910ed93166d94d5b5936af6205adbab40c8f1ac5cffc5d29f"
+      "source_sha256": "965fd3414c5effb6c69a1929d5526b07812d811920463f509c6914248f54b5e5"
     },
     {
       "path": "components/jd/extension/unpacked/new-product-contracts.json",
@@ -656,7 +656,7 @@
     },
     {
       "path": "components/jd/shopdate_workflows/catalog.py",
-      "source_sha256": "7babbf1f468bcdcbcf9f8eaad0f167d3a2c601f196c166263edca80fd77a8759"
+      "source_sha256": "4a9f3aa39fb9d4d133df0da78d269548e01e37d360a0c6c57ccb672bc440d3d1"
     },
     {
       "path": "components/jd/shopdate_workflows/cli.py",
@@ -717,6 +717,34 @@
     {
       "path": "requirements.txt",
       "source_sha256": "e5f2694f34826eeb005e7ca370f8d9f1026bdec7143566d4229735a9df3a34b9"
+    },
+    {
+      "path": "components/ali/extension/README.md",
+      "source_sha256": "27dc942560a7b546c6b682793bb1ff8d77cc3ee69a72f1cc892ff205a8c88caa"
+    },
+    {
+      "path": "components/ali/tb/modules_manifest.json",
+      "source_sha256": "0944d3d15c1cfc4eae0b0dcc540212d1c63a239231fa5f0ffeb750008a8b7ce8"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/interface_discovery.py",
+      "source_sha256": "98568f8b326b57af14a250df41e739e80bbe5f740e8b5fedb47b5bdad4279113"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/traffic.py",
+      "source_sha256": "dc1082c7721332ec8bfb9915d1adbe9bb8f7a52ed5714281d71ee4330e79a152"
+    },
+    {
+      "path": "components/jd/extension/README.md",
+      "source_sha256": "27dc942560a7b546c6b682793bb1ff8d77cc3ee69a72f1cc892ff205a8c88caa"
+    },
+    {
+      "path": "components/jd/extension/unpacked/sycm-public-assets.js",
+      "source_sha256": "6e7191376b0b9bbf8f607e7b3a021827eeb3bc576f8ea32ade11eec270510303"
+    },
+    {
+      "path": "components/jd/tb/modules_manifest.json",
+      "source_sha256": "0944d3d15c1cfc4eae0b0dcc540212d1c63a239231fa5f0ffeb750008a8b7ce8"
     }
   ],
   "release_only_changes": [
@@ -737,7 +765,12 @@
     "r4: normalize release metadata and GitHub-facing documentation only; program files unchanged from r3",
     "r5: public repository documentation and workflow diagram; local delivery-only reports omitted",
     "r5: exclude root Git metadata consistently from audit/inventory/archive; nested repositories still rejected",
-    "r6: consolidate business capabilities in Chinese catalog; maintenance documents moved to docs; no program source changes"
+    "r6: consolidate business capabilities in Chinese catalog; maintenance documents moved to docs; no program source changes",
+    "2026.11.03: generic JD native-week and SYCM traffic interfaces; no local report data or templates included",
+    "2026.11.03: custom fixed-store daily source and external data-center reader are excluded; bridge import/host permissions keep official resources only",
+    "2026.11.03: required partial status added to native-week guide; exact same structural fix applied to local source",
+    "2026.11.03: URL-path-aware privacy audit retains actual local path/query detection; regressions added",
+    "2026.11.03: public guide retains its existing topics and merges only the generic native-week interface section; unrelated local reporting-guide changes stay local"
   ],
   "excluded": [
     "runtime state",

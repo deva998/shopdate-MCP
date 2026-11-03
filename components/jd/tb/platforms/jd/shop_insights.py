@@ -31,7 +31,7 @@ def historical_day(day):
     return day
 
 
-def build(report,day,*,category_type='industry',second_id=None,third_id=None,audience=None,target=3):
+def build(report,day,*,category_type='industry',second_id=None,third_id=None,audience=None,target=3,period='day'):
     historical_day(day)
     if report not in ROUTES:raise ValueError('未登记的类目或用户只读接口。')
     if category_type not in ('industry','shop'):raise ValueError('类目类型必须为industry或shop。')
@@ -39,6 +39,10 @@ def build(report,day,*,category_type='industry',second_id=None,third_id=None,aud
     path,page=ROUTES[report]
     if report.startswith('category-'):
         params={'dateType':'day','date':day,'startDate':day,'endDate':day,'categoryType':1 if category_type=='industry' else 0}
+        if period!='day':
+            if period!='week' or report!='category-summary':raise ValueError('类目周查询仅支持汇总。')
+            from .user_periods import period_params
+            params.update(period_params(day,period))
         if report=='category-trend':
             if category_type=='shop' and third_id is None:raise ValueError('店铺趋势必须传入汇总行的官方三级ID；上级汇总行也须照原值传入，例如999999，不能省略为空。')
             if not isinstance(second_id,str) or not re.fullmatch(r'\d+',second_id):raise ValueError('趋势必须指定已核验的官方二级类目ID。')
@@ -69,7 +73,7 @@ def validate_params(report,params):
     day=params.get('endDate')
     _,expected=build(report,day,category_type={0:'shop',1:'industry'}.get(params.get('categoryType'),'industry'),
         second_id=params.get('secondIndId'),third_id=params.get('thirdIndId') or None,
-        audience=params.get('assetsCustType') if report=='user-assets' else params.get('custType'),target=params.get('target',3))
+        audience=params.get('assetsCustType') if report=='user-assets' else params.get('custType'),target=params.get('target',3),period=params.get('dateType','day') if report.startswith('category-') else 'day')
     if params!=expected:raise ValueError('请求参数超出已核实的单日/近30天只读范围。')
     return params
 
@@ -275,7 +279,7 @@ def report_limitations(command,query_options=None):
         period={'day':'单日'}.get((query_options or {}).get('period','day'),(query_options or {}).get('period'))
         return ['按官方原生'+period+'口径请求；周/月仅完整自然周期，自定义最多31天，不累加日去重指标。趋势实际范围认返回数据。','画像及品牌偏好为官方聚合统计；榜单和商品表可能有官方数量上限，不代表全店商品全集。']+common
     if command.startswith('category-'):
-        return ['类目汇总按所选日请求；趋势实际返回窗口见coverage。店铺类目可能重叠，不能简单加总代替全店去重指标。']+common
+        return ['类目汇总周期以各段params.dateType/startDate/endDate为准，支持完整日及完整自然周；趋势实际返回窗口见coverage。店铺类目可能重叠，不能简单加总代替全店去重指标。']+common
     return ['消费者资产为所选日快照；用户运营数据为截止所选日近30天，不能当单日数据或跨日累计。']+common
 
 
@@ -322,7 +326,7 @@ def main(argv):
         filters={'--category-type','--second-id','--third-id','--section','--audience','--target','--module','--channel','--feature','--compare','--segment','--page','--all-pages','--first-channel-id','--second-channel-id','--rights-type','--period','--start-date','--intimacy','--audience-name','--reach-sys','--reach-status','--behaviour'}
         filters.update({'--self-shop-id','--compete1-shop-id','--compete2-shop-id'})
         if args.evidence and explicit&filters:raise ValueError('证据重放不能同时指定新筛选参数。')
-        allowed=({'--category-type'} if args.command=='category-analysis' else {'--category-type','--second-id','--third-id'} if args.command=='category-trend' else {'--section','--audience','--target'} if args.command=='user-detail' else filters-{'--category-type','--audience','--target'} if args.command=='user-analysis' else set())
+        allowed=({'--category-type','--period'} if args.command=='category-analysis' else {'--category-type','--second-id','--third-id'} if args.command=='category-trend' else {'--section','--audience','--target'} if args.command=='user-detail' else filters-{'--category-type','--audience','--target'} if args.command=='user-analysis' else set())
         if (explicit&filters)-allowed:raise ValueError('该命令不接受所提供的筛选参数。')
         if args.command=='user-detail' and args.section=='trend' and '--target' in explicit:
             raise ValueError('运营趋势不接受target；比较目标仅适用于conversion/products。')
@@ -391,7 +395,7 @@ def main(argv):
                 specs=analysis_specs(day=args.date,**query_options)
             elif args.command.startswith('category-'):
                 report='category-summary' if args.command=='category-analysis' else 'category-trend'
-                _,params=build(report,args.date,category_type=args.category_type,second_id=args.second_id,third_id=args.third_id);specs=[(report,params)]
+                _,params=build(report,args.date,category_type=args.category_type,second_id=args.second_id,third_id=args.third_id,period=args.period);specs=[(report,params)]
             else:
                 specs=[('user-dates',{})]
                 if args.command=='user-overview':
@@ -414,6 +418,7 @@ def main(argv):
                     if any(ANALYSIS_CONTRACTS.get(key,{}).get('min_extension')=='0.9.25' for key,p in specs):minimum='0.9.25'
                     if any(ANALYSIS_CONTRACTS.get(key,{}).get('min_extension')=='0.9.26' for key,p in specs):minimum='0.9.26'
                     if any(ANALYSIS_CONTRACTS.get(key,{}).get('min_extension')=='0.9.27' for key,p in specs):minimum='0.9.27'
+                if args.command=='category-analysis' and args.period=='week':minimum='0.9.41'
                 with APIClient({'platform':'jd','store_key':args.store},min_extension=minimum) as client:
                     for report,params in specs:
                         raw,proof=client.request('shop-insights',args.date,scope={'report':report,'params':params});requests+=1

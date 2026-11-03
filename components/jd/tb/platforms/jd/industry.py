@@ -28,7 +28,7 @@ METRICS=[
     'fo_jdr_sch_industry_deal_rate','fo_jdr_sch_trade_deal_ord_amt_user_sz_trade_deal_snapshot']
 
 
-def build_request(options,kind,day,*,category,channel='all',business='pop',dimension='spu'):
+def build_request(options,kind,day,*,category,channel='all',business='pop',dimension='spu',period='day',end_date=None,compare='hb'):
     if kind not in ('overview','products','shops'):raise ValueError('未登记行业查询类型。')
     if options.get('header',{}).get('code')!=0:raise ValueError('官方筛选选项失败。')
     rows=options.get('body',{}).get('data')
@@ -46,11 +46,27 @@ def build_request(options,kind,day,*,category,channel='all',business='pop',dimen
             visit(node.get('children') or [],p)
     visit(dims.get('saleOrdCate',{}).get('dimVals',[]),[])
     if len(hits)!=1 or len(hits[0])>2 or any(r.get('disabled') for r in hits[0]):raise ValueError('官方类目不存在、不唯一或不可选；请用industry-options中的精确ID。')
-    path=hits[0];prior=(date.fromisoformat(day)-timedelta(days=1)).isoformat()
-    body={'startDate':day,'endDate':day,'compareStartDate':prior,'compareEndDate':prior,
-        'compareType':'hb','dateType':'day','interval':'DAY','realtime':False,
+    path=hits[0];parsed=date.fromisoformat(day)
+    if period not in ('day','week') or compare not in ('hb','tb'):raise ValueError('周期或比较类型无效。')
+    end=parsed if period=='day' else parsed+timedelta(days=6)
+    if end_date is not None and end_date!=end.isoformat():raise ValueError('结束日期与完整周期不符。')
+    if period=='week':
+        if parsed.weekday()!=0:raise ValueError('周榜起始日必须为周一。')
+        times=[x for x in dims.get('time',{}).get('dimVals',[]) if x.get('code')=='week' and not x.get('disabled')]
+        if len(times)!=1 or compare not in times[0].get('compares',[]):raise ValueError('官方未提供该周榜或比较方式。')
+        if (times[0].get('min') and day<times[0]['min']) or (times[0].get('max') and end.isoformat()>times[0]['max']):raise ValueError('统计周超出官方可选范围。')
+    if compare=='hb':prior=parsed-timedelta(days=7 if period=='week' else 1)
+    elif period=='week':prior=parsed-timedelta(days=364)
+    else:
+        try:prior=parsed.replace(year=parsed.year-1)
+        except ValueError:prior=parsed.replace(year=parsed.year-1,day=28)
+    prior_end=prior+(end-parsed)
+    metrics=[x for x in METRICS if not (period=='week' and x==METRICS[5])]
+    if kind=='overview' and period=='week':metrics.append('jdr_sch_sku_add_cart_sku_user_qtty_product_user_cart_add_minus_sz_bsg_shoppingcart@increase')
+    body={'startDate':day,'endDate':end.isoformat(),'compareStartDate':prior.isoformat(),'compareEndDate':prior_end.isoformat(),
+        'compareType':compare,'dateType':period,'interval':'DAY','realtime':False,
         'saleOrdCate2':path[0]['value'],'popBusiness':choose('popBusiness',business),'channel':choose('channel',channel),
-        'indicators':[x+y for x in METRICS for y in ('','##compare','##compareValue')] if kind=='overview' else list(METRICS)}
+        'indicators':[x+y for x in metrics for y in ('','##compare','##compareValue')] if kind=='overview' else metrics}
     if len(path)==2:body['saleOrdCate3']=path[1]['value']
     if kind!='overview':body.update(rankTab='hot',sortField=METRICS[0],sortOrder='desc')
     if kind=='products':
@@ -58,9 +74,19 @@ def build_request(options,kind,day,*,category,channel='all',business='pop',dimen
         body['skuSpuType']=dimension
     if kind=='shops':body.update(onlySelf='0',onlyMonitor='0')
     validate_request(body)
-    return body,{'category_path':[r['label'] for r in path],'category_ids':[str(r['value']) for r in path],
+    scope={'category_path':[r['label'] for r in path],'category_ids':[str(r['value']) for r in path],
         'channel':body['channel'],'business':body['popBusiness'],'ranking':'hot' if kind!='overview' else None,
-        'dimension':dimension if kind=='products' else None,'date_scope':'single_complete_day'}
+        'dimension':dimension if kind=='products' else None,'date_scope':'single_complete_day' if period=='day' else 'complete_week'}
+    if period=='week':scope.update(period=period,start_date=day,end_date=end.isoformat(),compare_type=compare,compare_start_date=prior.isoformat(),compare_end_date=prior_end.isoformat(),unavailable_metrics=[METRICS[5]])
+    return body,scope
+
+
+def weekly_shop_coverage(result):
+    rows=result['rows']; ids=[str(r.get('shopId') or '') for r in rows]
+    ranks=[r.get('rank') for r in rows]
+    if any(not value for value in ids) or len(set(ids))!=len(ids):raise ValueError('周榜缺少店铺ID或存在重复店铺。')
+    if ranks!=list(range(1,len(rows)+1)):raise ValueError('周榜排名不连续。')
+    return {'unique_shop_count':len(set(ids)),'ranks_contiguous':True,'returned_ranking_complete':not result['coverage']['output_truncated']}
 
 
 def validate_request(body,*,today=None):
@@ -119,7 +145,10 @@ def main(argv):
     from shopdate_workflows.evidence import read_evidence,write_evidence,save_json
     parser=argparse.ArgumentParser(description='京东行业只读查询。日期＋官方类目名称/ID查询大盘、热销商品榜和店铺榜；原始区间值不解码。')
     parser.add_argument('command',choices=list(ROUTES))
-    parser.add_argument('--date',required=True,help='目标完整历史日；请求startDate必须一致')
+    parser.add_argument('--date',required=True,help='目标完整历史日；周榜指定周一；请求startDate必须一致')
+    parser.add_argument('--period',choices=['day','week'],default='day',help='默认day保持原调用；week支持大盘、商品榜和店铺榜完整自然周')
+    parser.add_argument('--end-date',help='可选：day须与date一致；week须为同周周日')
+    parser.add_argument('--compare',choices=['hb','tb'],default='hb',help='默认环比hb；tb为同比，周榜对齐52周前的周一至周日')
     parser.add_argument('--store',required=True,help='精确jd:mall:...')
     parser.add_argument('--request-file',help='高级模式：纯官方查询JSON请求体，不含认证头/Cookie；不能与category混用')
     parser.add_argument('--category',help='官方类目精确名称或ID，重名必须使用ID')
@@ -135,7 +164,7 @@ def main(argv):
         day=date.fromisoformat(args.date)
         if day.isoformat()!=args.date or args.date>=datetime.now(timezone(timedelta(hours=8))).date().isoformat():raise ValueError('必须使用完整历史日。')
         if args.evidence and args.request_file:raise ValueError('离线重放不能混用新请求文件。')
-        filter_flags={x.split('=',1)[0] for x in argv}&{'--category','--channel','--business','--dimension'}
+        filter_flags={x.split('=',1)[0] for x in argv}&{'--category','--channel','--business','--dimension','--period','--end-date','--compare'}
         if (args.evidence or args.request_file) and filter_flags:
             raise ValueError('证据重放或请求文件不能同时指定category/channel/business/dimension；筛选范围只能有一个来源。')
         request_count=0;query_scope=None;options_proof=None;options=None
@@ -157,7 +186,8 @@ def main(argv):
                 if args.category and args.command!='industry-options':
                     options,options_proof=client.request('industry-options',args.date);request_count+=1
                     request,query_scope=build_request(options,args.command.removeprefix('industry-'),args.date,
-                        category=args.category,channel=args.channel,business=args.business,dimension=args.dimension)
+                        category=args.category,channel=args.channel,business=args.business,dimension=args.dimension,
+                        period=args.period,end_date=args.end_date,compare=args.compare)
                 raw,proof=client.request(args.command,args.date,scope={'request':request} if request is not None else None)
                 request_count+=1
             payload={'platform':'jd','store_key':args.store,'date':args.date,'command':args.command,'response':raw,'proof':proof,
@@ -166,6 +196,11 @@ def main(argv):
             evidence=folder/'evidence.json';write_evidence(evidence,payload)
         verify_proof(proof,args.command,args.date,args.store)
         result=normalize(raw,args.command.removeprefix('industry-'),limit=args.limit)
+        request=proof.get('request_body') or {}
+        if args.command=='industry-shops' and request.get('dateType')=='week':
+            start=date.fromisoformat(request['startDate']);end=date.fromisoformat(request['endDate'])
+            if start.weekday()!=0 or end-start!=timedelta(days=6):raise ValueError('周榜请求不是完整自然周。')
+            result['coverage'].update(weekly_shop_coverage(result))
         folder=Path(__file__).resolve().parents[3]/'data/industry'/args.store.replace(':','_')/args.date/(datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')+'-'+uuid4().hex[:8])
         report={'platform':'jd','store_key':args.store,'date':args.date,'command':args.command,
             'status':'partial','query_status':'ok','verification':'read_interface_verified; metrics retain official coverage and disclosure limits',

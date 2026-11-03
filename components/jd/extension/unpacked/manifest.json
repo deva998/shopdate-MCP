@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "shopdate-cli 数据桥",
   "short_name": "shopdate-cli",
-  "version": "0.9.40",
+  "version": "0.9.44",
   "description": "共用数据桥：生意参谋保持原只读功能；京东商智通过原生网页响应取数，支持平台与店铺身份核验。",
   "minimum_chrome_version": "116",
   "permissions": [
@@ -13,6 +13,7 @@
     "declarativeNetRequestWithHostAccess"
   ],
   "host_permissions": [
+    "https://g.alicdn.com/*",
     "https://*.taobao.com/*",
     "https://*.tmall.com/*",
     "https://*.tmall.hk/*",

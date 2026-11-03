@@ -22,13 +22,22 @@ METRICS = [
 ]
 
 
-def make_request(template, day):
+def make_request(template, day, *, period='day', compare='hb'):
     selected = date.fromisoformat(day)
     if selected.isoformat() != day:
         raise ValueError('日期格式应为 YYYY-MM-DD。')
     result = copy.deepcopy(template)
     previous = (selected - timedelta(days=1)).isoformat()
     result.update(startDate=day, endDate=day, compareStartDate=previous, compareEndDate=previous)
+    if period not in ('day','week') or compare not in ('hb','tb'):raise ValueError('周期或比较方式无效。')
+    if period=='week':
+        if selected.weekday()!=0:raise ValueError('完整自然周须周一开始。')
+        end=selected+timedelta(days=6)
+        from datetime import datetime,timezone
+        if end>=datetime.now(timezone(timedelta(hours=8))).date():raise ValueError('仅支持已结束的完整自然周。')
+        prior=selected-timedelta(days=364 if compare=='tb' else 7)
+        result.update(dateType='week',interval='DAY',compareType=compare,endDate=end.isoformat(),compareStartDate=prior.isoformat(),compareEndDate=(prior+timedelta(days=6)).isoformat())
+    elif compare!='hb':raise ValueError('单日调用保留原前一日比较。')
     return result
 
 
@@ -64,8 +73,8 @@ def summarize(payload, request, source='unknown', request_timestamp=None):
                             change_pp=round((value - previous) * 100, 8) if unit == '%' and value is not None and previous is not None else None))
     if not any(m['value'] is not None for m in metrics):
         raise ValueError('所有已映射指标均缺失，停止生成分析。')
-    return dict(date=request['startDate'], compare_date=request['compareStartDate'], channel='全部',
-                compare_type='前一日环比', shop='请在商智页面人工确认当前店铺', source=source,
+    return dict(date=request['startDate'], end_date=request.get('endDate',request['startDate']), compare_date=request['compareStartDate'], compare_end_date=request.get('compareEndDate',request['compareStartDate']), period=request.get('dateType','day'), channel='全部',
+                compare_type=('52周前同期' if request.get('compareType')=='tb' else '前一周环比') if request.get('dateType')=='week' else '前一日环比', shop='请在商智页面人工确认当前店铺', source=source,
                 request_timestamp=request_timestamp, metrics=metrics, **data_quality(metrics),
                 missing_metrics=[m['name'] for m in metrics if m['value'] is None],
                 definitions='成交金额沿用京东页面口径，不改称支付金额或净销售额；转化率沿用接口原值；相对变化采用接口值，百分点差单独计算。')
@@ -80,6 +89,10 @@ def formatted(value, unit):
 
 
 def markdown(report):
+    if report.get('period')=='week':
+        lines=['# 京东商智 · 店铺周交易概况','',f"统计区间：{report['date']}—{report['end_date']}；比较区间：{report['compare_date']}—{report['compare_end_date']}（{report['compare_type']}）。",f"数据状态：{report['data_status']}；来源：{report['source']}。",'', '| 指标 | 本周 | 比较周 |','|---|---:|---:|']
+        for m in report['metrics']:lines.append(f"| {m['name']} | {formatted(m['value'],m['unit'])} | {formatted(m['previous'],m['unit'])} |")
+        return '\n'.join(lines+['','原生周汇总，未累加日去重人数。',report['definitions'],''])
     quality=data_quality(report['metrics'])
     lines = ['# 京东商智 · 店铺交易概况', '',
              f"统计日期：{report['date']}；对比日期：{report['compare_date']}；渠道：全部；前一日环比。",

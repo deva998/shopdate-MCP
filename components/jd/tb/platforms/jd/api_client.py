@@ -96,6 +96,10 @@ def make_job(key,day,identity,*,task=None,dimension=None,scope=None):
     if key in ('overview','export-submit','traffic-level1','traffic-level2','traffic-tree'):
         template=contracts['traffic-level1' if key=='traffic-tree' else key if key!='export-submit' else 'products-'+dimension]['template']
         body={**template,'startDate':day,'endDate':day,'compareStartDate':(parsed-timedelta(days=1)).isoformat(),'compareEndDate':(parsed-timedelta(days=1)).isoformat()}
+        if key=='overview' and scope is not None:
+            if set(scope)!={'period','compare'} or scope['period']!='week':raise ValueError('概况周期范围无效。')
+            from .overview import make_request
+            body=make_request(template,day,period=scope['period'],compare=scope['compare'])
         if key=='export-submit':body.update(trendType=None,cmpFlag=0);job['export_dimension']=dimension
         if key=='traffic-tree':
             if not isinstance(scope,dict) or set(scope)!={'level','parents','page'} or type(scope['level']) is not int or not 1<=scope['level']<=4 or type(scope['page']) is not int or not 1<=scope['page']<=1000 or not isinstance(scope['parents'],list) or len(scope['parents'])!=scope['level']-1 or any(not isinstance(value,str) or not re.fullmatch(r'[A-Za-z0-9_]{1,32}',value) for value in scope['parents']):raise ValueError('来源树范围无效')
@@ -249,10 +253,10 @@ class APIClient:
         return payload,proof
 
 
-def capture_api(key,day,store,*,client=None):
+def capture_api(key,day,store,*,client=None,scope=None):
     if client is None:
-        with APIClient({'platform':'jd','store_key':store}) as active:return capture_api(key,day,store,client=active)
-    payload,proof=client.request(key,day)
+        with APIClient({'platform':'jd','store_key':store},min_extension='0.9.41' if scope else '0.8.2') as active:return capture_api(key,day,store,client=active,scope=scope)
+    payload,proof=client.request(key,day,scope=scope) if scope is not None else client.request(key,day)
     text=client.last_response_text
     if not isinstance(text,str) or hashlib.sha256(text.encode()).hexdigest()!=proof['response_sha256']:raise ValueError('接口正文与证据哈希不符')
     return {'text':text,'status':200,'identity':proof['identity'],'source':'registered-api','transport':'registered-api',

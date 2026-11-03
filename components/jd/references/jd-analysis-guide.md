@@ -181,6 +181,15 @@ category-analysis --date YYYY-MM-DD --category-type industry（或shop）读取�
 ### 剩余缺口
 今日实时类目未接入；趋势非任意自定义全量窗口。京东广告暂缓，类目广告花费SOB和广告费率无数据来源，不得用销售SOB代替。
 
+## 原生自然周汇总补充（2026-11-02在线核验）
+
+状态：partial
+
+- `shop-overview --date 周一 --period week --compare hb/tb`：官方本店周交易概况，返回明确起止日及比较区间；tb对齐52周前周一至周日。周UV与成交客户来自原生周汇总，不能用日数据相加替代。省略period仍保留原完整日调用。
+- `category-analysis --date 周日 --category-type industry --period week`：本店行业分类完整自然周汇总，取所需父类金额时按官方CategoryName/ID匹配，不加总重叠类目。
+- `industry-overview --date 周一 --period week --compare tb --category 官方类目`：完整周行业大盘，POP/全部渠道默认保持；已验女装、男装、童装、运动服饰的GMV披露状态、UV、加购客户及同比。区间原样保留，GMV未披露填缺失，不能解码中点。
+- 新周概况/类目需要数据桥0.9.41。该能力独立于原按日汇总的weekly-review工作流，不表示终端周去重、任意自定义区间或其他周期全部接通。接口返回通用字段，周报模板由技能处理。
+
 ## 用户与会员分析
 
 状态：partial
