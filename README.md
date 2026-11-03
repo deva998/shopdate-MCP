@@ -143,14 +143,9 @@ Mac 安装脚本已提供，实机验证仍待完成；客户端兼容性范围�
 
 有想法、有需求，欢迎加微信找我，并注明来意。想要帮你装好、按你的需求定制，也可以直接问。
 
--微信：扫下方二维码加好友
+-邮箱：vikk328327@gmail.com
 
--X / Twitter：@Amber0880
-
-
-<img width="340" height="433" alt="微信二维码 (1)" src="https://github.com/user-attachments/assets/699abd5a-530c-4238-8b9c-1fcff7291025" />
-
-
+-X：@Amber0880
 
 如果这个工具帮到了你，欢迎给个 ⭐️。
 
