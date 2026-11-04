@@ -1,6 +1,4 @@
-# 上游与发布改动
-
-京东与阿里实现基于 Rakel 的 sycm-cli，原作者版权与 MIT 许可证保留于根目录 LICENSE 及两份组件源码目录。上游地址：https://github.com/rakei076/sycm-cli 。本发布包含本地定制增量，不声称与上游当前分支完全一致。
+# 发布改动
 
 Python 第三方库通过 requirements.txt 安装，不随源码包携带已安装环境。其许可证由各自发行包提供。Chrome 数据桥 manifest 中的公开公钥用于固定扩展 ID，不是登录凭据或私钥。
 
