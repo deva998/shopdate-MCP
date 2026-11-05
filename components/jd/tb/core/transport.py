@@ -135,7 +135,7 @@ def make_client(plat: Platform) -> Client:
     if bridge.version_tuple(got) < bridge.version_tuple(need):
         server.stop()
         msg = f"浏览器里的取数桥插件太旧（{got or '0.3.0 或更早'}），需要 {need} 以上。"
-        how = "在 chrome://extensions 里移除旧的取数桥，再按 extension/README.md 加载本工具自带的 extension/unpacked。"
+        how = "按发布根目录 extension/README.md 核对并更新共用数据桥，先保留已有插件及账号存储。"
         raise TbError(msg, stage="连接插件", hint=how)
     try:
         _seen_marker().parent.mkdir(parents=True, exist_ok=True)

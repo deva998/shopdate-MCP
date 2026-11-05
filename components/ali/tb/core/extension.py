@@ -91,8 +91,8 @@ def status(found: list[Installed]) -> tuple[bool, str]:
     where = f"{x.browser} · {x.profile}"
     if x.path and x.version is None:
         return False, (f"取数桥插件（{where}）当初加载的文件夹不见了：{x.path}。"
-                       "在 chrome://extensions 移除它，再加载本工具自带的 extension/unpacked。")
+                       "按发布根目录 extension/README.md 核对插件目录和版本；不要直接卸载已有账号存储的插件。")
     if not x.enabled:
         return False, f"取数桥插件（{where}）被停用了：在 chrome://extensions 里把它的开关打开。"
     return False, (f"取数桥插件（{where}）版本是 {x.version or '旧版'}，需要 {MIN_EXTENSION_VERSION} 以上："
-                   "在 chrome://extensions 移除旧的，再加载本工具自带的 extension/unpacked。")
+                   "按发布根目录 extension/README.md 更新插件目录和版本；先保留已有插件及账号存储。")

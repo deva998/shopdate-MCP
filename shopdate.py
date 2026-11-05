@@ -21,7 +21,7 @@ def main():
     os.environ.setdefault('TB_STATE_ROOT',str(ROOT/'.local/state'))
     os.environ['SYCM_MODE']='extension'
     os.environ['ALIMAMA_MODE']='extension'
-    info=json.loads((ROOT/'components/jd/bridge-config.json').read_text(encoding='utf-8'))
+    info=json.loads((ROOT/'extension/bridge-config.json').read_text(encoding='utf-8'))
     for prefix in ('JD','JD_STORES','SYCM','ALIMAMA','TB_ACCOUNT','TB_STORES'):
         os.environ[prefix+'_ONLY_EXTENSION_IDS']=info['extension_id']
     source=ROOT/'components/jd'

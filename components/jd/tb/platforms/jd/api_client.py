@@ -1,4 +1,5 @@
 """Registered browser-session API requests. No credentials leave the browser."""
+from ...runtime import extension_dir
 from dataclasses import replace
 from datetime import date,datetime,timedelta,timezone
 import hashlib,json,re,time,uuid
@@ -20,7 +21,7 @@ def request_headers(path,*,timestamp=None,request_id=None):
 
 
 def make_job(key,day,identity,*,task=None,dimension=None,scope=None):
-    contracts=json.loads((ROOT/'extension/unpacked/report-contracts.json').read_text(encoding='utf-8'))
+    contracts=json.loads((extension_dir()/'report-contracts.json').read_text(encoding='utf-8'))
     parsed=date.fromisoformat(day)
     if parsed.isoformat()!=day:raise ValueError('日期格式应为YYYY-MM-DD')
     if identity.get('platform')!='jd' or not re.fullmatch(r'jd:mall:\d+',identity.get('store_key','')):raise ValueError('必须指定京东店铺')

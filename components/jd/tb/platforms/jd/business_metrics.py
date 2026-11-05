@@ -1,10 +1,11 @@
 """Fixed marketing OneService datasets; share verified structural parser only."""
+from ...runtime import extension_dir
 from datetime import date,datetime,timedelta,timezone
 import json,re
 from pathlib import Path
 from uuid import uuid4
 
-CONTRACTS=json.loads((Path(__file__).resolve().parents[3]/'extension/unpacked/business-metric-contracts.json').read_text('utf-8'))
+CONTRACTS=json.loads((extension_dir()/'business-metric-contracts.json').read_text('utf-8'))
 
 
 def params(report,day,*,snapshot=None,archive=False):

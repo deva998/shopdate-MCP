@@ -1,4 +1,5 @@
 """Official tagged-new-product lists; never infer first listing date."""
+from ...runtime import extension_dir
 from datetime import date,datetime,timezone
 import copy,hashlib,json,re,uuid
 from .api_client import ROOT,APIClient
@@ -8,7 +9,7 @@ PAGE='https://jdsz.jd.com/szweb/view/product/mark-new-product-temp.html'
 
 def make_body(day,dimension,page):
     if date.fromisoformat(day).isoformat()!=day or dimension not in ('sku','spu') or type(page) is not int or not 1<=page<=1000:raise ValueError('新品日期、维度或页码无效')
-    templates=json.loads((ROOT/'extension/unpacked/new-product-contracts.json').read_text(encoding='utf-8'))
+    templates=json.loads((extension_dir()/'new-product-contracts.json').read_text(encoding='utf-8'))
     body=copy.deepcopy(templates[dimension])
     for item in body['filterList']:
         if item['propertyName']=='dt':item['values']=[day]

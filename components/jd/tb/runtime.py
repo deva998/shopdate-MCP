@@ -4,9 +4,14 @@ import os
 from pathlib import Path
 
 
+def extension_dir():
+    """Shared release-root Chrome extension; independent of current directory."""
+    return Path(__file__).resolve().parents[3]/'extension'
+
+
 def configure():
     root=Path(__file__).resolve().parent.parent
-    info=json.loads((root/'bridge-config.json').read_text(encoding='utf-8'))
+    info=json.loads((extension_dir()/'bridge-config.json').read_text(encoding='utf-8'))
     for prefix in ('SYCM','TB_ACCOUNT','TB_STORES','JD','JD_STORES'):
         os.environ[prefix+'_ONLY_EXTENSION_IDS']=info['extension_id']
     os.environ.setdefault('TB_STATE_ROOT',str(root/'.runtime'))

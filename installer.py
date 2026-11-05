@@ -23,7 +23,7 @@ def source_roots(root):
 
 def generate_configs(root, python, platform=None):
     root, python = Path(root).resolve(), Path(python).resolve()
-    extension = json.loads((ROOT/'components/jd/bridge-config.json').read_text(encoding='utf-8'))['extension_id']
+    extension = json.loads((ROOT/'extension/bridge-config.json').read_text(encoding='utf-8'))['extension_id']
     env = {'PYTHONUTF8': '1', 'PYTHONIOENCODING': 'utf-8',
            'PYTHONDONTWRITEBYTECODE': '1', 'TB_STATE_ROOT': str(root/'.local/state'),
            'SYCM_MODE': 'extension', 'ALIMAMA_MODE': 'extension'}
@@ -164,7 +164,7 @@ def main(argv=None):
             run([python,ROOT/'shopdate.py',route,'mcp','--check'])
         folder=export_configs(ROOT,python,sys.platform,args.client)
         print('MCP_CONFIG_EXPORT='+str(folder),flush=True)
-        print('CHROME_EXTENSION='+str(ROOT/'components/jd/extension/unpacked'),flush=True)
+        print('CHROME_EXTENSION='+str(ROOT/'extension'),flush=True)
         print('No Agent settings changed. See README.md for manual merge and Chrome loading.')
         return 0
     except (ValueError, OSError, subprocess.CalledProcessError) as error:

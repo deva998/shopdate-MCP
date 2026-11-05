@@ -1,9 +1,10 @@
 """Fixed OneService user statistics, through the existing registered bridge."""
+from ...runtime import extension_dir
 from copy import deepcopy
 import json,re,uuid
 from pathlib import Path
 
-CONTRACTS=json.loads((Path(__file__).resolve().parents[3]/'extension/unpacked/user-metric-contracts.json').read_text(encoding='utf-8'))
+CONTRACTS=json.loads((extension_dir()/'user-metric-contracts.json').read_text(encoding='utf-8'))
 TERMINAL_REPORTS=frozenset('analysis-benefits-comprehensive-products-sku-full-pages'+suffix for suffix in ('','-week','-month','-custom'))
 
 def make_body(report,params):

@@ -1,4 +1,5 @@
 """Single created-day order pages, projected to business fields in the browser."""
+from ...runtime import extension_dir
 from datetime import date,datetime,timedelta,timezone
 from decimal import Decimal,InvalidOperation
 from pathlib import Path
@@ -10,7 +11,7 @@ URL='https://sff.jd.com/api?v=1.0&appId=COCX0HBWR4BA7RDVDBIQ&api=dsm.order.bff.o
 
 def make_body(day,page=1):
     if date.fromisoformat(day).isoformat()!=day or type(page) is not int or not 1<=page<=1000:raise ValueError('订单日期或页码无效')
-    body=json.loads((ROOT/'extension/unpacked/order-template.json').read_text(encoding='utf-8'))
+    body=json.loads((extension_dir()/'order-template.json').read_text(encoding='utf-8'))
     body['request']['data'].update(orderCreateTimeBegin=day+' 00:00:00',orderCreateTimeEnd=day+' 23:59:59',current=page)
     return body
 

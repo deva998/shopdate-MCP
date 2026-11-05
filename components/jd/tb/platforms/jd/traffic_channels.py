@@ -1,4 +1,5 @@
 """Official terminal overview, deliberately separate from APP source attribution."""
+from ...runtime import extension_dir
 from datetime import date,datetime,timedelta,timezone
 from pathlib import Path
 import hashlib,json,re
@@ -8,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[3]
 PAGE='https://jdsz.jd.com/szweb/view/flow/flow-summary.html'
 
 def contract():
-    return json.loads((ROOT/'extension/unpacked/traffic-channel-contract.json').read_text(encoding='utf-8'))
+    return json.loads((extension_dir()/'traffic-channel-contract.json').read_text(encoding='utf-8'))
 
 def make_body(day,channel):
     selected=date.fromisoformat(day);spec=contract()

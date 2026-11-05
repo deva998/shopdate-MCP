@@ -22,7 +22,8 @@ def _plugin() -> int:
     from .core import extension
     import json
     from pathlib import Path
-    info=json.loads((Path(__file__).resolve().parent.parent/'bridge-config.json').read_text(encoding='utf-8'))
+    from .runtime import extension_dir
+    info=json.loads((extension_dir()/'bridge-config.json').read_text(encoding='utf-8'))
     found = extension.find_installed(ids=frozenset({info['extension_id']}))
     for x in found:
         print(f"· {x.browser} · {x.profile}：{'开着' if x.enabled else '停用'}，版本 {x.version or '读不到'}，文件夹 {x.path or '?'}")

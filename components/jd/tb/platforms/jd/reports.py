@@ -1,4 +1,5 @@
 """Registered native report contracts and bounded presentation."""
+from ...runtime import extension_dir
 import hashlib
 import json
 from pathlib import Path
@@ -7,7 +8,7 @@ from . import product_contract,traffic_contract
 ROOT=Path(__file__).resolve().parents[3]
 
 def contracts():
-    return json.loads((ROOT/'extension/unpacked/report-contracts.json').read_text(encoding='utf-8'))
+    return json.loads((extension_dir()/'report-contracts.json').read_text(encoding='utf-8'))
 
 def save(result,request,key):
     payload=json.loads(result['text'])

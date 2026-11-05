@@ -28,7 +28,7 @@ from urllib.parse import parse_qs, urlencode, urlsplit
 from .platform import Platform
 
 DEFAULT_PORT_RANGE = (47831, 47840)
-# 一个插件服务所有平台，所以插件 ID 只在这里登记一次。DEV_EXTENSION_ID = 随交付包发的 extension/unpacked（带固定公钥）；
+# 一个插件服务所有平台，所以插件 ID 只在这里登记一次。DEV_EXTENSION_ID = 随交付包发的 发布根目录 extension/（带固定公钥）；
 # STORE_EXTENSION_ID = Chrome 网上应用店分配的（从商店安装的都是这个）。临时加 ID：环境变量 <PREFIX>_EXTENSION_IDS（逗号分隔）。
 DEV_EXTENSION_ID = "gifdenhgccikkfbodclkdbohicghfhco"
 STORE_EXTENSION_ID = "ecahndljpkaakkjofejgcjnikikcemni"
@@ -96,7 +96,7 @@ def allowed_ids(plat: Platform) -> set[str]:
 def _dev_build() -> str | None:
     """开发时：extension/dist/BUILD 里是最新构建号；交付包里没有这个文件，就不报。"""
     from pathlib import Path
-    f = Path(__file__).resolve().parents[2] / "extension" / "dist" / "BUILD"
+    f = Path(__file__).resolve().parents[4] / "extension" / "dist" / "BUILD"
     try:
         return f.read_text().strip() or None
     except OSError:

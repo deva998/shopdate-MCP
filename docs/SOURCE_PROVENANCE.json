@@ -1,5 +1,5 @@
 {
-  "release": "v1.1.1",
+  "release": "v1.2.0",
   "upstream": {
     "url": "https://github.com/rakei076/sycm-cli",
     "license": "MIT",
@@ -467,171 +467,171 @@
       "source_sha256": "5de2c0743dcd089b29742e7eba03a116c851976d55d346ca536a8275bad17ed2"
     },
     {
-      "path": "components/jd/extension/unpacked/accounts.js",
+      "path": "extension/accounts.js",
       "source_sha256": "bd0406d2db5d46f84dc086b3c51f00b11e13f3bb1c2766f6e180ec699e4a6a0f"
     },
     {
-      "path": "components/jd/extension/unpacked/background.js",
+      "path": "extension/background.js",
       "source_sha256": "65af003a7911a44bc6ca5caee39e7d157a5e3e3b27c54aab6b810e8d2db38c10"
     },
     {
-      "path": "components/jd/extension/unpacked/business-metric-contracts.json",
+      "path": "extension/business-metric-contracts.json",
       "source_sha256": "4e48349bf94fafb7f4927d67b5ee1a3eb996ede0385beb26750fa7a0fcc7555f"
     },
     {
-      "path": "components/jd/extension/unpacked/content.js",
+      "path": "extension/content.js",
       "source_sha256": "4fecf906bea6b0dc6a5912126dfe47efbeee501103384b765b3ebe99aca98a55"
     },
     {
-      "path": "components/jd/extension/unpacked/icons/128.png",
+      "path": "extension/icons/128.png",
       "source_sha256": "8438498e18a524c40c1539cb7a6759d92201591b534ad0d6a274fbcf99827a4d"
     },
     {
-      "path": "components/jd/extension/unpacked/icons/16.png",
+      "path": "extension/icons/16.png",
       "source_sha256": "c261e14101f3e45f1127e2ae40ee7156ff84315095f5996d17d4d820afa1a69e"
     },
     {
-      "path": "components/jd/extension/unpacked/icons/48.png",
+      "path": "extension/icons/48.png",
       "source_sha256": "8bd39d5d8297d0613a19a7eecd6a993333e3f0d7da14d12cc97332424545c0e3"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-accounts.js",
+      "path": "extension/jd-accounts.js",
       "source_sha256": "ab624b2a84d7f46842d67e1bad63b053ea89dbaca51a3228353229ad4b196c6f"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-aftersales.js",
+      "path": "extension/jd-aftersales.js",
       "source_sha256": "d82e6e038a848a0a0e55d1eb323c547e689ce7ba685b6591b9bed414a454d45d"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-api-probe.js",
+      "path": "extension/jd-api-probe.js",
       "source_sha256": "ac968482da4af6ac5250a8722404063c8d72c4f17711b62e529a8785fc8d450e"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-auto.js",
+      "path": "extension/jd-auto.js",
       "source_sha256": "2009fd5d149e6386d710ab1e2d871e335898f28d3fb28c17e5a005b00ce49596"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-business-stats.js",
+      "path": "extension/jd-business-stats.js",
       "source_sha256": "6ec165640999dcc9b4926227df5b50f16268bdc113fb9f5e5e02e168356ba017"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-devtools.html",
+      "path": "extension/jd-devtools.html",
       "source_sha256": "745617a6e07b5ddbc5f9f14e66462cf4ea06d99de90c9b2018cad1cdf4dbe9fc"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-devtools.js",
+      "path": "extension/jd-devtools.js",
       "source_sha256": "ce084d5edcbd61c01cc2410a282e1e4991d6df1c0660826ce385d7fb26e4d14b"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-dimension.js",
+      "path": "extension/jd-dimension.js",
       "source_sha256": "11dbcc7bd7b5b7d5bfb78edc1b1012163d4d92de1877aed2db9ce7df18d7ff4f"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-discovery.html",
+      "path": "extension/jd-discovery.html",
       "source_sha256": "ff934d9705007b81ac7399a2895b87d17c27a4f476b9e1c19ca40dabcc02278f"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-discovery.js",
+      "path": "extension/jd-discovery.js",
       "source_sha256": "b30630e3d3a2d5e4115d9415971ed5b95830d68fcab3718b111c77c12b9060fe"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-export.js",
+      "path": "extension/jd-export.js",
       "source_sha256": "2d48e07dd243a9085fa5431547fc7c54c192e611d67449ebe7483e25364a3969"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-guard.js",
+      "path": "extension/jd-guard.js",
       "source_sha256": "eb5e8e752bf7d8a52d67fdc899c7c0dc2740546adeb93fdd0ffe6236949e3052"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-inventory.js",
+      "path": "extension/jd-inventory.js",
       "source_sha256": "914970bfa15c7ca9c398ef49596329e235d21891480076bdc00dd3f2fcde0092"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-native.js",
+      "path": "extension/jd-native.js",
       "source_sha256": "3d450249d66e09c514abb7775dbb0f6b5a0fd258cc31e070cd1ff26ed5d20d9f"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-orders.js",
+      "path": "extension/jd-orders.js",
       "source_sha256": "4a555b39f6dfbc639229229546703ee4deb74e4a778d3c1567e758769af6a447"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-panel.html",
+      "path": "extension/jd-panel.html",
       "source_sha256": "8037f36b8297eb7af0f0dbddbe8663d521f9b257563e601b6bd27363ffd8059d"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-panel.js",
+      "path": "extension/jd-panel.js",
       "source_sha256": "63e047fdcdca14287eccf60aaf5b3e30b235b3a4564b00141c39286b3f0f4cd0"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-query.js",
+      "path": "extension/jd-query.js",
       "source_sha256": "ec1f2482037b03fcea368e8fa12c0f494df655749b0d298220e849674cca91f0"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-sample-guard.js",
+      "path": "extension/jd-sample-guard.js",
       "source_sha256": "0165cb1f77642a6971e87337f0ffe0082da6ae1e139cc8a1ebca592454696e03"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-shop-insights.js",
+      "path": "extension/jd-shop-insights.js",
       "source_sha256": "8598340b4e39d7a4ae172a0764d254a07c811d2729a7a2b2773156455337b57f"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-stores-worker.js",
+      "path": "extension/jd-stores-worker.js",
       "source_sha256": "817750270b6e5aef078ff0fe03d46233a80def6f4cbe28f10e8e5ad7e02ec2ab"
     },
     {
-      "path": "components/jd/extension/unpacked/jd-worker.js",
+      "path": "extension/jd-worker.js",
       "source_sha256": "b86a69b9e60f8466c3b8940dae7a8d70cb65d75a64d8ad335e73904820df91cb"
     },
     {
-      "path": "components/jd/extension/unpacked/login-status.js",
+      "path": "extension/login-status.js",
       "source_sha256": "72dd691fa28f0f8ca24c4c28146760541e8995e4e4089f0b91155bdc1c111081"
     },
     {
-      "path": "components/jd/extension/unpacked/manifest.json",
+      "path": "extension/manifest.json",
       "source_sha256": "965fd3414c5effb6c69a1929d5526b07812d811920463f509c6914248f54b5e5"
     },
     {
-      "path": "components/jd/extension/unpacked/new-product-contracts.json",
+      "path": "extension/new-product-contracts.json",
       "source_sha256": "b3bac3fda089bc3af8cb83ea86df76684dbb1f3ee87f2ffeabe4242c36ca43f5"
     },
     {
-      "path": "components/jd/extension/unpacked/order-template.json",
+      "path": "extension/order-template.json",
       "source_sha256": "20b692ad631eefe271db1f81b636295fdd60c3a6bbd1e5f4e55595b3aafab728"
     },
     {
-      "path": "components/jd/extension/unpacked/popup.html",
+      "path": "extension/popup.html",
       "source_sha256": "23d0af4feaf73c1d8915723152daaac3240816fe96e535730cc9bf38eb4a35d2"
     },
     {
-      "path": "components/jd/extension/unpacked/popup.js",
+      "path": "extension/popup.js",
       "source_sha256": "7a251c537d906b2fcdec341188d4d0302a76e63a6ac219771954f216b4a6b8b4"
     },
     {
-      "path": "components/jd/extension/unpacked/realtime-contract.json",
+      "path": "extension/realtime-contract.json",
       "source_sha256": "731d1213612e12695969fbfca045de5acada7f9aad1da02dfbe37edd81512742"
     },
     {
-      "path": "components/jd/extension/unpacked/report-contracts.json",
+      "path": "extension/report-contracts.json",
       "source_sha256": "fdaabb28f212e4168d9b7cb1a62a7ccda548dc292795096d416995b7c07ad953"
     },
     {
-      "path": "components/jd/extension/unpacked/request.json",
+      "path": "extension/request.json",
       "source_sha256": "c25e57ba38b4c3ee7065434cf3522a754fd073f3cc4131bc79fc8b75c514a813"
     },
     {
-      "path": "components/jd/extension/unpacked/store-identity.js",
+      "path": "extension/store-identity.js",
       "source_sha256": "b348702f29e8bc17fc1e2ab3038f50902fcac23481fd53b602304ce921798b55"
     },
     {
-      "path": "components/jd/extension/unpacked/stores.js",
+      "path": "extension/stores.js",
       "source_sha256": "1967ce892cbd9f0a2a0d74091066621142dd36babfc69068e4cd8c0f35e9e11d"
     },
     {
-      "path": "components/jd/extension/unpacked/traffic-channel-contract.json",
+      "path": "extension/traffic-channel-contract.json",
       "source_sha256": "bad64bf8537327a6869bf223d1742e942216d49c6c546d271d712bcc07dad0f1"
     },
     {
-      "path": "components/jd/extension/unpacked/user-metric-contracts.json",
+      "path": "extension/user-metric-contracts.json",
       "source_sha256": "8ed31ea6d3aeda6ee17a7e668213acb1b8fff25c590a5629303edbad2d1084e4"
     },
     {
@@ -707,7 +707,7 @@
       "source_sha256": "5bd32b8137481c3e4296255741d5703fffefb96bd259f7c85edab62db4d4b133"
     },
     {
-      "path": "components/jd/bridge-config.json",
+      "path": "extension/bridge-config.json",
       "source_sha256": "0f50ea2f07490e46fd392b6991b214b1a69b009404989fdf784c1d29206c72bc"
     },
     {
@@ -717,10 +717,6 @@
     {
       "path": "requirements.txt",
       "source_sha256": "e5f2694f34826eeb005e7ca370f8d9f1026bdec7143566d4229735a9df3a34b9"
-    },
-    {
-      "path": "components/ali/extension/README.md",
-      "source_sha256": "27dc942560a7b546c6b682793bb1ff8d77cc3ee69a72f1cc892ff205a8c88caa"
     },
     {
       "path": "components/ali/tb/modules_manifest.json",
@@ -735,11 +731,11 @@
       "source_sha256": "dc1082c7721332ec8bfb9915d1adbe9bb8f7a52ed5714281d71ee4330e79a152"
     },
     {
-      "path": "components/jd/extension/README.md",
+      "path": "extension/README.md",
       "source_sha256": "27dc942560a7b546c6b682793bb1ff8d77cc3ee69a72f1cc892ff205a8c88caa"
     },
     {
-      "path": "components/jd/extension/unpacked/sycm-public-assets.js",
+      "path": "extension/sycm-public-assets.js",
       "source_sha256": "eaffdace157db9ff476e4b9b5280eed2e66fc1067239360e650bc9ab017ee684"
     },
     {
@@ -795,15 +791,15 @@
       "source_sha256": "a7995e9dd3b40f327a4029ac4a5c41857e8b617e076ddda4ea9c4dc078ed52d8"
     },
     {
-      "path": "components/jd/extension/unpacked/sycm-quickbi-reader.js",
+      "path": "extension/sycm-quickbi-reader.js",
       "source_sha256": "5a03c7a5150b54decb03b492021e956e63511ebf2b738fa7e2c41b5872a5d56a"
     },
     {
-      "path": "components/jd/extension/unpacked/sycm-market-context.js",
+      "path": "extension/sycm-market-context.js",
       "source_sha256": "24179850026a16ecd82531b89b867a3f8075be42e9f7c569eb518b00a4a5f7e7"
     },
     {
-      "path": "components/jd/extension/unpacked/sycm-market-observe.js",
+      "path": "extension/sycm-market-observe.js",
       "source_sha256": "4ce9dd47317220a2af8c09f7c3b389d68e4d048ca2d3c94c835b5ef17c74256f"
     }
   ],
@@ -835,7 +831,8 @@
     "v1.1.0: fixed-query registries retain runtime contract fields only; local evidence paths and account main-category flags removed",
     "v1.1.0: bridge 0.9.62 official SYCM read capabilities only; private JD adapter import, worker, host and fixed-store functions remain excluded",
     "v1.1.0: retain portable installation patches, bridge identity, MCP-only instructions and existing JD business behavior; adapt synthetic tests to package-relative paths",
-    "v1.1.1: public ZIP Windows cold online installation and MCP validation recorded; docs/checksums only, program/dependency/installer bytes unchanged from v1.1.0; raw diagnostic identities and local logs excluded"
+    "v1.1.1: public ZIP Windows cold online installation and MCP validation recorded; docs/checksums only, program/dependency/installer bytes unchanged from v1.1.0; raw diagnostic identities and local logs excluded",
+    "v1.2.0: move the shared Chrome payload and public bridge config to root extension/; preserve payload bytes/key/ID and both tb packages; update JD contract path resolution and installer/diagnostic/docs paths; tests remain outside release; existing loaded extension paths and browser storage are untouched"
   ],
   "excluded": [
     "runtime state",

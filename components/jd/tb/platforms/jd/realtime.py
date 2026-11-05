@@ -1,4 +1,5 @@
 """Today-only trade snapshot; kept separate from complete-day reporting."""
+from ...runtime import extension_dir
 from datetime import datetime,timedelta,timezone
 import json
 from .api_client import ROOT,APIClient
@@ -6,7 +7,7 @@ from .overview import summarize as summarize_daily,formatted
 
 CHINA=timezone(timedelta(hours=8))
 def now_china():return datetime.now(CHINA)
-def contract():return json.loads((ROOT/'extension/unpacked/realtime-contract.json').read_text(encoding='utf-8'))
+def contract():return json.loads((extension_dir()/'realtime-contract.json').read_text(encoding='utf-8'))
 
 def make_body(*,now=None):
     current=(now or now_china()).astimezone(CHINA).replace(microsecond=0)
