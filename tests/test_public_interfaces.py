@@ -25,6 +25,13 @@ def jd(name):
 
 
 class PublicInterfaceTests(unittest.TestCase):
+    def test_sycm_workflow_catalog_exposes_partial_market_queries(self):
+        module=load_file('public_workflow_catalog',ROOT/'components/jd/shopdate_workflows/catalog.py')
+        row=next(x for x in module.catalog('symc')['modules'] if x['id']=='industry')
+        self.assertEqual(row['implementation'],'partial_registered_native_queries')
+        self.assertTrue({'market-query','market-deep','market-lane'} <= set(row['commands']))
+        self.assertNotEqual(row['verification'],'blocked_by_browser_site_policy')
+
     def audit_text(self,text):
         module=load_file('publication_audit',ROOT/'scripts/verify_release.py')
         with tempfile.TemporaryDirectory() as td:

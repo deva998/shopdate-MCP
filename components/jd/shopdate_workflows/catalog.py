@@ -31,13 +31,13 @@ def catalog(platform):
         'commands':[] if platform=='jd' else ['workflow ad-review']})
     if platform=='jd':rows.append({'id':'non_app_sources','scope':'out_of_scope','implementation':'not_required',
         'verification':'official_detail_not_available','commands':[]})
-    rows.append({'id':'industry','scope':'in_scope','implementation':'registered_native_queries' if platform=='jd' else 'not_integrated',
-        'verification':'live_options_overview_product_shop_reads_passed' if platform=='jd' else 'blocked_by_browser_site_policy',
-        'commands':['industry-options','industry-overview','industry-products','industry-shops'] if platform=='jd' else [],
+    rows.append({'id':'industry','scope':'in_scope','implementation':'registered_native_queries' if platform=='jd' else 'partial_registered_native_queries',
+        'verification':'live_options_overview_product_shop_reads_passed' if platform=='jd' else 'per_query_date_filters_and_returned_page_evidence_required',
+        'commands':['industry-options','industry-overview','industry-products','industry-shops'] if platform=='jd' else ['market-query','market-deep','market-lane','market-catalog'],
         'offline_contracts':None if platform=='jd' else 'shopdate_workflows/tmall-industry-contracts.json',
         'offline_contract_status':None if platform=='jd' else 'local_source_candidates; enums_method_response_not_live_verified',
         'semantics':'official_intervals_retained; returned_rank_scope_not_all_market',
-        'note':'只接行业大盘、商品榜、店铺榜；天猫市场页面受浏览器安全策略拦截，尚未接入，不用本店类目销售替代。'})
+        'note':'京东提供已登记的行业大盘、商品榜和店铺榜。生意参谋市场榜单、趋势与固定下钻已部分接入；官方空、风控、日期及分页缺口分别返回，不用本店类目销售替代。'})
     return {'platform':platform,'modules':rows,
         'principle':'固定取数校验公式由脚本执行；原因判断和建议由助手完成；专门模块保留原接口按需下钻。',
         'excluded_features':['腾讯飞书取数填数','定时任务','自动预算调整'],

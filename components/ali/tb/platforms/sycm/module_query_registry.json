@@ -1,0 +1,889 @@
+{
+  "audit_date": "2026-11-04",
+  "modules": [
+    "customer",
+    "content",
+    "service"
+  ],
+  "reports": {
+    "customer-customerOverview-1": {
+      "module": "customer",
+      "label": "客户概况 / customerOverview-1",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.overview",
+        "bizCode": "sycm_pc",
+        "pluginFlag": "customerOverview",
+        "showType": "overview",
+        "needPeriodsCrc": true,
+        "device": 0,
+        "indexCodes": "sellerId,statDate,shopCustomer,newVisitorCnt,shopCustomerAvgGood,newVisitorCntAvgGood,hasPurchaseCntAvgGood,noPurchaseCntAvgGood,newVisitorBuyCnt,newVisitorInShopCnt,newVisitorPayRate,newVisitorPct,newVisitorVipRate,newVisitorFansRate,newVisitorPayAmtRatio,newVisitorReCall,noPurchaseCnt,noPurchaseBuyCnt,noBuyInShopCnt,noPurchasePayRate,noPurchasePct,noPurchaseFansRate,noPurchaseVipRate,noPurchasePayAmtRatio,noPurchaseReCall,hasPurchaseCnt,hasPurchaseUbyCnt,hasBuyInShopCnt,hasPurchasePayRate,hasPurchasePayAmtRatio,hasPurchasePct,hasPurchaseFansRate,hasPurchaseVipRate,hasPurchaseReCall,noPurchaseBuyCntRate,hasPurchaseUbyCntRate"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "customer-customerOverviewTrend-2": {
+      "module": "customer",
+      "label": "客户概况 / customerOverviewTrend-2",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.overview",
+        "bizCode": "sycm_pc",
+        "showType": "trend",
+        "device": 0,
+        "indexCodes": "statDate,sellerId,shopCustomer,newVisitorCnt,noPurchaseCnt,hasPurchaseCnt"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "purchased-customerOverview-1": {
+      "module": "customer",
+      "label": "已购客户 / customerOverview-1",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "extMap": "{\"needCycleCrc\":true,\"sceneCode\":\"hasPurchased\",\"needYearSyncCrc\":true,\"pluginFlag\":\"customerOverview\"}",
+        "domainCode": "tao.shop.customer.overview",
+        "bizCode": "sycm_pc",
+        "pluginFlag": "customerOverview",
+        "showType": "overview",
+        "needPeriodsCrc": true,
+        "device": 0,
+        "indexCodes": "statDate,repeatByrRate6m,hasPurchaseCnt,hasPurchasePayRate,hasPurchaseReCall,hasPurchaseUbyCnt,hasPurchaseUbyCntRate,rePurchasedPayAmount,hasPurchasePayAmtRatio,hasPurchasePct,hasPurchaseCntAvgGood,hasPurchasePayRateAvgGood,hasPurchaseReCallAvgGood,hasPurchaseUbyCntAvgGood,hasPurchaseUbyCntRateAvgGood,repeatByrRate6mAvgGood,rePurchasedPayAmountAvgGood,hasPurchasePayAmtRatioAvgGood,hasPurchasePctAvgGood,hasPurchasedSubOrdCnt,hasPurchasedSubOrdCntAvgGood,hasPurchasedSubOrdRatio,hasPurchasedSubOrdRatioAvgGood"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "fans-fansOverview-1": {
+      "module": "customer",
+      "label": "粉丝分析 / fansOverview-1",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "needCycleCrc": true,
+        "domainCode": "tao.shop.customer.fans.constitute",
+        "showType": "overview",
+        "device": 0,
+        "indexCodes": "fansSleepCnt,fansSleepRatio,fansActiveCnt,fansActiveRatio,fansChanceCnt,fansChanceRatio,fansNormalCnt,fansNormalRatio,fansTotalCnt,statDate,sellerId,goodCateFansActiveRatio,goodCateFansNormalRatio,goodCateFansChanceRatio,goodCateFansSleepRatio",
+        "bizCode": "sycm_pc"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "fans-fansFeature-2": {
+      "module": "customer",
+      "label": "粉丝分析 / fansFeature-2",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.fans.feature",
+        "showType": "list",
+        "fansLevel": 1,
+        "device": 0,
+        "indexCodes": "fansLevel,attributeType,attributeName,attributeValue,attributeRank",
+        "bizCode": "sycm_pc"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "fans-fansCrowd-3": {
+      "module": "customer",
+      "label": "粉丝分析 / fansCrowd-3",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.fans.crowdrecommend",
+        "showType": "list",
+        "device": 0,
+        "indexCodes": "crowdCode,crowdNum,crowdTag",
+        "bizCode": "sycm_pc"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "fans-operation-fansOperation-1": {
+      "module": "customer",
+      "label": "粉丝分析 / operation-fansOperation-1",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "needCycleCrc": true,
+        "domainCode": "tao.shop.customer.fans.operation",
+        "showType": "overview",
+        "preFansLevel": 0,
+        "needSyncCrc": true,
+        "device": 0,
+        "indexCodes": "fansGrowCnt,fansActivationCnt,fansPromoCnt,fansGuideShopCnt,fansLiveViewCnt,fansShopViewCnt,fansDetailViewCnt,fansInteractCnt,fansJumpCnt,fansPayOrdCnt,fansPromoPayOrdAmt,fansGuideShopPayOrdAmt,fansGuideShopPayOrdCnt,fansGuideShopJumpCnt,fansInteractJumpCnt,fansInteractPayOrdCnt,fansInteractPayOrdAmt,fansGuideShopPayOrdRatio,fansGuideShopJumpRatio,fansInteractJumpRatio,fansInteractPayOrdRatio",
+        "bizCode": "sycm_pc"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "fans-operation-fansTrend-2": {
+      "module": "customer",
+      "label": "粉丝分析 / operation-fansTrend-2",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.fans.operation",
+        "showType": "trend",
+        "preFansLevel": 0,
+        "device": 0,
+        "indexCodes": "fansActivationCnt,fansGrowCnt,statDate",
+        "bizCode": "sycm_pc"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "fans-operation-trend-4": {
+      "module": "customer",
+      "label": "粉丝分析 / operation-trend-4",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.fans.touch",
+        "bizCode": "sycm_pc",
+        "showType": "trend",
+        "preFansLevel": 0,
+        "device": "0",
+        "indexCodes": "fansPromoCnt,fansGuideShopCnt,fansInteractCnt,fansJumpCnt,fansPayOrdCnt,fansPromoPayOrdAmt,statDate"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "fans-operation-list-5": {
+      "module": "customer",
+      "label": "粉丝分析 / operation-list-5",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.fans.touch",
+        "showType": "list",
+        "preFansLevel": 0,
+        "device": 0,
+        "indexCodes": "fansPromoCnt,fansGuideShopCnt,fansInteractCnt,fansJumpCnt,fansPayOrdCnt,fansPromoPayOrdAmt,fansGuideShopPayOrdAmt,fansGuideShopPayOrdCnt,fansGuideShopJumpCnt,fansInteractJumpCnt,fansInteractPayOrdCnt,fansInteractPayOrdAmt,bhvTouchType,objTouchType,locTouchType,touchLevel1Menu,pageName,isActive,isGrow,isPromo",
+        "bizCode": "sycm_pc"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "fans-operation-trend-7": {
+      "module": "customer",
+      "label": "粉丝分析 / operation-trend-7",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.fans.touch",
+        "bizCode": "sycm_pc",
+        "showType": "trend",
+        "preFansLevel": 0,
+        "device": "0",
+        "indexCodes": "fansActivationCnt,statDate"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "fans-operation-fansTouch-8": {
+      "module": "customer",
+      "label": "粉丝分析 / operation-fansTouch-8",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.fans.touch",
+        "showType": "list",
+        "preFansLevel": 0,
+        "device": 0,
+        "indexCodes": "fansActivationCnt,bhvTouchType,objTouchType,locTouchType,touchLevel1Menu,pageName,isActive,isGrow,isPromo",
+        "bizCode": "sycm_pc"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "fans-operation-trend-10": {
+      "module": "customer",
+      "label": "粉丝分析 / operation-trend-10",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.fans.touch",
+        "bizCode": "sycm_pc",
+        "showType": "trend",
+        "preFansLevel": 0,
+        "device": "0",
+        "indexCodes": "fansGrowCnt,statDate"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "fans-operation-fansTouch-11": {
+      "module": "customer",
+      "label": "粉丝分析 / operation-fansTouch-11",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.fans.touch",
+        "showType": "list",
+        "preFansLevel": 0,
+        "device": 0,
+        "indexCodes": "fansGrowCnt,bhvTouchType,objTouchType,locTouchType,touchLevel1Menu,pageName,isActive,isGrow,isPromo",
+        "bizCode": "sycm_pc"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "member-mainData-1": {
+      "module": "customer",
+      "label": "会员分析 / mainData-1",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "extMap": "{\"needPeriodsCrc\":true}",
+        "domainCode": "tao.shop.customer.mbranalysis.retailer",
+        "bizCode": "sycm_pc",
+        "showType": "overview",
+        "device": 0,
+        "indexCodes": "totalMbrCnt,incrMbrCnt,recConvertRate,paidMbrCnt,mbrCntShopRatio,repurMbrCnt,mbrPayAmt,mbrPayAmtShopRatio,repurPayAmt,mbrUnitPrice,shopUnitPrice,repurUnitPrice,repurMbrRate,repurShopRate,repurFrequency"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "member-mainDataTrend-2": {
+      "module": "customer",
+      "label": "会员分析 / mainDataTrend-2",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.mbranalysis.retailer",
+        "bizCode": "sycm_pc",
+        "showType": "trend",
+        "device": 0,
+        "indexCodes": "totalMbrCnt,incrMbrCnt,recConvertRate,paidMbrCnt,mbrCntShopRatio,repurMbrCnt,mbrPayAmt,mbrPayAmtShopRatio,repurPayAmt,mbrUnitPrice,shopUnitPrice,repurUnitPrice,repurMbrRate,repurShopRate,repurFrequency,statDate"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "member-repurchaseData-4": {
+      "module": "customer",
+      "label": "会员分析 / repurchaseData-4",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "extMap": "{\"needPeriodsCrc\":true}",
+        "domainCode": "tao.shop.customer.mbranalysis.retailer",
+        "bizCode": "sycm_pc",
+        "showType": "overview",
+        "device": 0,
+        "indexCodes": "repurMbrCnt,repurPayAmt,repurOrdCnt,repurUnitPrice,repurCycle,repurMbrRate,repurFrequency"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "member-repurchaseDataTrend-5": {
+      "module": "customer",
+      "label": "会员分析 / repurchaseDataTrend-5",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.mbranalysis.retailer",
+        "bizCode": "sycm_pc",
+        "showType": "trend",
+        "device": 0,
+        "indexCodes": "repurMbrCnt,repurPayAmt,repurOrdCnt,repurUnitPrice,repurCycle,repurMbrRate,repurFrequency,statDate,twoOrderRepeatBuyerCount,threePlusOrderRepeatBuyerCount"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "member-newData-6": {
+      "module": "customer",
+      "label": "会员分析 / newData-6",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "extMap": "{\"needPeriodsCrc\":true}",
+        "domainCode": "tao.shop.customer.mbranalysis.retailer",
+        "bizCode": "sycm_pc",
+        "showType": "overview",
+        "device": 0,
+        "indexCodes": "incrMbrCnt,incrPaidMbrCnt,recConvertRate,incrPayOrdAmt,incrUnitPrice,oldNewMemberCount"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "member-newDataTrend-7": {
+      "module": "customer",
+      "label": "会员分析 / newDataTrend-7",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.mbranalysis.retailer",
+        "bizCode": "sycm_pc",
+        "showType": "trend",
+        "device": 0,
+        "indexCodes": "incrMbrCnt,incrPaidMbrCnt,recConvertRate,incrPayOrdAmt,incrUnitPrice,statDate"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "member-overview-8": {
+      "module": "customer",
+      "label": "会员分析 / overview-8",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.mbranalysis.asset",
+        "bizCode": "sycm_pc",
+        "showType": "overview",
+        "needPeriodsCrc": true,
+        "device": 0,
+        "indexCodes": "oldNonMemberBuyerAssets,activeNonMemberFanAssets"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "member-list-9": {
+      "module": "customer",
+      "label": "会员分析 / list-9",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "extMap": "{\"needPeriodsCrc\":true}",
+        "domainCode": "tao.shop.customer.mbranalysis.channel",
+        "bizCode": "sycm_pc",
+        "showType": "list",
+        "device": 0,
+        "indexCodes": "incrMbrCnt,incrPaidMbrCnt,recConvertRate,incrPayOrdAmt,incrUnitPrice"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "focus-overviewData-1": {
+      "module": "customer",
+      "label": "关注分析 / overviewData-1",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "extMap": {
+          "needCycleCrc": true
+        },
+        "domainCode": "tao.shop.customer.follow.core",
+        "bizCode": "sycm_pc",
+        "showType": "overview",
+        "device": 0,
+        "indexCodes": "followExpUv,followUv,followInteractUv,followGuideShopUv"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "focus-trendData-2": {
+      "module": "customer",
+      "label": "关注分析 / trendData-2",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.follow.core",
+        "bizCode": "sycm_pc",
+        "showType": "trend",
+        "device": 0,
+        "indexCodes": "statDate,followExpUv,followUv,followInteractUv,followGuideShopUv"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "focus-video-trend-2": {
+      "module": "customer",
+      "label": "关注分析 / video-trend-2",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "extMap": {
+          "feedType": "video"
+        },
+        "domainCode": "tao.shop.customer.follow",
+        "sceneCode": "video",
+        "bizCode": "sycm_pc",
+        "feedType": "video",
+        "showType": "trend",
+        "device": 0,
+        "indexCodes": "statDate,followPostFeedCnt,followExpUv,followUv,followInteractUv,followGuideShopUv,followExposureCnt,followUv3s,followPv3s,followPv,followAvgStayTime,followPraiseUv,followCmtUv,followTransUv,followIpvUv,followIpv,followGuideShopUv,followGuideShopPv,followPayOrdByrCnt,followPayOrdAmt,followGuidePayOrdByrCnt,followGuidePayOrdAmt,followInteractCnt"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "journey-overview": {
+      "module": "customer",
+      "label": "旅程分析 / overview",
+      "path": "/portal/profile/trip/overview.json",
+      "params": {
+        "crowdType": "all"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "journey-object-compare": {
+      "module": "customer",
+      "label": "旅程分析 / object-compare",
+      "path": "/portal/profile/trip/overview/compare.json",
+      "params": {
+        "crowdTypeList": "AD,BE,CF"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-self-overview": {
+      "module": "content",
+      "label": "直播业绩 / self-overview",
+      "path": "/s_content/shop/broadcast/amount/compose/overview.json",
+      "params": {},
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-self-trend": {
+      "module": "content",
+      "label": "直播业绩 / self-trend",
+      "path": "/s_content/shop/broadcast/amount/compose/trend.json",
+      "params": {},
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-cooperation-overview": {
+      "module": "content",
+      "label": "直播业绩 / cooperation-overview",
+      "path": "/s_content/live/performance/amount/compose/overview.json",
+      "params": {},
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-cooperation-trend": {
+      "module": "content",
+      "label": "直播业绩 / cooperation-trend",
+      "path": "/s_content/live/performance/amount/compose/trend.json",
+      "params": {},
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-broadcast-analysis": {
+      "module": "content",
+      "label": "直播业绩 / broadcast-analysis",
+      "path": "/s_content/shop/broadcast/play/analysis.json",
+      "params": {},
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-channels": {
+      "module": "content",
+      "label": "直播业绩 / channels",
+      "path": "/s_content/shop/broadcast/channel/flow/list.json",
+      "params": {
+        "orderBy": "broadcastLookUv",
+        "order": "desc",
+        "page": 1,
+        "pageSize": 10
+      },
+      "date_style": "domain",
+      "paged": true,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "service-core-overview": {
+      "module": "service",
+      "label": "客服服务 / core-overview",
+      "path": "/csp/api/core/monitor/overview/list",
+      "params": {},
+      "date_style": "csp",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "service-core-trend": {
+      "module": "service",
+      "label": "客服服务 / core-trend",
+      "path": "/csp/api/core/monitor/list",
+      "params": {
+        "orderBy": "date_id"
+      },
+      "date_style": "csp",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "service-shop-consult-summary": {
+      "module": "service",
+      "label": "客服服务 / shop-consult-summary",
+      "path": "/csp/api/shop/special/cra/summary.json",
+      "params": {},
+      "date_style": "csp",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "service-shop-evaluation-summary": {
+      "module": "service",
+      "label": "客服服务 / shop-evaluation-summary",
+      "path": "/csp/api/shop/special/rea/summary.json",
+      "params": {},
+      "date_style": "csp",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "service-staff-sale-summary": {
+      "module": "service",
+      "label": "客服服务 / staff-sale-summary",
+      "path": "/csp/api/user/sale/summary/summary.json",
+      "params": {
+        "pageNo": 1,
+        "pageSize": 10
+      },
+      "date_style": "csp",
+      "paged": true,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "service-sale-analysis": {
+      "module": "service",
+      "label": "客服服务 / sale-analysis",
+      "path": "/csp/api/shop/sale/analysis/summary",
+      "params": {},
+      "date_style": "csp",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "service-refund-process": {
+      "module": "service",
+      "label": "客服服务 / refund-process",
+      "path": "/csp/api/shop/refund/process/summary",
+      "params": {},
+      "date_style": "csp",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "service-user-refund-analysis": {
+      "module": "service",
+      "label": "客服服务 / user-refund-analysis",
+      "path": "/csp/api/user/refund/analysis/summary",
+      "params": {},
+      "date_style": "csp",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "service-shop-consult-items": {
+      "module": "service",
+      "label": "客服服务 / shop-consult-items",
+      "path": "/csp/api/cst/item/shop/list",
+      "params": {
+        "accountType": 1,
+        "page": 1,
+        "pageSize": 10,
+        "orderBy": "cstCnt",
+        "order": "desc"
+      },
+      "date_style": "csp",
+      "paged": true,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "member-assets-overview-1": {
+      "module": "customer",
+      "label": "会员分析 / assets-overview-1",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.mbranalysis.asset",
+        "bizCode": "sycm_pc",
+        "showType": "overview",
+        "needPeriodsCrc": true,
+        "device": 0,
+        "indexCodes": "highFreqBuyerMemberAssets,highFreqBuyerMemberPayAmtRate,highFreqBuyerMemberAssetsRatio,twoOrderBuyerMemberAssets,twoOrderBuyerMemberPayAmtRate,twoOrderBuyerMemberAssetsRatio,firstTimeBuyerMemberAssets,firstTimeBuyerMemberLyrAssetsRatio,firstTimeBuyerMemberPayAmtRate,activeNonBuyerMemberAssets,activeNonBuyerMemberLyrAssetsRatio,inactiveMemberAssets,inactiveMemberLyrAssetsRatio,inactiveMemberAssetsPortion,activeNonBuyerMemberAssetsPortion,highFreqBuyerMemberAssetsPortion,twoOrderBuyerMemberAssetsPortion,firstTimeBuyerMemberAssetsPortion"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "member-assets-trend-3": {
+      "module": "customer",
+      "label": "会员分析 / assets-trend-3",
+      "path": "/domain/oneQuery.json",
+      "params": {
+        "domainCode": "tao.shop.customer.mbranalysis.asset",
+        "bizCode": "sycm_pc",
+        "showType": "trend",
+        "device": 0,
+        "indexCodes": "highFreqBuyerMemberAssets,twoOrderBuyerMemberAssets,firstTimeBuyerMemberAssets,activeNonBuyerMemberAssets,inactiveMemberAssets"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "service-custom-shop": {
+      "module": "service",
+      "label": "客服服务 / custom-shop",
+      "path": "/csp/api/shop/customize/summary.json",
+      "params": {
+        "reportTemplateId": 5
+      },
+      "date_style": "csp",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "service-custom-user": {
+      "module": "service",
+      "label": "客服服务 / custom-user",
+      "path": "/csp/api/user/customize/summary.json",
+      "params": {
+        "reportTemplateId": 6
+      },
+      "date_style": "csp",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "service-realtime-self": {
+      "module": "service",
+      "label": "客服服务 / realtime-self",
+      "path": "/csp/api/realtime/competition/self",
+      "params": {},
+      "date_style": "snapshot",
+      "paged": false,
+      "validated_date": "2026-11-04 snapshot",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-click-overview": {
+      "module": "content",
+      "label": "直播业绩 / click-overview",
+      "path": "/s_content/shop/broadcast/click/transform.json",
+      "params": {},
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-click-trend": {
+      "module": "content",
+      "label": "直播业绩 / click-trend",
+      "path": "/s_content/shop/broadcast/click/transform/trend.json",
+      "params": {},
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-crowd-overview": {
+      "module": "content",
+      "label": "直播业绩 / crowd-overview",
+      "path": "/s_content/live/performance/crowd/effects/overview.json",
+      "params": {},
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-crowd-trend": {
+      "module": "content",
+      "label": "直播业绩 / crowd-trend",
+      "path": "/s_content/live/performance/crowd/effects/trend.json",
+      "params": {},
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-room-options": {
+      "module": "content",
+      "label": "直播业绩 / room-options",
+      "path": "/s_content/live/coop/room/search/list.json",
+      "params": {},
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-item-click": {
+      "module": "content",
+      "label": "直播业绩 / item-click",
+      "path": "/s_content/shop/broadcast/item/rank.json",
+      "params": {
+        "rankType": "high_click",
+        "orderBy": "broadcastItemClickUv",
+        "order": "desc",
+        "page": 1,
+        "pageSize": 10
+      },
+      "date_style": "domain",
+      "paged": true,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-item-efficiency": {
+      "module": "content",
+      "label": "直播业绩 / item-efficiency",
+      "path": "/s_content/shop/broadcast/item/rank.json",
+      "params": {
+        "rankType": "high_eff",
+        "orderBy": "broadcastDealUv",
+        "order": "desc",
+        "page": 1,
+        "pageSize": 10
+      },
+      "date_style": "domain",
+      "paged": true,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-partners": {
+      "module": "content",
+      "label": "直播业绩 / partners",
+      "path": "/s_content/live/cooperate/room/list.json",
+      "params": {
+        "coopActId": "",
+        "order": "",
+        "orderBy": "",
+        "page": 1,
+        "pageSize": 10
+      },
+      "date_style": "domain",
+      "paged": true,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-sessions": {
+      "module": "content",
+      "label": "直播业绩 / sessions",
+      "path": "/s_content/live/cooperate/session/list.json",
+      "params": {
+        "coopActId": "",
+        "sessionId": "",
+        "order": "desc",
+        "orderBy": "goodsDealAmt",
+        "page": 1,
+        "pageSize": 10
+      },
+      "date_style": "domain",
+      "paged": true,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "live-sold-items": {
+      "module": "content",
+      "label": "直播业绩 / sold-items",
+      "path": "/s_content/live/coop/item/list.json",
+      "params": {
+        "coopActId": "",
+        "sessionId": "",
+        "itemId": "",
+        "order": "desc",
+        "orderBy": "goodsDealAmt",
+        "page": 1,
+        "pageSize": 10
+      },
+      "date_style": "domain",
+      "paged": true,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "customer-shop-pages-mobile": {
+      "module": "customer",
+      "label": "客户概况 / shop-pages-mobile",
+      "path": "/bda/new/decorate/page/analysis/getShopPageList.json",
+      "params": {
+        "device": 1,
+        "appType": 20,
+        "page": 1,
+        "pageSize": 10,
+        "order": "desc"
+      },
+      "date_style": "domain",
+      "paged": true,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "journey-portrait": {
+      "module": "customer",
+      "label": "旅程分析 / portrait",
+      "path": "/portal/profile/overview.json",
+      "params": {
+        "crowdType": "AD"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "journey-portrait-compare": {
+      "module": "customer",
+      "label": "旅程分析 / portrait-compare",
+      "path": "/portal/profile/overview/compare.json",
+      "params": {
+        "crowdTypeList": "AD,BE,CF"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "customer-shop-pages-pc": {
+      "module": "customer",
+      "label": "客户概况 / shop-pages-pc",
+      "path": "/flow/v2/decorate/page/analysis/getShopPageList.json",
+      "params": {
+        "orderBy": "uv",
+        "order": "desc",
+        "page": 1,
+        "pageSize": 10
+      },
+      "date_style": "domain",
+      "paged": true,
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    }
+  },
+  "excluded_or_gaps": [
+    "Only registered read contracts are included; local business receipts and evidence files are excluded.",
+    "Empty, blocked and unsupported pages are not guaranteed. Inspect actual response coverage."
+  ]
+}

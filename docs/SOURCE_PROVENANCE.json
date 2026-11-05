@@ -1,5 +1,5 @@
 {
-  "release": "2026.11.03",
+  "release": "v1.1.0",
   "upstream": {
     "url": "https://github.com/rakei076/sycm-cli",
     "license": "MIT",
@@ -392,11 +392,11 @@
     },
     {
       "path": "components/ali/tb/platforms/sycm/item.py",
-      "source_sha256": "b6aa43559bcf4fed561d5011223b8d8b7a4714a0e32956088a97044030d9fb81"
+      "source_sha256": "e4b2817856d0ceedbaeb59c705a0bd9233e189310288998eac0fc887fd05c7d7"
     },
     {
       "path": "components/ali/tb/platforms/sycm/platform.py",
-      "source_sha256": "60769366d037c867aece5950d9672a262946fff1da31bc3909f37b8e384014f2"
+      "source_sha256": "4eed24fa58814b16f96afc046e2b6a52b8a970078466e49a8c9361671ab4e21d"
     },
     {
       "path": "components/ali/tb/platforms/sycm/report/__init__.py",
@@ -472,7 +472,7 @@
     },
     {
       "path": "components/jd/extension/unpacked/background.js",
-      "source_sha256": "e5d4e4d892229f1b23d59992294aef5dd64c45c7a254a818167b2b37e02512bb"
+      "source_sha256": "65af003a7911a44bc6ca5caee39e7d157a5e3e3b27c54aab6b810e8d2db38c10"
     },
     {
       "path": "components/jd/extension/unpacked/business-metric-contracts.json",
@@ -728,7 +728,7 @@
     },
     {
       "path": "components/ali/tb/platforms/sycm/interface_discovery.py",
-      "source_sha256": "98568f8b326b57af14a250df41e739e80bbe5f740e8b5fedb47b5bdad4279113"
+      "source_sha256": "a4319042a7a25d64040a14f4ce0bbf802cbc087026e903824e43cb370ae246b5"
     },
     {
       "path": "components/ali/tb/platforms/sycm/traffic.py",
@@ -740,11 +740,71 @@
     },
     {
       "path": "components/jd/extension/unpacked/sycm-public-assets.js",
-      "source_sha256": "6e7191376b0b9bbf8f607e7b3a021827eeb3bc576f8ea32ade11eec270510303"
+      "source_sha256": "eaffdace157db9ff476e4b9b5280eed2e66fc1067239360e650bc9ab017ee684"
     },
     {
       "path": "components/jd/tb/modules_manifest.json",
       "source_sha256": "0944d3d15c1cfc4eae0b0dcc540212d1c63a239231fa5f0ffeb750008a8b7ce8"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/business_queries.py",
+      "source_sha256": "f6122cec92246f3abe535d05796969b306cc30c7555df82c8cb728f1cd4303af"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/fashion_trends.py",
+      "source_sha256": "628daac162dc4f0381ad2384958e01480ea317f3139c53a41cfa26733d27d6d2"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/market_deep.py",
+      "source_sha256": "91cf6d87f5ad00b2ee6fb6dd77423df1289d79dc72d225b8a026d4c8d6c7a1f2"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/market_discovery.py",
+      "source_sha256": "8660915d594cfb3a0b11159583eff5abc7fd46813ea1bf943e03a96c8742507c"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/market_queries.py",
+      "source_sha256": "6d49452d055ca0239ea3d52c6962b498c4dac7f70bafa62ef982b0e8decda86f"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/module_queries.py",
+      "source_sha256": "892c6d44a2be8c1e3e75c740c3fe70fc42149a4432c91f87d960ad84cba51794"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/protocol_queries.py",
+      "source_sha256": "4663992eddcdc34a4f5df10c503ff8da58aae2967f706f8cc000debcc403e3c5"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/rival_drilldowns.py",
+      "source_sha256": "e146a7c228a08f26b4500e7ec2267e96b4516a2deefc4ea59c52aa2ce3aa41d5"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/module_query_registry.json",
+      "source_sha256": "74b46df39eb452cf392a1f81b7759b4aa8af9a7b7a695188ebc5a018c0852b89"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/market_zone_query_registry.json",
+      "source_sha256": "7bb24cc4332713ac6bb2b49df7c8901633a2179af878e5c3eb0a3ea8ba296c37"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/fashion_trend_options.json",
+      "source_sha256": "d3cd832fbafdcd42db4802ca32f593feedcdfb78f169323ba3fdab3901ad3820"
+    },
+    {
+      "path": "components/ali/tb/platforms/sycm/market_query_options.json",
+      "source_sha256": "a7995e9dd3b40f327a4029ac4a5c41857e8b617e076ddda4ea9c4dc078ed52d8"
+    },
+    {
+      "path": "components/jd/extension/unpacked/sycm-quickbi-reader.js",
+      "source_sha256": "5a03c7a5150b54decb03b492021e956e63511ebf2b738fa7e2c41b5872a5d56a"
+    },
+    {
+      "path": "components/jd/extension/unpacked/sycm-market-context.js",
+      "source_sha256": "24179850026a16ecd82531b89b867a3f8075be42e9f7c569eb518b00a4a5f7e7"
+    },
+    {
+      "path": "components/jd/extension/unpacked/sycm-market-observe.js",
+      "source_sha256": "4ce9dd47317220a2af8c09f7c3b389d68e4d048ca2d3c94c835b5ef17c74256f"
     }
   ],
   "release_only_changes": [
@@ -770,7 +830,11 @@
     "2026.11.03: custom fixed-store daily source and external data-center reader are excluded; bridge import/host permissions keep official resources only",
     "2026.11.03: required partial status added to native-week guide; exact same structural fix applied to local source",
     "2026.11.03: URL-path-aware privacy audit retains actual local path/query detection; regressions added",
-    "2026.11.03: public guide retains its existing topics and merges only the generic native-week interface section; unrelated local reporting-guide changes stay local"
+    "2026.11.03: public guide retains its existing topics and merges only the generic native-week interface section; unrelated local reporting-guide changes stay local",
+    "v1.1.0: integrate generic SYCM business/module/market/protocol adapters and official option dictionaries; do not copy local validation receipts, business rows or report templates",
+    "v1.1.0: fixed-query registries retain runtime contract fields only; local evidence paths and account main-category flags removed",
+    "v1.1.0: bridge 0.9.62 official SYCM read capabilities only; private JD adapter import, worker, host and fixed-store functions remain excluded",
+    "v1.1.0: retain portable installation patches, bridge identity, MCP-only instructions and existing JD business behavior; adapt synthetic tests to package-relative paths"
   ],
   "excluded": [
     "runtime state",

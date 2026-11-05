@@ -1,0 +1,222 @@
+{
+  "audit_date": "2026-11-04",
+  "modules": [
+    "market",
+    "business-zone"
+  ],
+  "reports": {
+    "market-d11-categories": {
+      "module": "market",
+      "label": "market-d11-categories",
+      "path": "/mc/gmv/rank/cate/list.json",
+      "params": {
+        "marketVersion": "none"
+      },
+      "date_style": "snapshot",
+      "paged": false,
+      "kind": "options",
+      "validated_date": "2026-11-04 current activity snapshot",
+      "validation": "MCP_nonempty_sample"
+    },
+    "market-d11-shops-women": {
+      "module": "market",
+      "label": "market-d11-shops-women",
+      "path": "/mc/gmv/rank/shop/list.json",
+      "params": {
+        "marketVersion": "none",
+        "cateId": 9999991104,
+        "dateType": "day",
+        "page": 1,
+        "pageSize": 10
+      },
+      "date_style": "snapshot",
+      "paged": true,
+      "kind": "statistics",
+      "validated_date": "2026-11-04 current activity snapshot",
+      "validation": "MCP_nonempty_sample"
+    },
+    "market-d11-self-women": {
+      "module": "market",
+      "label": "market-d11-self-women",
+      "path": "/mc/gmv/rank/shop/self.json",
+      "params": {
+        "marketVersion": "none",
+        "cateId": 9999991104
+      },
+      "date_style": "snapshot",
+      "paged": false,
+      "kind": "statistics",
+      "validated_date": "2026-11-04 current activity snapshot",
+      "validation": "MCP_nonempty_sample"
+    },
+    "market-d11-shops-men": {
+      "module": "market",
+      "label": "market-d11-shops-men",
+      "path": "/mc/gmv/rank/shop/list.json",
+      "params": {
+        "marketVersion": "none",
+        "cateId": 9999991107,
+        "dateType": "day",
+        "page": 1,
+        "pageSize": 10
+      },
+      "date_style": "snapshot",
+      "paged": true,
+      "kind": "statistics",
+      "validated_date": "2026-11-04 current activity snapshot",
+      "validation": "MCP_nonempty_sample"
+    },
+    "market-d11-self-men": {
+      "module": "market",
+      "label": "market-d11-self-men",
+      "path": "/mc/gmv/rank/shop/self.json",
+      "params": {
+        "marketVersion": "none",
+        "cateId": 9999991107
+      },
+      "date_style": "snapshot",
+      "paged": false,
+      "kind": "statistics",
+      "validated_date": "2026-11-04 current activity snapshot",
+      "validation": "MCP_nonempty_sample"
+    },
+    "market-d11-shops-children": {
+      "module": "market",
+      "label": "market-d11-shops-children",
+      "path": "/mc/gmv/rank/shop/list.json",
+      "params": {
+        "marketVersion": "none",
+        "cateId": 999999410109,
+        "dateType": "day",
+        "page": 1,
+        "pageSize": 10
+      },
+      "date_style": "snapshot",
+      "paged": true,
+      "kind": "statistics",
+      "validated_date": "2026-11-04 current activity snapshot",
+      "validation": "MCP_nonempty_sample"
+    },
+    "market-d11-self-children": {
+      "module": "market",
+      "label": "market-d11-self-children",
+      "path": "/mc/gmv/rank/shop/self.json",
+      "params": {
+        "marketVersion": "none",
+        "cateId": 999999410109
+      },
+      "date_style": "snapshot",
+      "paged": false,
+      "kind": "statistics",
+      "validated_date": "2026-11-04 current activity snapshot",
+      "validation": "MCP_nonempty_sample"
+    },
+    "zone-bybt-platformSubsidy-detail": {
+      "module": "business-zone",
+      "label": "zone-bybt-platformSubsidy-detail",
+      "path": "/mc/bybt/sellerData/platformSubsidy/detail.json",
+      "params": {
+        "indexCode": "platformSubsidy,afterSettlePltSbsAmt,afterSettleAmt,afterSettleInAmt,payableInvoiceAmountZf,payableInvoiceAmountWait,afterSettleFrozenAmt,afterSettleThawAmt"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "kind": "statistics",
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "zone-bybt-platformSubsidy-trend": {
+      "module": "business-zone",
+      "label": "zone-bybt-platformSubsidy-trend",
+      "path": "/mc/bybt/sellerData/platformSubsidy/trend.json",
+      "params": {
+        "indexCode": "platformSubsidy,afterSettlePltSbsAmt,afterSettleAmt,afterSettleFrozenAmt,afterSettleThawAmt"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "kind": "statistics",
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "zone-bybt-commission-detail": {
+      "module": "business-zone",
+      "label": "zone-bybt-commission-detail",
+      "path": "/mc/bybt/sellerData/commission/detail.json",
+      "params": {
+        "indexCode": "commissionIncentive,commissionIncentiveRank,collectFinalAmt,rebateFinalAmt,priceRebateFinalAmt,pricePoolAmt,priceRebateFinalAmtRate,achieveScaleQualifyRebatAmt,scaleQualifyRebatAmt,achieveScaleQualifyRebatAmtRate,redPacketAmt,predictRedPacketAmt,redPacketAmtRate,baseRedPacketAmt,pricepowerNotAchieveAmt,scaleNotAchieveAmt,finalRedPacketAmtAll,platformfundFybAmtAll,increaseTotalFundPool,transferBaibuIncreasePlanAmt,adReinvestAmt,increaseBaseFundPool"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "kind": "statistics",
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "zone-bybt-commission-trend": {
+      "module": "business-zone",
+      "label": "zone-bybt-commission-trend",
+      "path": "/mc/bybt/sellerData/commission/trend.json",
+      "params": {
+        "indexCode": "commissionIncentive,collectFinalAmt,rebateFinalAmt,increaseTotalFundPool"
+      },
+      "date_style": "domain",
+      "paged": false,
+      "kind": "statistics",
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "zone-bybt-business-overview": {
+      "module": "business-zone",
+      "label": "zone-bybt-business-overview",
+      "path": "/mc/bybt/sellerData/businessOverview/statistics.json",
+      "params": {
+        "salesMethod": "",
+        "raceType": "",
+        "playType": "",
+        "activityType": "",
+        "bybtCateId": ""
+      },
+      "date_style": "domain",
+      "paged": false,
+      "kind": "statistics",
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "zone-bybt-items": {
+      "module": "business-zone",
+      "label": "zone-bybt-items",
+      "path": "/mc/bybt/sellerData/item/list.json",
+      "params": {
+        "salesMethod": "",
+        "raceType": "",
+        "playType": "",
+        "activityType": "",
+        "cateId": "",
+        "juId": "",
+        "itemId": "",
+        "page": 1,
+        "pageSize": 10,
+        "orderBy": "bybtPayAmt",
+        "order": "desc"
+      },
+      "date_style": "domain",
+      "paged": true,
+      "kind": "statistics",
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    },
+    "zone-jhs-visitors": {
+      "module": "business-zone",
+      "label": "zone-jhs-visitors",
+      "path": "/mc/jhs/sellerData/seller/visitors.json",
+      "params": {},
+      "date_style": "domain",
+      "paged": false,
+      "kind": "statistics",
+      "validated_date": "2026-11-03",
+      "validation": "MCP_nonempty_sample"
+    }
+  },
+  "excluded_or_gaps": [
+    "Only registered read contracts are included; local business receipts and evidence files are excluded.",
+    "Empty, blocked and unsupported pages are not guaranteed. Inspect actual response coverage."
+  ]
+}

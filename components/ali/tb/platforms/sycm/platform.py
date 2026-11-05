@@ -20,6 +20,8 @@ SYCM = Platform(
     # 只读防护：路径里出现这些「动词段」一律拒绝（按 / 和 . 切段）
     write_re=re.compile(r"(^|[/.])(add|create|update|delete|remove|save|submit|cancel|set|edit|upload|apply|bind|unbind)([/.]|$)", re.I),
     env_prefix="SYCM",
+    # Official op-live 5.0.90 GET statistics; exact path only.
+    read_allow=("/ipoll/live/rank/item/purchase/add.json",),
     risk_words=("滑块", "验证码", "操作过于频繁", "请重新登录", "异常请求", "风控"),
     risk_exempt=("618",),    # 618 大促文案里会带风控字样
     delay=(1.8, 3.5),

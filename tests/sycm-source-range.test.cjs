@@ -1,0 +1,10 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
+let options;
+const c={URL,AbortSignal:{timeout:()=>({})},fetch:async(u,o)=>{options=o;return{status:206,headers:{get:k=>k==='content-range'?'bytes 0-1023/15000000':k==='content-length'?'1024':null},text:async()=> 'var x="/csp/api/refund/overview.json";'};}};
+vm.createContext(c);vm.runInContext(fs.readFileSync(path.join(__dirname,'../components/jd/extension/unpacked/sycm-public-assets.js'),'utf8'),c);
+(async()=>{const url='https://g.alicdn.com/aligenius/customer-service-performance/100.0.44/index.js';
+ const r=await c.sycmFetchPublicAsset({id:'test',url,byte_range:[0,1023]});
+ assert.equal(options.headers.Range,'bytes=0-1023');assert.equal(r.status,206);assert.equal(r.content_range,'bytes 0-1023/15000000');
+ for(const range of [[0,2000000],[-1,5],[20,5],[0,'3']])assert.ok((await c.sycmFetchPublicAsset({url,byte_range:range})).error);
+ console.log('Public source ranges are bounded to one MiB and preserve official Content-Range; invalid ranges rejected');
+})().catch(e=>{console.error(e);process.exitCode=1;});

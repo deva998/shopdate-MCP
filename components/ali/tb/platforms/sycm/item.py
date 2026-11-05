@@ -1605,12 +1605,32 @@ def fetch_item_video(*, item_id: str, start_date: str, end_date: str, cookies: d
 
 
 def cmd_video_list(args: argparse.Namespace) -> None:
+    from .business_queries import video_list_summary
+    from ...core import transport
+    if not 1 <= args.limit <= 100 or args.page < 1:
+        raise ValueError('video-list requires page >= 1 and limit between 1 and 100; requested size is not proof of coverage')
     cookies = load_taobao_cookies()
-    data = _api_get("/cc/video/detail/list.json",
-                    _page_params(args, cookies, order="desc",
-                                 orderBy="itemExposeUv"),
-                    cookies,
-                    referer="https://sycm.taobao.com/cc/video/analysis").get("data") or {}
+    client = cookies.client
+    try:
+        if not getattr(client, '_bridge_server', None):
+            raise ValueError('Video analysis requires the extension-backed shopdate_symc MCP transport')
+        params = _page_params(args, cookies, order='desc', orderBy='itemExposeUv', belongType='all')
+        data = _api_get('/cc/video/detail/list.json', params, cookies,
+                        referer='https://sycm.taobao.com/cc/video/analysis').get('data') or {}
+    finally:
+        transport.release(client)
+    coverage = video_list_summary(data, params)
+    data = {**data, 'source': 'shopdate_symc_MCP_extension',
+            'observed_at': time.strftime('%Y-%m-%dT%H:%M:%S%z'),
+            'request': {'path': '/cc/video/detail/list.json',
+                        'params': {k: v for k, v in params.items() if k not in ('token', '_')}},
+            'coverage': coverage}
+    if args.out:
+        output = Path(args.out)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding='utf-8')
+        print(f'已写入 {output}', file=sys.stderr)
+        return
     if _emit(args, data):
         return
     rows = data.get("data") or []
@@ -1618,6 +1638,8 @@ def cmd_video_list(args: argparse.Namespace) -> None:
     # 实测 1441 条，默认只出一页。不报总数会让人以为就这么几条。
     print(f"# 视频分析  {args.date} ~ {args.end_date or args.date}"
           f"  共 {total} 条，本页 {len(rows)}")
+    print('# 商品聚合列表；覆盖状态：' + coverage['data_status'] +
+          '。全店汇总请用 business-query --report video-overview。')
     print("商品\t" + "\t".join(cn for _, cn, _ in VIDEO_COLUMNS))
     for r in rows[: args.limit]:
         cells = [(_pct if is_rate else _num)(_value_of(r.get(code)))

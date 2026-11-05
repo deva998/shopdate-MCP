@@ -1,5 +1,7 @@
 # 在 Agent 中用一句话安装
 
+优先从[最新正式版 Releases](https://github.com/deva998/shopdate-MCP/releases/latest)下载安装 ZIP 与同名 SHA256，按 README 校验后解压；使用仓库源码安装也可。
+
 需要64位 Python 3.11+、Chrome 116+，以及具有本地终端和文件写入权限的 Agent。
 
 ## 1. 发送安装指令

@@ -8,7 +8,7 @@
 - 仅读取本人有权限的店铺数据，不提供下单、改价、广告关停等业务写操作。
 - 取数只调用对应的 shopdate MCP，不使用 Computer Use；接口缺失就列为缺口，不改用其他通道补取。
 - 需要64位 Python 3.11+、Chrome 116+；浏览器后台登录和验证码由用户处理。
-- 本版为公开测试版：Windows安装及协议已验证；Mac实机、部分客户端对话调用尚未验证，见[兼容性与验证范围](docs/VALIDATION.md)。
+- 提供正式版安装包；Windows安装及协议已验证，Mac实机、部分客户端对话调用尚未验证，见[兼容性与验证范围](docs/VALIDATION.md)。
 
 ## 安装
 
@@ -18,7 +18,7 @@
 
 将下面这段话发送给具有本地终端权限的 Agent：
 
-> 请从 https://github.com/deva998/shopdate-MCP.git 克隆项目，按 AGENT_INSTALL.md 安装并接入当前客户端，保留其他 MCP 配置；检查两个服务能否启动和调用，提示我完成插件加载、后台登录及客户端授权，最后说明是否安装成功，有问题时给出具体错误。
+> 请从 https://github.com/deva998/shopdate-MCP/releases/latest 下载最新正式版 ZIP，校验同名 SHA256 文件后解压，按 AGENT_INSTALL.md 安装并接入当前客户端，保留其他 MCP 配置；检查两个服务能否启动和调用，提示我完成插件加载、后台登录及客户端授权，最后说明是否安装成功，有问题时给出具体错误。
 
 按照 Agent 提示完成 Chrome 插件加载、后台登录和 MCP 信任授权即可。如果 Agent 无法执行本地安装，改用下面的手动方式。[Agent 安装说明](AGENT_INSTALL.md)
 
@@ -26,7 +26,18 @@
 
 #### 1. 下载项目
 
-在[仓库页面](https://github.com/deva998/shopdate-MCP)选择 **Code → Download ZIP** 并解压，或执行：
+下载[最新正式版 v1.1.0 ZIP](https://github.com/deva998/shopdate-MCP/releases/download/v1.1.0/shopdate-MCP-v1.1.0.zip)及[SHA256 校验文件](https://github.com/deva998/shopdate-MCP/releases/download/v1.1.0/shopdate-MCP-v1.1.0.zip.sha256)，放在同一目录。Windows 运行下列命令，将 Hash 与校验文件第一列对照；Mac 可直接校验：
+
+```powershell
+Get-FileHash .\shopdate-MCP-v1.1.0.zip -Algorithm SHA256
+Get-Content .\shopdate-MCP-v1.1.0.zip.sha256
+```
+
+```sh
+shasum -a 256 -c shopdate-MCP-v1.1.0.zip.sha256
+```
+
+校验一致后解压。也可直接克隆仓库：
 
 ```sh
 git clone https://github.com/deva998/shopdate-MCP.git
@@ -64,6 +75,8 @@ sh ./install.sh
 
 Windows 和 Mac 均按上述方式加载本包数据桥。不要移动或删除已加载的插件目录。
 
+已有用户更新源码后，在扩展页面点击“重新加载”，核对数据桥版本为 **0.9.62**，再刷新客户端 MCP。
+
 #### 4. 接入 AI 客户端
 
 在 `MCP_CONFIG_EXPORT` 目录中，选择对应客户端的配置，合并到客户端 MCP 设置中：
@@ -86,12 +99,12 @@ Mac 安装脚本已提供，实机验证仍待完成；客户端兼容性范围�
 | 场景 | 提供的作用 |
 |---|---|
 | 京东商智 | 店铺概况、商品、库存、交易退款及行业等查询入口，平台参数jd |
-| 生意参谋 | 本店商品、交易退款等查询与分析入口，平台参数sycm |
+| 生意参谋 | 本店商品、交易退款、营销、客户／内容／服务，以及部分市场榜单、趋势与竞品查询，平台参数sycm |
 | 万相台 | 计划、活动及广告报表等查询与复盘入口，平台参数alimama |
 | 日常分析 | 通过guide和workflow_catalog查看日检、复盘、诊断等方法及实现状态 |
 | 数据核验 | 核对店铺身份、统计日期、字段口径、分页与质量标记；缺失不补零、不用其他指标替代 |
 
-[查看完整功能清单：京东 / 阿里](功能清单.md)。提供入口不等于每个账号、日期和模块均已取到完整数据。天猫行业/市场排名目前未接入，不能用本店类目销售替代。
+[查看完整功能清单：京东 / 阿里](功能清单.md)。市场接口为部分接入；权限、日期、筛选和分页覆盖以实际返回为准，不能用本店类目销售替代行业排名。
 
 ## 业务流程
 

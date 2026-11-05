@@ -6,6 +6,9 @@
 //       只读各平台登记的 cookie；结果只交给本机的命令行，不发往任何别处。
 
 importScripts('sycm-public-assets.js');
+importScripts('sycm-quickbi-reader.js');
+importScripts('sycm-market-context.js');
+importScripts('sycm-market-observe.js');
 const PORTS = [47831, 47832, 47833, 47834, 47835, 47836, 47837, 47838, 47839, 47840];
 
 // ---- 放行规则开始（tests/test_extension_release.py 会原样取出这一段运行，改动时保持自包含）----
@@ -16,6 +19,8 @@ const TOKENS = ["_m_h5_tk", "_m_h5_tk_enc", "_tb_token_"];
 //   POSTS    允许的 POST 接口：字符串 = 精确路径，正则 = 只为带编号的路径（域名是发射台本身或 ALLOWED 里的接口域名）；没有这一项的平台不放行任何 POST
 //   COOKIES  允许读的 cookie；HTTPONLY = 其中页面脚本读不到、要用 chrome.cookies 读的那几个
 const SITES = {
+  // Fixed official market recruitment HTML entries; no business API/POST.
+  "https://qn.taobao.com/robots.txt": {ALLOWED:[/^https:\/\/qn\.taobao\.com\/microapp\//],WRITE:/(^|[/.])(save|update|delete|create|submit)([/.]|$)/i,COOKIES:[]},
   "https://dmp.taobao.com/robots.txt": {
     ALLOWED: [/^https:\/\/dmp\.taobao\.com\/api_2\//, /^https:\/\/dmp\.advgateway\.taobao\.com\/api\//],
     WRITE: /(^|\/)(add|create|update|delete|del|remove|save|submit|bind|unbind|cancel|set|apply|edit|upload|push|send|sync|copy|move|rename|batch|start|stop|pay|recharge|buy|generate|subscription)(\/|$|\?)/i,
@@ -40,8 +45,11 @@ const SITES = {
     ],
     COOKIES: TOKENS,
   },
+  "https://bi.taobao.com/robots.txt": {ALLOWED: [/^https:\/\/bi\.taobao\.com\/api\/v2\/dashboard\/[A-Za-z0-9_-]{1,100}(?:\?|$)/, /^https:\/\/bi\.taobao\.com\/token3rd\/dashboard\/view\/pc\.htm(?:\?|$)/], WRITE: /(?:save|update|delete|create)/i, COOKIES: []},
   "https://sycm.taobao.com/robots.txt": {
-    ALLOWED: [/^https:\/\/sycm\.taobao\.com\//],
+    ALLOWED: [/^https:\/\/sycm\.taobao\.com\//, /^https:\/\/h5api\.m\.taobao\.com\/h5\/(?:mtop\.taobao\.ltao\.arke\.business\.(?:querybyblockcode|querytrenddata)|mtop\.hd\.marketing\.seller\.home)\/1\.0\//i],
+    // Official op-live 5.0.90: GET returns the add-to-cart ranking; not an add action.
+    READS: ["/ipoll/live/rank/item/purchase/add.json"],
     WRITE: /(^|[/.])(add|create|update|delete|remove|save|submit|cancel|set|edit|upload|apply|bind|unbind)([/.]|$)/i,
     COOKIES: TOKENS,
   },
@@ -84,9 +92,24 @@ const SITES = {
 function allowed(job) {
   const site = SITES[job.launch];
   if (!site) return false;
-  if (job.cookie) return site.COOKIES.includes(job.cookie);
+  if (job.cookie) return !job.sycm_market_context && !job.sycm_market_observe && site.COOKIES.includes(job.cookie);
   let u;
   try { u = new URL(job.url); } catch (_) { return false; }
+  if(job.launch==='https://qn.taobao.com/robots.txt'){
+    const fixed=[
+      'https://qn.taobao.com/microapp/qn-tmc-bidding/bidding/seller/bybt_race_price_site.htm?isInIframe=true&source=127&biddingSource=sycmsy',
+      'https://qn.taobao.com/microapp/ltao-home/coreActivity?gpReqChannelParam=180008',
+      'https://qn.taobao.com/microapp/starb/bidding/sale/race/square?channel=sycm',
+      'https://qn.taobao.com/microapp/ltao-home/quickSale?tab=item&type=potential&onlyShowCard=ab&channelId=sycmbd',
+      'https://qn.taobao.com/microapp/trend-product-operation/opportunityTab?code=trend&from=sycm',
+      'https://qn.taobao.com/microapp/trend-product-operation/opportunityTab?code=season&from=sycm'];
+    if(!fixed.includes(job.url)||job.method&&job.method!=='GET'||job.body||job.bi_definition||job.sycm_market_context||job.sycm_market_observe)return false;
+  }
+  if(job.sycm_market_observe&&(!['start','read','stop'].includes(job.sycm_market_observe)||job.launch!=='https://sycm.taobao.com/robots.txt'||u.origin!=='https://sycm.taobao.com'||!['/mc/free/market_rank','/mc/free/market_insight','/mc/free/search_rank','/mc/free/channel_goods','/mc/free/class_dig','/mc/free/class_analysis'].includes(u.pathname)||u.search||job.method&&job.method!=='GET'||job.body||job.sycm_market_context||job.bi_definition))return false;
+  if(job.launch==='https://bi.taobao.com/robots.txt'&&u.pathname.startsWith('/api/v2/dashboard/')&&(job.method&&job.method!=='GET'||u.searchParams.getAll('viewType').length!==1||u.searchParams.get('viewType')!=='view'))return false;
+  if(job.bi_definition&&(job.bi_definition!==true||job.launch!=='https://bi.taobao.com/robots.txt'||u.pathname!=='/token3rd/dashboard/view/pc.htm'||! /^[A-Za-z0-9_-]{1,100}$/.test(u.searchParams.get('pageId')||'')||job.method&&job.method!=='GET'))return false;
+  if(job.bi_statistics&&(job.bi_statistics!==true||job.bi_definition!==true||u.searchParams.get('pageId')!=='6c681235-8bac-4df2-8a50-e9ed0efa641b'))return false;
+  if(job.sycm_market_context&&(job.sycm_market_context!==true||job.launch!=='https://sycm.taobao.com/robots.txt'||u.origin!=='https://sycm.taobao.com'||!['/mc/free/market_rank','/mc/free/market_insight','/mc/free/search_rank','/mc/free/channel_goods','/mc/free/class_dig','/mc/free/class_analysis'].includes(u.pathname)||u.search||job.method&&job.method!=='GET'||job.cookie||job.body||job.bi_definition))return false;
   if (job.method === "POST") {
     // 域名只能是发射台本身，或这个平台登记过的接口域名（如达摩盘的广告网关）；路径逐个登记
     const host = u.origin === new URL(job.launch).origin || (site.ALLOWED || []).some((re) => re.test(job.url));
@@ -95,12 +118,26 @@ function allowed(job) {
   }
   if (job.method && job.method !== "GET") return false;
   if (!site.ALLOWED || !site.ALLOWED.some((re) => re.test(job.url))) return false;
+  if(job.launch==='https://sycm.taobao.com/robots.txt'&&u.hostname==='h5api.m.taobao.com'&&!sycmMtopReadAllowed(u))return false;
   if (site.WRITE.test(u.pathname) && !(site.READS && site.READS.includes(u.pathname))) return false;
   if (site.SERVICES && (!site.SERVICE_API || site.SERVICE_API.test(u.pathname))) {
     try { return site.SERVICES.includes(JSON.parse(u.searchParams.get("data")).serviceId); }
     catch (_) { return false; }
   }
   return true;
+}
+function sycmMtopReadAllowed(u) {
+  try {
+    const api=u.pathname.split('/')[2].toLowerCase(), q=u.searchParams;
+    if(!['api','v','type','data'].every(k=>q.getAll(k).length===1)||u.pathname.toLowerCase()!=='/h5/'+api+'/1.0/'||u.protocol!=='https:'||u.username||u.password||u.hash||q.get('api')?.toLowerCase()!==api||q.get('v')!=='1.0'||q.get('type')!=='originaljson')return false;
+    const d=JSON.parse(q.get('data')||'{}'),keys=Object.keys(d);
+    if(api==='mtop.taobao.ltao.arke.business.querybyblockcode')return ['coreBlock','flowBlock'].includes(d.blockType)&&keys.every(k=>['blockType','dateType','dateRange'].includes(k));
+    if(api==='mtop.taobao.ltao.arke.business.querytrenddata')return d.onlyTrend==='true'&&['sellerGmv','itemIpv'].includes(d.originIndicatorType)&&(!d.compareIndicatorType||d.compareIndicatorType==='onSaleItemCnt')&&keys.every(k=>['originIndicatorType','onlyTrend','compareIndicatorType','dateType','dateRange'].includes(k));
+    if(api==='mtop.hd.marketing.seller.home'){
+      const scenes=JSON.parse(d.scenes),params=JSON.parse(d.params);
+      return keys.every(k=>['scenes','params'].includes(k))&&Array.isArray(scenes)&&scenes.length===1&&Object.keys(scenes[0]).length===1&&['shopGeneralInfo','shopDetailedInfo'].includes(scenes[0].sceneCode)&&Object.keys(params).every(k=>['dateType','dateRange'].includes(k));
+    }
+  } catch(_){} return false;
 }
 // ---- 放行规则结束 ----
 
@@ -279,8 +316,10 @@ function pageReadCookie(name) {
 
 async function pageFetch(u, method, body, referrer, xsrf) {
   const startedAt = Date.now();
+  const boundedSource = new URL(u).pathname === '/flow/v5/live/shop/source/tree/v3.json';
   try {
     const init = { credentials: "include" };
+    if (boundedSource) init.signal = AbortSignal.timeout(45000);
     if (method === "POST") {
       const headers = { "Content-Type": "application/json", "Accept": "application/json, text/plain, */*", "X-Requested-With": "XMLHttpRequest" };
       const hit = xsrf && document.cookie.split("; ").find((c) => c.startsWith(xsrf + "="));
@@ -294,6 +333,8 @@ async function pageFetch(u, method, body, referrer, xsrf) {
     if (r.redirected) out.landed = r.url;   // 平台把请求转去了别的地址（登录页、排队页）
     return out;
   } catch (e) {
+    if (boundedSource && ['TimeoutError','AbortError'].includes(e.name))
+      return {error:'官方实时来源请求45秒未返回，已终止并释放数据桥；不自动重试。',timeout:true,network:false,_pageTiming:{startedAt,finishedAt:Date.now()}};
     // 跟着跳转失败（比如被转去 http 的排队页，被浏览器拦下）：不跟跳转再问一次，确认是不是被转走了
     try {
       const r2 = await fetch(u, { credentials: "include", redirect: "manual", method: method === "POST" ? "POST" : "GET",
@@ -307,6 +348,15 @@ async function pageFetch(u, method, body, referrer, xsrf) {
 
 async function runInPageInner(job) {
   const site = SITES[job.launch];
+  if(job.sycm_market_context||job.sycm_market_observe){
+    const u=new URL(job.url),tabs=await chrome.tabs.query({url:u.origin+u.pathname+'*'});
+    const matching=tabs.filter(t=>{try{return !t.discarded&&new URL(t.url).pathname===u.pathname;}catch(_){return false;}});
+    const visible=await chrome.tabs.query({url:u.origin+u.pathname+'*',active:true,lastFocusedWindow:true});
+    const tab=matching.find(t=>visible.some(v=>v.id===t.id))||matching.find(t=>t.active)||matching[0];
+    if(!tab)return {error:'请保持对应的生意参谋市场页面已打开；诊断不会创建或跳转页面。',notLanded:true};
+    const [res]=await chrome.scripting.executeScript(job.sycm_market_observe?{target:{tabId:tab.id},world:'MAIN',func:pageSycmMarketObserve,args:[u.pathname,job.sycm_market_observe]}:{target:{tabId:tab.id},world:'MAIN',func:pageSycmMarketContext,args:[u.pathname]});
+    return res?.result||{error:'Market context returned no result'};
+  }
   if (job.cookie && (site.HTTPONLY || []).includes(job.cookie)) {   // HttpOnly 的那一个：只读登记过的名字，且只读发射台所在的站点
     const c = await chrome.cookies.get({ url: new URL(job.launch).origin + "/", name: job.cookie });
     return { value: c ? c.value : "" };
@@ -317,6 +367,7 @@ async function runInPageInner(job) {
       const tab = await launchTab(job.launch);
       const [res] = await chrome.scripting.executeScript(job.cookie
         ? { target: { tabId: tab.id }, world: "MAIN", args: [job.cookie], func: pageReadCookie }
+        : job.bi_definition ? {target:{tabId:tab.id},world:"MAIN",func:pageQuickbiDefinition,args:[job.url,job.bi_statistics===true]}
         : { target: { tabId: tab.id }, world: "MAIN", func: pageFetch,
             args: [job.url, job.method || "GET", job.body || "", site.REFERRER || "", site.XSRF || ""] });
       const out = res && res.result;

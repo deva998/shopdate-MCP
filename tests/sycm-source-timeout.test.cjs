@@ -1,0 +1,11 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
+const s=fs.readFileSync(path.join(__dirname,'../components/jd/extension/unpacked/background.js'),'utf8');
+const begin=s.indexOf('async function pageFetch('),end=s.indexOf('async function runInPageInner',begin);
+let calls=0,budget;
+const context={URL,Date,document:{cookie:''},AbortSignal:{timeout:ms=>{budget=ms;return{};}},fetch:async()=>{calls++;const e=new Error('timed out');e.name='TimeoutError';throw e;}};
+vm.createContext(context);vm.runInContext(s.slice(begin,end),context);
+(async()=>{const r=await context.pageFetch('https://sycm.taobao.com/flow/v5/live/shop/source/tree/v3.json','GET','','','');
+ assert.equal(budget,45000);assert.equal(calls,1,'timeout must release the channel, without a second GET');
+ assert.equal(r.timeout,true);assert.equal(r.network,false);assert.ok(r._pageTiming);
+ console.log('Slow official realtime source aborts once and releases the bridge without automatic replay');
+})().catch(e=>{console.error(e);process.exitCode=1;});
