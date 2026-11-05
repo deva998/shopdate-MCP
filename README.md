@@ -26,15 +26,15 @@
 
 #### 1. 下载项目
 
-下载[最新正式版 v1.1.0 ZIP](https://github.com/deva998/shopdate-MCP/releases/download/v1.1.0/shopdate-MCP-v1.1.0.zip)及[SHA256 校验文件](https://github.com/deva998/shopdate-MCP/releases/download/v1.1.0/shopdate-MCP-v1.1.0.zip.sha256)，放在同一目录。Windows 运行下列命令，将 Hash 与校验文件第一列对照；Mac 可直接校验：
+下载[最新正式版 v1.1.1 ZIP](https://github.com/deva998/shopdate-MCP/releases/download/v1.1.1/shopdate-MCP-v1.1.1.zip)及[SHA256 校验文件](https://github.com/deva998/shopdate-MCP/releases/download/v1.1.1/shopdate-MCP-v1.1.1.zip.sha256)，放在同一目录。Windows 运行下列命令，将 Hash 与校验文件第一列对照；Mac 可直接校验：
 
 ```powershell
-Get-FileHash .\shopdate-MCP-v1.1.0.zip -Algorithm SHA256
-Get-Content .\shopdate-MCP-v1.1.0.zip.sha256
+Get-FileHash .\shopdate-MCP-v1.1.1.zip -Algorithm SHA256
+Get-Content .\shopdate-MCP-v1.1.1.zip.sha256
 ```
 
 ```sh
-shasum -a 256 -c shopdate-MCP-v1.1.0.zip.sha256
+shasum -a 256 -c shopdate-MCP-v1.1.1.zip.sha256
 ```
 
 校验一致后解压。也可直接克隆仓库：
@@ -65,7 +65,7 @@ sh ./install.sh
 - `MCP_CONFIG_EXPORT`：AI 客户端配置目录。
 - `CHROME_EXTENSION`：Chrome 插件目录。
 
-若依赖下载超时，可在 Windows 命令末尾追加 `-IndexUrl https://pypi.tuna.tsinghua.edu.cn/simple`；macOS 追加 `--index-url https://pypi.tuna.tsinghua.edu.cn/simple`。
+若官方源下载缓慢、长时间解析依赖或超时，可在 Windows 命令末尾追加 `-IndexUrl https://pypi.tuna.tsinghua.edu.cn/simple`；macOS 追加 `--index-url https://pypi.tuna.tsinghua.edu.cn/simple`。
 
 #### 3. 加载插件并登录后台
 
@@ -92,7 +92,7 @@ Windows 和 Mac 均按上述方式加载本包数据桥。不要移动或删除�
 
 保留其他已有服务，完成后刷新 MCP 或重启客户端，并按提示授权。接着完成下方“检查是否安装成功”。
 
-Mac 安装脚本已提供，实机验证仍待完成；客户端兼容性范围见[项目说明](docs/VALIDATION.md)。
+Windows 全新在线安装（HTTPS镜像）及生成配置的MCP调用已复测，见[验证记录](docs/WINDOWS_INSTALL_VERIFICATION.md)。Mac实机和部分客户端对话调用仍待验证，见[兼容性范围](docs/VALIDATION.md)。
 
 ## 功能
 

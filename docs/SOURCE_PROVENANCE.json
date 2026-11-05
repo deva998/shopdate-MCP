@@ -1,5 +1,5 @@
 {
-  "release": "v1.1.0",
+  "release": "v1.1.1",
   "upstream": {
     "url": "https://github.com/rakei076/sycm-cli",
     "license": "MIT",
@@ -834,7 +834,8 @@
     "v1.1.0: integrate generic SYCM business/module/market/protocol adapters and official option dictionaries; do not copy local validation receipts, business rows or report templates",
     "v1.1.0: fixed-query registries retain runtime contract fields only; local evidence paths and account main-category flags removed",
     "v1.1.0: bridge 0.9.62 official SYCM read capabilities only; private JD adapter import, worker, host and fixed-store functions remain excluded",
-    "v1.1.0: retain portable installation patches, bridge identity, MCP-only instructions and existing JD business behavior; adapt synthetic tests to package-relative paths"
+    "v1.1.0: retain portable installation patches, bridge identity, MCP-only instructions and existing JD business behavior; adapt synthetic tests to package-relative paths",
+    "v1.1.1: public ZIP Windows cold online installation and MCP validation recorded; docs/checksums only, program/dependency/installer bytes unchanged from v1.1.0; raw diagnostic identities and local logs excluded"
   ],
   "excluded": [
     "runtime state",
