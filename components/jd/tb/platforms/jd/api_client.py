@@ -77,6 +77,9 @@ def make_job(key,day,identity,*,task=None,dimension=None,scope=None):
       'launch':page,'expected_store':identity,'requested_after':datetime.now(timezone.utc).isoformat(timespec='milliseconds'),'probe_headers':request_headers(urlsplit(url).path)}
     if key=='business-stats':
         job.update(launch=BUSINESS[scope['report']]['page'],business_report=scope['report'],business_params=values,business_date=day)
+        if BUSINESS[scope['report']].get('schema') == 'cps_overview':
+            from .cps_alliance import PREFIX
+            job['cps_trend_headers'] = request_headers(PREFIX + 'trend.ajax')
         if method=='POST':job['body']=json.dumps(values,ensure_ascii=False)
         if BUSINESS[scope['report']].get('schema')=='oneservice':job['probe_headers']['resappkey']=values['commonParam']['resAppKey']
     if key=='shop-insights':

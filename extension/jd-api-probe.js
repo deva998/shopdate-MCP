@@ -153,7 +153,7 @@ async function runJDApiProbeJob(job) {
     const {tab,identity:before}=chosen;
     // After a request starts, never try another page: export submission may have succeeded.
     const input={key,url:job.url,method:job.method,body:job.body,headers:job.probe_headers,requested_after:job.requested_after,task_id:String(job.export_task?.taskId || '')};
-    if(insights)Object.assign(input,{insights_report:job.insights_report,insights_params:job.insights_params,business_report:job.business_report,business_params:job.business_params,business_date:job.business_date,launch:job.launch});
+    if(insights)Object.assign(input,{insights_report:job.insights_report,insights_params:job.insights_params,business_report:job.business_report,business_params:job.business_params,business_date:job.business_date,launch:job.launch,cps_trend_headers:job.cps_trend_headers});
     const result=await execute(tab.id,business?jdBusinessStatsRead:insights?jdShopInsightsRead:jdApiPageRead,[input],'request:'+key,25000);
     if(insights && result?.probe_error)throw new Error(result.probe_error);
     if(insights && (!result || result.status!==200 || typeof result.text!=='string'))throw new Error('类目/用户浏览器执行未返回有效业务响应');

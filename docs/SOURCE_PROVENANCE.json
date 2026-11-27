@@ -1,5 +1,5 @@
 {
-  "release": "v1.2.0",
+  "release": "v1.3.0",
   "upstream": {
     "url": "https://github.com/rakei076/sycm-cli",
     "license": "MIT",
@@ -116,7 +116,7 @@
     },
     {
       "path": "components/jd/tb/platforms/jd/api_client.py",
-      "source_sha256": "cc997947b19f055824106c882334d4b47e87d4f461bc243f736fcbfd39363aa0"
+      "source_sha256": "7dee1961fa2c8e60164898f7540de33f30f84a37cb8ad2bff023f4e4e5805f4e"
     },
     {
       "path": "components/jd/tb/platforms/jd/api_exports.py",
@@ -140,7 +140,7 @@
     },
     {
       "path": "components/jd/tb/platforms/jd/business_stats.py",
-      "source_sha256": "83cee111d58be8333910362dd3da77d025ecedd6597b48813ccfb0b9b1ec5437"
+      "source_sha256": "d4a078d54ede41147f87987beb94ee89292c5b0e334e44e48cb13d132366517a"
     },
     {
       "path": "components/jd/tb/platforms/jd/business_structure.py",
@@ -504,7 +504,7 @@
     },
     {
       "path": "extension/jd-api-probe.js",
-      "source_sha256": "ac968482da4af6ac5250a8722404063c8d72c4f17711b62e529a8785fc8d450e"
+      "source_sha256": "cf7e21563f553a234b58258d63b85506f8e4e6d37229d3283ebf219056788a92"
     },
     {
       "path": "extension/jd-auto.js",
@@ -512,7 +512,7 @@
     },
     {
       "path": "extension/jd-business-stats.js",
-      "source_sha256": "6ec165640999dcc9b4926227df5b50f16268bdc113fb9f5e5e02e168356ba017"
+      "source_sha256": "7cab35993e1f22e240429b2fd60a44d946d5b3e5e89bf97a7671284e0be734fe"
     },
     {
       "path": "extension/jd-devtools.html",
@@ -801,6 +801,10 @@
     {
       "path": "extension/sycm-market-observe.js",
       "source_sha256": "4ce9dd47317220a2af8c09f7c3b389d68e4d048ca2d3c94c835b5ef17c74256f"
+    },
+    {
+      "path": "components/jd/tb/platforms/jd/cps_alliance.py",
+      "source_sha256": "fbde1983953d5ac4f7f7b79945e553b1a4e36a4ad74df7b7c8ebccfc1cd26153"
     }
   ],
   "release_only_changes": [
@@ -832,7 +836,8 @@
     "v1.1.0: bridge 0.9.62 official SYCM read capabilities only; private JD adapter import, worker, host and fixed-store functions remain excluded",
     "v1.1.0: retain portable installation patches, bridge identity, MCP-only instructions and existing JD business behavior; adapt synthetic tests to package-relative paths",
     "v1.1.1: public ZIP Windows cold online installation and MCP validation recorded; docs/checksums only, program/dependency/installer bytes unchanged from v1.1.0; raw diagnostic identities and local logs excluded",
-    "v1.2.0: move the shared Chrome payload and public bridge config to root extension/; preserve payload bytes/key/ID and both tb packages; update JD contract path resolution and installer/diagnostic/docs paths; tests remain outside release; existing loaded extension paths and browser storage are untouched"
+    "v1.2.0: move the shared Chrome payload and public bridge config to root extension/; preserve payload bytes/key/ID and both tb packages; update JD contract path resolution and installer/diagnostic/docs paths; tests remain outside release; existing loaded extension paths and browser storage are untouched",
+    "v1.3.0: reviewed generic JD CPS day/week/month/custom field and trend contracts only; preserve root extension resolver, public key/ID and prior sanitized capacity metadata; no private report/adapter, account UI changes or raw acceptance receipts included; source sample status is not this release live acceptance"
   ],
   "excluded": [
     "runtime state",

@@ -26,15 +26,15 @@
 
 #### 1. 下载项目
 
-下载[最新正式版 v1.2.0 ZIP](https://github.com/deva998/shopdate-MCP/releases/download/v1.2.0/shopdate-MCP-v1.2.0.zip)及[SHA256 校验文件](https://github.com/deva998/shopdate-MCP/releases/download/v1.2.0/shopdate-MCP-v1.2.0.zip.sha256)，放在同一目录。Windows 运行下列命令，将 Hash 与校验文件第一列对照；Mac 可直接校验：
+下载[最新正式版 v1.3.0 ZIP](https://github.com/deva998/shopdate-MCP/releases/download/v1.3.0/shopdate-MCP-v1.3.0.zip)及[SHA256 校验文件](https://github.com/deva998/shopdate-MCP/releases/download/v1.3.0/shopdate-MCP-v1.3.0.zip.sha256)，放在同一目录。Windows 运行下列命令，将 Hash 与校验文件第一列对照；Mac 可直接校验：
 
 ```powershell
-Get-FileHash .\shopdate-MCP-v1.2.0.zip -Algorithm SHA256
-Get-Content .\shopdate-MCP-v1.2.0.zip.sha256
+Get-FileHash .\shopdate-MCP-v1.3.0.zip -Algorithm SHA256
+Get-Content .\shopdate-MCP-v1.3.0.zip.sha256
 ```
 
 ```sh
-shasum -a 256 -c shopdate-MCP-v1.2.0.zip.sha256
+shasum -a 256 -c shopdate-MCP-v1.3.0.zip.sha256
 ```
 
 校验一致后解压。也可直接克隆仓库：
@@ -75,7 +75,7 @@ sh ./install.sh
 
 Windows 和 Mac 均按上述方式加载本包数据桥。不要移动或删除已加载的插件目录。
 
-v1.2.0共用插件已移到根目录 `extension/`，安装器的 `CHROME_EXTENSION` 会输出新路径；数据桥仍为 **0.9.62**。旧用户推荐新版ZIP安装到新目录，保留原已加载插件目录；不要在Chrome正使用的旧插件仓库原地拉取此次改版，详见[升级说明](extension/README.md)。
+共用插件位于根目录 `extension/`。v1.3.0新增CPS字段与周期查询需 **0.9.67** 数据桥；旧用户保留现有加载路径，手动更新该目录内的插件文件并在Chrome重新加载，先勿卸载或迁移账号存储。详见[升级说明](extension/README.md)。
 
 #### 4. 接入 AI 客户端
 

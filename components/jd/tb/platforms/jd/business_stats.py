@@ -107,6 +107,21 @@ for section,endpoint,select_id in [('summary','overview','consume_329'),('trend'
 
 from .business_metrics import CONTRACTS as METRIC_CONTRACTS
 CONTRACTS.update(METRIC_CONTRACTS)
+from .cps_alliance import contracts as cps_contracts
+CONTRACTS.update(cps_contracts())
+
+# User-confirmed CPS page anchors. These inspect script locations only;
+# they are not acceptance of the five CPS business metrics.
+for _key, _path in (
+    ('cps-page-scripts', '/szweb/view/market/alliance-summary-temp.html'),
+    ('cps-inner-scripts', '/szweb/sz/view/market/allianceSummary.html'),
+):
+    CONTRACTS[_key] = {
+        'method': 'GET', 'origin': JDSZ, 'path': _path, 'page': JDSZ + _path,
+        'template': {}, 'scope': 'current_page_metadata',
+        'schema': 'cps_page_scripts', 'min_extension': '0.9.65',
+        'source': 'User-confirmed CPS alliance page URL, 2026-11-23',
+    }
 for section,endpoint in [('summary','getCoreIndicatorsInfo'),('shops','getCompetitionShopDetail'),
                          ('products','getCompetitionShopProductList'),('sources','getViewSourceData'),('keywords','getViewKeyWordData')]:
     template={**BASE,'indChannel':'2' if section=='sources' else '99'}
@@ -360,7 +375,7 @@ _add('compete-realtime-config-shops','/sz/api/competitionAnalysis/getAllCompetit
 CONTRACTS['compete-realtime-config-shops'].update(min_extension='0.9.40',schema='realtime_config_pending')
 
 
-def params(report, day, *, category=None,shops=None,products=None,target=None,page=1,channel=None,competition_category=None,archive=False):
+def params(report, day, *, category=None,shops=None,products=None,target=None,page=1,channel=None,competition_category=None,archive=False,period=None,start_date=None):
     if report not in CONTRACTS:
         raise ValueError('未登记的只读统计报告。')
     parsed=date.fromisoformat(day)
@@ -369,6 +384,13 @@ def params(report, day, *, category=None,shops=None,products=None,target=None,pa
     if parsed.isoformat()!=day or (day>today if realtime and archive else day!=today if realtime else day>=today):
         if realtime:raise ValueError('实时竞争统计只读取北京时间今日快照；历史日期仅支持已保存证据重放。')
         raise ValueError('归档日期须为北京时间完整历史日。')
+    if CONTRACTS[report].get('cps_periods'):
+        if category is not None or shops is not None or products is not None or target is not None or page != 1 or channel is not None or competition_category is not None:
+            raise ValueError('CPS周期查询不接受其他专题的筛选参数。')
+        from .cps_alliance import build_params
+        return build_params(report, day, period='day' if period is None else period, start_date=start_date)
+    if period is not None or start_date is not None:
+        raise ValueError('该报告不支持CPS周期参数。')
     if channel is not None and (not isinstance(channel,str) or channel not in CONTRACTS[report].get('channel_options',[])):
         raise ValueError('该报告仅接受登记的渠道all/app；来源查询固定APP，其他报告不接受渠道筛选。')
     if report in METRIC_CONTRACTS:
@@ -417,6 +439,15 @@ def params(report, day, *, category=None,shops=None,products=None,target=None,pa
 
 
 def validate(report, values, day,*,archive=False):
+    if CONTRACTS.get(report, {}).get('cps_periods'):
+        if not isinstance(values, dict):
+            raise ValueError('CPS查询参数必须为对象。')
+        expected = params(report, day, period=values.get('dateType'),
+                          start_date=values.get('startDate') if values.get('dateType') == 'custom' else None,
+                          archive=archive)
+        if json.dumps(values, sort_keys=True, ensure_ascii=False) != json.dumps(expected, sort_keys=True, ensure_ascii=False):
+            raise ValueError('CPS参数超出官方周期固定范围。')
+        return expected
     if report in METRIC_CONTRACTS:
         params(report,day,archive=archive)
         from .business_metrics import validate as metric_validate
@@ -701,6 +732,20 @@ def normalize(raw, report, *, day=None, store=None,values=None):
         from .business_metrics import parse as metric_parse
         return metric_parse(raw,report,day,values=values)
     data=business_body(raw,report)
+    if CONTRACTS[report].get('schema') in ('cps_overview', 'cps_index'):
+        from .cps_alliance import normalize as cps_normalize
+        return cps_normalize(data, report, day, values=values)
+    if CONTRACTS[report].get('schema') == 'cps_page_scripts':
+        scripts = data.get('scripts') if isinstance(data, dict) else None
+        if not isinstance(scripts, list) or any(not isinstance(s, str) or '?' in s or '#' in s for s in scripts):
+            raise ValueError('CPS脚本元数据无效。')
+        return {'data': data, 'coverage': {
+            'metadata_only': True, 'business_data_verified': False,
+            'whole_module_complete': False, 'returned_rows': len(scripts),
+            'scope': 'current_page_metadata', 'page_state': data.get('page_state', 'legacy_metadata_incomplete'),
+            'source_count': len(data.get('sources', [])),
+            'note': '仅官方页面脚本位置；date为证据归档日，不代表CPS业务数据已接入。',
+        }}
     coverage={'scope':CONTRACTS[report]['scope'],
         'whole_module_complete':False,'nulls_preserved':True,'precise_values_inferred':False,
         'schema_validation':'official_wrapper_only_pending_live_schema',
@@ -949,26 +994,33 @@ LIVE_VERIFIED_CHANNELS={'compete-compare-sku-flow': ['all'], 'compete-compare-sk
 LIVE_VERIFIED_COMPETITION_CATEGORIES={'compete-compare-summary': ['男装', '女装', '童装'], 'compete-compare-trend': ['男装', '女装', '童装'], 'compete-compare-sku-trade': ['男装', '女装', '童装'], 'compete-compare-sku-flow': ['男装', '女装', '童装'], 'compete-compare-spu-trade': ['男装', '女装', '童装'], 'compete-compare-spu-flow': ['男装', '女装', '童装'], 'compete-compare-sources': ['男装', '女装', '童装'], 'compete-compare-sources-level2': ['男装', '女装', '童装'], 'compete-compare-sources-level3': ['男装', '女装', '童装'], 'compete-monitor-sku-products': ['男装', '女装', '童装'], 'compete-monitor-shop-sku-top': ['男装', '女装', '童装'], 'compete-monitor-spu-products': ['男装', '女装', '童装'], 'compete-monitor-shop-spu-top': ['男装', '女装', '童装'], 'compete-monitor-shops': ['男装', '女装', '童装'], 'compete-monitor-shop-trend': ['男装', '女装', '童装'], 'compete-monitor-spu-loss': ['男装', '女装', '童装'], 'compete-monitor-spu-trend': ['女装', '童装', '男装']}
 
 def catalog():
+    cps_verified = {'cps-overview-hb', 'cps-overview-tb', 'cps-index-hb', 'cps-index-tb'}
+    verified = set(LIVE_VERIFIED_20261027) | cps_verified
     def row(name,reports=(),reused=(),pending=()):
         return {'module':name,'reports':list(reports),'reused_commands':list(reused),
-                'status':'partial_verified' if any(k in LIVE_VERIFIED_20261027 for k in reports) else 'code_complete_pending_live' if reports else 'partial_reuse' if reused else 'pending_contract',
-                'report_validation':{k:{'status':'live_verified' if k in LIVE_VERIFIED_20261027 else 'code_complete_pending_live',
-                    'verified_date':LIVE_VERIFIED_DATES.get(k),'min_extension':CONTRACTS[k]['min_extension'],
+                'status':'partial_verified' if any(k in verified for k in reports) else 'code_complete_pending_live' if reports else 'partial_reuse' if reused else 'pending_contract',
+                'report_validation':{k:{'status':'live_verified' if k in verified else 'code_complete_pending_live',
+                    'verified_date':'2026-11-22' if k in cps_verified else LIVE_VERIFIED_DATES.get(k),'min_extension':CONTRACTS[k]['min_extension'],
+                    'period_options':CONTRACTS[k].get('cps_periods',[]),'live_verified_periods':['day','week','month','custom'] if k in cps_verified else [],
                     'channel_options':CONTRACTS[k].get('channel_options',[]),'live_verified_channels':LIVE_VERIFIED_CHANNELS.get(k,[]),'competition_category_supported':bool(CONTRACTS[k].get('competition_category_options')),'live_verified_categories':LIVE_VERIFIED_COMPETITION_CATEGORIES.get(k,[])} for k in reports},
                 'remaining':list(pending)}
     return {'platform':'jd','min_extension':'0.9.40','contract_count':len(CONTRACTS),
-        'live_verified_contracts':len(LIVE_VERIFIED_20261027),'whole_scope_complete':False,
+        'live_verified_contracts':len(verified),'whole_scope_complete':False,
+        'cps_acceptance_record':'local_only_not_published',
+        'cps_period_acceptance_record':'local_only_not_published',
         'acceptance_record':'docs/jd-marketing-market-live-acceptance-2026-10-27.json',
         'competition_category_acceptance_record':'docs/jd-competition-category-acceptance-2026-10-28.json',
         'configuration_acceptance_record':'docs/jd-competition-configuration-acceptance-2026-10-28.json',
         'scope':'指定营销与市场模块的只读统计，不配置、关注、创建或推送',
+        'release_verification_note':'本目录保留源码记录的历史样本状态；本次发布仅做离线/协议及安装验证，CPS原始验收文件不公开，不承诺所有账号、日期和分页均可用。',
         'modules':[
           row('促销工具分析',[k for k in CONTRACTS if k.startswith(('marketing-','tool-','cross-sell-','coupon-share-','shop-gift-','gift-money-','expansion-money-','brand-card-','rating-gift-','bunding-sale-'))],pending=['概览、趋势及品牌卡8项分组统计已验；评价有礼活动表为官方空结果，活动商品弹窗缺少有效活动样本；裂变券/礼包仅核验空结果；礼金--all-pages已核验32页314个唯一活动（当前列表，非单日业绩）；搭售商品达到1000行上限，不称全量，click_level/expo_level不推算；单品促销列表1000行及其他活动下钻/非默认筛选仍有限定范围；0.9.38礼金详情5项及单品/店铺筛选字典2项已验，礼金商品默认10/1216条非全量；所选活动请求日全部缺失/趋势为空不再反复尝试；个人卡号及交易流水不在聚合统计范围']),
           row('百亿补贴',[k for k in CONTRACTS if k.startswith('subsidy-')],pending=['汇总返回全空指标，商品明细返回空表；趋势30日期部分仅有日期字段，size=13不代表应有行数；不补零，不称全量']),
           row('内容营销分析',[k for k in CONTRACTS if k.startswith('content-')],pending=['图文/视频/直播历史明细16项已验，内容榜及部分商品表1000行不称全量；实时直播概览与小时查询已实测；SKU已按1000行上限实测返回178个唯一SKU；累计图复用小时查询；数字人原生页仅展示产品介绍，不当零数据或已接入']),
           row('行业动态',[k for k in CONTRACTS if k.startswith('industry-sellers-')],reused=['industry-options','industry-overview','industry-products','industry-shops'],pending=['行业卖家4项已按官方女装、男装、童装类目在线核验；其他类目尚未逐项实测；不重复接入已有大盘和榜单']),
           row('行业用户动态',[k for k in CONTRACTS if k.startswith('industry-buyers-')],pending=['类目字典及5项买家统计已按官方女装、男装、童装在线核验；支持精确二三级类目，非默认人群筛选未开放']),
-          row('竞争分析',[k for k in CONTRACTS if k.startswith('compete-')],pending=['概况5项、店铺流失4项已验；实时5项、商品流失/搜索列表2项和对比字典2项已验；对比dates兼容命令实际返回页面开关，不含业务日期边界；新版竞店对比7项已实测（含官方7天趋势、SKU/SPU热销/人气榜、APP一级来源）；竞品SKU/SPU字典、概览/30天趋势6项已验；完整核心指标/APP一级来源/关键词两排序/画像及竞争概况元数据13项已验；画像仅验size=-1的官方小人群抑制结构；竞争概况商品/店铺列表、7天趋势、流失下钻及店铺SKU/SPU榜10项已验；流失仅验空结构，SKU趋势为空，SPU趋势缺失两项流失指标；店铺size=30实际31行（含本店）不当行总数；支持精确指定已监控目标和对比商品；APP站内场域二级及首页三级来源共6项已验；6类概览/监控表的APP筛选已验，其他渠道/对象/周期组合不称穷尽；非首页三级来源、非空画像/流失结构仍待样本；区间值原样保留；竞店对比/竞争概况男装女装童装51个类目组合已验，另6个SKU下钻无类目内有效样本，不再尝试；竞争配置9竞品/30竞店与实时配置30竞店只读信息已验；其余当前页面无原生类目参数的子模块不伪造筛选；配置写接口不接入'])]}
+          row('竞争分析',[k for k in CONTRACTS if k.startswith('compete-')],pending=['概况5项、店铺流失4项已验；实时5项、商品流失/搜索列表2项和对比字典2项已验；对比dates兼容命令实际返回页面开关，不含业务日期边界；新版竞店对比7项已实测（含官方7天趋势、SKU/SPU热销/人气榜、APP一级来源）；竞品SKU/SPU字典、概览/30天趋势6项已验；完整核心指标/APP一级来源/关键词两排序/画像及竞争概况元数据13项已验；画像仅验size=-1的官方小人群抑制结构；竞争概况商品/店铺列表、7天趋势、流失下钻及店铺SKU/SPU榜10项已验；流失仅验空结构，SKU趋势为空，SPU趋势缺失两项流失指标；店铺size=30实际31行（含本店）不当行总数；支持精确指定已监控目标和对比商品；APP站内场域二级及首页三级来源共6项已验；6类概览/监控表的APP筛选已验，其他渠道/对象/周期组合不称穷尽；非首页三级来源、非空画像/流失结构仍待样本；区间值原样保留；竞店对比/竞争概况男装女装童装51个类目组合已验，另6个SKU下钻无类目内有效样本，不再尝试；竞争配置9竞品/30竞店与实时配置30竞店只读信息已验；其余当前页面无原生类目参数的子模块不伪造筛选；配置写接口不接入']),
+          row('CPS联盟分析', [k for k in CONTRACTS if k.startswith('cps-')], pending=['0.9.66日口径已验；0.9.67已通过MCP实测2026-11-16至22完整周、2026-10完整月、自定义3/7/30天，hb/tb及指标字典共20组合，五指标及每日趋势完整；四项可加总指标对账通过，用户数按周期去重不累加；本批空数据/缺样本/安全阻断/超时均无；custom限制1至30天，其他长度/日期和持续稳定性未穷尽核验；推客/团长/商品明细仍不在本批范围'])]}
 
 
 def verify_proof(proof, report, values, day, store, response_text):
@@ -1002,14 +1054,18 @@ def main(argv):
     parser.add_argument('--self-product-id',help='竞品对比本品ID，必须在官方本品字典内')
     parser.add_argument('--compare-product-id',help='竞品对比竞品ID，必须在官方已监控竞品字典内')
     parser.add_argument('--channel',choices=['all','app'],help='仅登记的现代竞品/竞店/监控查询支持all或app；来源下钻固定APP')
+    parser.add_argument('--period', choices=['day','week','month','custom'], help='仅CPS：日、完整周、完整月、自定义1至30天；date为末日')
+    parser.add_argument('--start-date', help='仅CPS custom必填起日；重放按原证据周期，不接受改筛选')
     args=parser.parse_args(argv)
     try:
         if args.store is not None and not re.fullmatch(r'jd:mall:\d+',args.store):
             raise ValueError('必须用精确京东store_key。')
         if args.command=='business-modules':
-            if args.report or args.date or args.evidence or args.category or args.compare_shop or args.all_pages or args.target_id or args.self_product_id or args.compare_product_id or args.channel:raise ValueError('目录不接受取数参数。')
+            if args.report or args.date or args.evidence or args.category or args.compare_shop or args.all_pages or args.target_id or args.self_product_id or args.compare_product_id or args.channel or args.period is not None or args.start_date is not None:raise ValueError('目录不接受取数参数。')
             print(json.dumps(catalog(),ensure_ascii=False));return 0
         if not args.report or not args.date or not args.store:raise ValueError('请指定report、date和store。')
+        if (args.period is not None or args.start_date is not None) and (not CONTRACTS[args.report].get('cps_periods') or args.evidence):
+            raise ValueError('周期和起日只用于CPS新采集；其他专题或证据重放不能更改筛选。')
         needs_category='$SECOND_ID' in CONTRACTS[args.report]['template'].values()
         needs_shops=args.report.startswith('compete-compare-')
         needs_products=CONTRACTS[args.report].get('requires_products',False)
@@ -1023,7 +1079,7 @@ def main(argv):
         if args.channel and (args.evidence or args.channel not in CONTRACTS[args.report].get('channel_options',[])):raise ValueError('渠道仅用于支持该选项的新采集；重放不改筛选。')
         product_query={'self_id':args.self_product_id,'compare_id':args.compare_product_id} if args.self_product_id or args.compare_product_id else None
         query_channel=args.channel
-        values=None if needs_category or needs_shops or needs_products or needs_target else params(args.report,args.date,channel=query_channel,archive=bool(args.evidence))
+        values=None if needs_category or needs_shops or needs_products or needs_target else params(args.report,args.date,channel=query_channel,archive=bool(args.evidence),period=args.period,start_date=args.start_date)
         folder=ROOT/'data/business-stats'/args.store.replace(':','_')/args.date/(datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S')+'-'+uuid4().hex[:8])
         requests=0
         if args.evidence:
@@ -1031,6 +1087,7 @@ def main(argv):
             query_channel=payload['params'].get('channel') if CONTRACTS[args.report].get('channel_options') else None
             if not (needs_category or needs_shops or needs_products or needs_target):values=params(args.report,args.date,channel=query_channel,archive=True)
             if args.report in METRIC_CONTRACTS:values=validate(args.report,payload.get('params'),args.date,archive=True)
+            if CONTRACTS[args.report].get('cps_periods'):values=validate(args.report,payload.get('params'),args.date,archive=True)
             if needs_category:
                 cat=payload['category_evidence'];cat_params=params('industry-buyers-options',args.date)
                 verify_proof(cat['proof'],'industry-buyers-options',cat_params,args.date,args.store,cat['response_text'])
@@ -1123,6 +1180,8 @@ def main(argv):
                             selected_target=choose_target(business_body(target_raw),args.report,args.store,target_query)
                             values=params(args.report,args.date,target=selected_target['target'],channel=query_channel,competition_category=competition_category_selection['params'])
                     raw,proof=client.request('business-stats',args.date,scope={'report':args.report,'params':values});requests+=1
+                    if CONTRACTS[args.report].get('schema') == 'cps_overview':
+                        requests += business_body(raw, args.report).get('additional_source_requests', 0)
                     first_response_text=client.last_response_text
                     if args.all_pages:
                         from .business_paging import collect_remaining
